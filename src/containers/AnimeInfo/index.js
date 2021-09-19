@@ -32,6 +32,11 @@ export const AnimeInfo = ({ match }) => {
       <ReactPlayer 
         controls
         url={video}
+        config={{
+            file:{
+                forceHLS:true,
+            }
+        }}
       
       />
       <ReactHlsPlayer
