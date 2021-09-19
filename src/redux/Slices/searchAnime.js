@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { apiCallStart } from "../middleware/apiActions";
 
-const trendingSlice = createSlice({
-    name:"trending",
+const searchanimeSlice = createSlice({
+    name:"searchAnime",
     initialState:{
         data:[],
         loading:false,
@@ -25,14 +25,14 @@ const trendingSlice = createSlice({
     }
 });
 
-export default trendingSlice.reducer;
+export default searchanimeSlice.reducer;
 
-const {dataRequested,dataReceived,dataRequestFailed} = trendingSlice.actions;
+const {dataRequested,dataReceived,dataRequestFailed} = searchanimeSlice.actions;
 
 
-export const fetchTrending = (status) => (dispatch) =>{
+export const searchByTitle = (title) => (dispatch) =>{
     
-    const url=`/v1/anime?status=${status}&page=1`
+    const url=`/v1/anime?title=${title}`
     return dispatch(
         apiCallStart({
             url,

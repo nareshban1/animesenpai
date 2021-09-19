@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { fetchTrending } from "../../redux/Slices/trending";
+import { fetchTopAired } from "../../redux/Slices/topAired";
+import { fetchTopUpcoming } from "../../redux/Slices/topUpcoming";
 import { AnimeCard } from "../AnimeCard";
 
 
@@ -11,25 +12,20 @@ export const AnimeGridContainer=styled.div`
     grid-gap: 20px;
 
 `
-
-
-
-
-export const Trending = () => {
-  const trendingAnime = useSelector((state) => state.trending.data);
+export const Upcoming = () => {
+  const topUpcomingAnime = useSelector((state) => state.topUpcoming.data);
   const dispatch = useDispatch();
-  const trending = trendingAnime?.data?.documents?.slice(0, 10);
 
   useEffect(() => {
-    dispatch(fetchTrending(1));
+    dispatch(fetchTopUpcoming(2));
   }, [dispatch]);
 
   return (
     <>
-      <h1>Trending Anime</h1>
-      {trending && (
+      <h1>Upcoming Anime</h1>
+      {topUpcomingAnime && (
         <AnimeGridContainer>
-          {trending.map((data, index) => (
+          {topUpcomingAnime?.data?.documents?.map((data, index) => (
             <AnimeCard info={data} key={index}/>
           ))}
         </AnimeGridContainer>

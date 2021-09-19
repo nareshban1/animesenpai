@@ -10,6 +10,7 @@ const animedetailSlice = createSlice({
     reducers:{
         dataRequested:(state)=>{
             state.loading = true;
+    
         },
 
         dataReceived:(state,action)=>{
@@ -19,6 +20,7 @@ const animedetailSlice = createSlice({
 
         dataRequestFailed:(state)=>{
             state.loading = false;
+       
         },
         
         
@@ -32,7 +34,6 @@ const {dataRequested,dataReceived,dataRequestFailed} = animedetailSlice.actions;
 
 export const fetchAnimeDetail = (id) => (dispatch) =>{
 
-    console.log(id);
     const url=`/v1/anime/${id}`
     return dispatch(
         apiCallStart({

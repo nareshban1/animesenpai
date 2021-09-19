@@ -25,7 +25,7 @@ const AnimeName = styled.div`
 `;
 
 export const AnimeCard = ({ info }) => {
-  console.log(info);
+
 
   return (
     <AnimeContainer to={`/animeinfo/${info?.id}`}>

@@ -10,6 +10,7 @@ const animeEpisodesSlice = createSlice({
     reducers:{
         dataRequested:(state)=>{
             state.loading = true;
+
         },
 
         dataReceived:(state,action)=>{
@@ -19,6 +20,7 @@ const animeEpisodesSlice = createSlice({
 
         dataRequestFailed:(state)=>{
             state.loading = false;
+        
         },
         
         
