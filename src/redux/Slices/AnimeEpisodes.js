@@ -30,7 +30,7 @@ export default animeEpisodesSlice.reducer;
 const {dataRequested,dataReceived,dataRequestFailed} = animeEpisodesSlice.actions;
 
 export const fetchAnimeEpisodes = (id) => (dispatch) =>{
-    const url=`/v1/episode?anime_id=${id}&source=dreamsub&locale=it`
+    const url=`/v1/episode?anime_id=${id}&source=gogoanime&locale=en`
     return dispatch(
         apiCallStart({
             url,
