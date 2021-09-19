@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { fetchAnimeDetail } from "../../redux/Slices/AnimeDetail";
 import { fetchAnimeEpisodes } from "../../redux/Slices/AnimeEpisodes";
 import ReactPlayer from "react-player";
-import ReactHlsPlayer from "react-hls-player";
+
 
 
 export const AnimeInfo = ({ match }) => {
@@ -39,13 +39,7 @@ export const AnimeInfo = ({ match }) => {
         }}
       
       />
-      <ReactHlsPlayer
-        src={video}
-        autoPlay={false}
-        controls={true}
-        width="60%"
-        height="auto"
-      />
+
     </>
   );
 };
