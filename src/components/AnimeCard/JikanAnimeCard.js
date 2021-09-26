@@ -2,26 +2,28 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const AnimeContainer = styled(Link)`
-  border-radius: 10px;
+  position: relative;
+  border-radius: 20px;
   overflow: hidden;
   min-height: 350px;
   max-height: 450px;
-  transition: 0.3s all;
+  transition: 0.3s all ease;
+  border: 5px solid transparent;
 
   &:hover {
-    transform: scale(1.02);
+    border: 5px solid ${(props) => props.theme.primaryColor};
   }
 `;
 const AnimeImage = styled.img`
-  height: 90%;
+  height: 100%;
   width: 100%;
-  border-radius: 10px;
 `;
 
 const AnimeName = styled.div`
   height: 10%;
   text-align: center;
-  color: ${(props) => props.theme.primaryColor};
+  background:${(props) => props.theme.primaryColor};
+  color: ${(props) => props.theme.textColorPrimary};
 `;
 
 export const JikanAnimeCard = ({ info }) => {

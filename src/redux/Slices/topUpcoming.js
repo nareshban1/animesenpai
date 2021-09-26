@@ -30,9 +30,9 @@ export default topupcomingSlice.reducer;
 const {dataRequested,dataReceived,dataRequestFailed} = topupcomingSlice.actions;
 
 
-export const fetchTopUpcoming = (status) => (dispatch) =>{
-    const baseURL= "https://api.aniapi.com";
-    const url=`/v1/anime?status=${status}`
+export const fetchTopUpcoming = (page) => (dispatch) =>{
+    const baseURL= "https://api.jikan.moe/v3/top/anime";
+    const url=`/${page}/upcoming`
     return dispatch(
         apiCallStart({
             baseURL,

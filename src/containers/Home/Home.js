@@ -6,7 +6,6 @@ export const Home = () =>{
     return(
         <>
             <Trending/>
-            <TopAired/>
             <Upcoming/>
 
         </>

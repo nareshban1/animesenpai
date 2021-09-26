@@ -44,3 +44,18 @@ export const fetchTrending = () => (dispatch) =>{
 
     );
 }
+
+export const fetchANITrending = () => (dispatch) =>{
+    const baseURL= "https://api.aniapi.com/v1";
+    const url=`/anime?status=1`
+    return dispatch(
+        apiCallStart({
+            baseURL,
+            url,
+            onStart:dataRequested.type,
+            onSuccess:dataReceived.type,
+            onError:dataRequestFailed.type,
+        })
+
+    );
+}
