@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { fetchTrending } from "../../redux/Slices/trending";
 import { AnimeCard } from "../AnimeCard";
+import { JikanAnimeCard } from "../AnimeCard/JikanAnimeCard";
 
 
 export const AnimeGridContainer=styled.div`
@@ -17,8 +18,9 @@ export const AnimeGridContainer=styled.div`
 
 export const Trending = () => {
   const trendingAnime = useSelector((state) => state.trending.data);
+  console.log(trendingAnime);
   const dispatch = useDispatch();
-  const trending = trendingAnime?.data?.documents?.slice(0, 10);
+  const trending = trendingAnime?.top?.slice(0, 10);
 
   useEffect(() => {
     dispatch(fetchTrending(1));
@@ -30,7 +32,7 @@ export const Trending = () => {
       {trending && (
         <AnimeGridContainer>
           {trending.map((data, index) => (
-            <AnimeCard info={data} key={index}/>
+            <JikanAnimeCard info={data} key={index}/>
           ))}
         </AnimeGridContainer>
       )}

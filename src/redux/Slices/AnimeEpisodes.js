@@ -10,6 +10,8 @@ const animeEpisodesSlice = createSlice({
     reducers:{
         dataRequested:(state)=>{
             state.loading = true;
+           
+            
 
         },
 
@@ -19,6 +21,7 @@ const animeEpisodesSlice = createSlice({
         },
 
         dataRequestFailed:(state)=>{
+            state.data=[];
             state.loading = false;
         
         },
@@ -31,10 +34,14 @@ export default animeEpisodesSlice.reducer;
 
 const {dataRequested,dataReceived,dataRequestFailed} = animeEpisodesSlice.actions;
 
-export const fetchAnimeEpisodes = (id) => (dispatch) =>{
-    const url=`/v1/episode?anime_id=${id}&source=gogoanime&locale=en`
+export const fetchAnimeEpisodes = (id,page) => (dispatch) =>{
+    const baseURL= "https://api.aniapi.com";
+    const url=`/v1/episode?anime_id=${id}&source=gogoanime&locale=en&page=${page}`
+    console.log(id);
+
     return dispatch(
         apiCallStart({
+            baseURL,
             url,
             onStart:dataRequested.type,
             onSuccess:dataReceived.type,

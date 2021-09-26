@@ -2,71 +2,80 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { fetchAnimeDetail } from "../../redux/Slices/AnimeDetail";
-import { fetchAnimeEpisodes } from "../../redux/Slices/AnimeEpisodes";
-import ReactPlayer from "react-player";
 import styled from "styled-components";
+import { fetchJikanAnimeDetail } from "../../redux/Slices/JikanAnimeDetail";
+import AnimePlayer from "../../components/AnimePlayer/AnimePlayer";
+import { fetchJikanAnimeCharacters } from "../../redux/Slices/JikanCharacters";
+import { fetchJikanAnimeEpisodes } from "../../redux/Slices/JikanEpisodes";
 
 
-
-
-const EpisodeCard = styled.div`
-    height: 30px;
-    width: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: gray;
-`
-const EpisodesContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(50px,1fr));
-  grid-gap: 10px;
-`
 
 
 export const AnimeInfo = ({ match }) => {
   const animeDetails = useSelector((state) => state.animeDetail.data);
-  const animeEpisodes = useSelector((state) => state.animeEpisodes.data);
+  const jikananimeDetails = useSelector((state) => state.jikanAnimeDetails.data);
+  const jikananimeCharacters = useSelector((state) => state.jikanAnimeCharacters.data);
+  const jikananimeEpisodes = useSelector((state) => state.jikanAnimeEpisodes.data);
   const dispatch = useDispatch();
 
-  const [currentEpisode, setCurrentEpisode] = useState(animeEpisodes?.data?.documents?.[0]?.video)
 
 
   const animeID = match.params.id;
   useEffect(() => {
     dispatch(fetchAnimeDetail(animeID));
-    dispatch(fetchAnimeEpisodes(animeID));
+    dispatch(fetchJikanAnimeDetail(animeID));
+    dispatch(fetchJikanAnimeCharacters(animeID));
+    dispatch(fetchJikanAnimeEpisodes(animeID));
   }, [dispatch]);
 
 
-  console.log(animeEpisodes)
-  
-  console.log(currentEpisode)
 
+  const getMainCharacter= (character) =>{
+    return character.role === "Main"
+  }
   return (
     <>
-    
-      {animeEpisodes.data? (
+    {animeDetails?.data?.documents.length &&
+      <>
+     
+      {/* <AnimePlayer animeID={animeDetails?.data?.documents?.[0]?.id}/> */}
+      <h1>{animeDetails?.data?.documents?.[0]?.titles?.en}</h1>
+      <h1>{animeDetails?.data?.documents?.[0]?.titles?.jp}</h1>
+      <img src={animeDetails?.data?.documents?.[0]?.cover_image} alt="anime_image"/>
+      <img src={animeDetails?.data?.documents?.[0]?.banner_image} alt="anime_banner_image"/>
+      <h1>{animeDetails?.data?.documents?.[0]?.episodes_count}</h1>
+      </>
+      }
+      <p>{jikananimeDetails?.synopsis}</p>
+      <p>{jikananimeDetails?.source}</p>
+      <p>{jikananimeDetails?.airing}</p>
+      <p>{jikananimeDetails?.rating}</p>
+      <p>{jikananimeDetails?.broadcast}</p>
+      <p>{jikananimeDetails?.score}</p>
+      <p>{jikananimeDetails?.scored_by}</p>
+      <p>{jikananimeDetails?.rank}</p>
+      <p>{jikananimeDetails?.members}</p>
+      <p>{jikananimeDetails?.popularity}</p>
+
+      {jikananimeDetails?.genres?.map((genre,index)=>(
+        <p>{genre?.name}</p>
+      ))}
+
+        {jikananimeCharacters?.characters?.filter(getMainCharacter).map((character,index)=>(
         <>
-        <ReactPlayer
-          controls
-          url={currentEpisode}
-          config={{
-            file: {
-              forceHLS: true,
-            },
-          }}
-        />
-        <EpisodesContainer>
-        {animeEpisodes?.data?.documents?.map((episodes, index) =>(
-          <EpisodeCard  onClick={()=>setCurrentEpisode(episodes.video)} key={index}>{episodes.number}</EpisodeCard>
-        ))}
-        </EpisodesContainer>
+          <img src={character.image_url} alt="character_image"/>
+          <p>{character.name}</p>
+          <p>{character.role}</p>
         </>
-      ):(
-        <p>Episodes not available</p>
-      )  }
-      {JSON.stringify(animeDetails)}
+
+      )
+      )}
+      
+
+      
+
+
+
     </>
   );
 };

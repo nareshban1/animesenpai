@@ -31,10 +31,11 @@ const {dataRequested,dataReceived,dataRequestFailed} = topupcomingSlice.actions;
 
 
 export const fetchTopUpcoming = (status) => (dispatch) =>{
-    
+    const baseURL= "https://api.aniapi.com";
     const url=`/v1/anime?status=${status}`
     return dispatch(
         apiCallStart({
+            baseURL,
             url,
             onStart:dataRequested.type,
             onSuccess:dataReceived.type,

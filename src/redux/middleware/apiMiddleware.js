@@ -5,7 +5,7 @@ import { apiCallStart,apiCallSuccess,apiCallFailed } from "./apiActions";
 const apiMiddleware = ({dispatch}) => (next) => async(action)=>{
     if(action.type !== apiCallStart.type) return next(action);
 
-    const {url,method,data,onStart,onSuccess,onError} = action.payload;
+    const { baseURL,url,method,data,onStart,onSuccess,onError} = action.payload;
     if(onStart){
         dispatch({type:onStart});
     }
@@ -15,7 +15,7 @@ const apiMiddleware = ({dispatch}) => (next) => async(action)=>{
     try{
         //make api call and get response data
         const response = await axios.request({
-            baseURL:"https://api.aniapi.com",
+            baseURL,
             url,
             method,
             data,

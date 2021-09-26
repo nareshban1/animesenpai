@@ -9,6 +9,7 @@ const animedetailSlice = createSlice({
     },
     reducers:{
         dataRequested:(state)=>{
+            state.data=[]
             state.loading = true;
     
         },
@@ -33,10 +34,11 @@ const {dataRequested,dataReceived,dataRequestFailed} = animedetailSlice.actions;
 
 
 export const fetchAnimeDetail = (id) => (dispatch) =>{
-
-    const url=`/v1/anime/${id}`
+    const baseURL= "https://api.aniapi.com";
+    const url=`/v1/anime?mal_id=${id}`
     return dispatch(
         apiCallStart({
+            baseURL,
             url,
             onStart:dataRequested.type,
             onSuccess:dataReceived.type,

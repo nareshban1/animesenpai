@@ -30,11 +30,12 @@ export default trendingSlice.reducer;
 const {dataRequested,dataReceived,dataRequestFailed} = trendingSlice.actions;
 
 
-export const fetchTrending = (status) => (dispatch) =>{
-    
-    const url=`/v1/anime?status=${status}&page=1`
+export const fetchTrending = () => (dispatch) =>{
+    const baseURL= "https://api.jikan.moe/v3";
+    const url=`/top/anime/1/airing`
     return dispatch(
         apiCallStart({
+            baseURL,
             url,
             onStart:dataRequested.type,
             onSuccess:dataReceived.type,

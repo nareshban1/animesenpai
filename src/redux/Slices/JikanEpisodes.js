@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { apiCallStart } from "../middleware/apiActions";
 
-const topairedSlice = createSlice({
-    name:"topAired",
+const jikananimeepisodesSlice = createSlice({
+    name:"jikanepisodes",
     initialState:{
         data:[],
         loading:false,
@@ -10,6 +10,7 @@ const topairedSlice = createSlice({
     reducers:{
         dataRequested:(state)=>{
             state.loading = true;
+    
         },
 
         dataReceived:(state,action)=>{
@@ -18,21 +19,22 @@ const topairedSlice = createSlice({
         },
 
         dataRequestFailed:(state)=>{
-            state.loading = false;  
+            state.loading = false;
+       
         },
         
         
     }
 });
 
-export default topairedSlice.reducer;
+export default jikananimeepisodesSlice.reducer;
 
-const {dataRequested,dataReceived,dataRequestFailed} = topairedSlice.actions;
+const {dataRequested,dataReceived,dataRequestFailed} = jikananimeepisodesSlice.actions;
 
 
-export const fetchTopAired = (status) => (dispatch) =>{
-    const baseURL= "https://api.aniapi.com";
-    const url=`/v1/anime?status=${status}`;
+export const fetchJikanAnimeEpisodes = (id) => (dispatch) =>{
+    const baseURL= "https://api.jikan.moe/v3";
+    const url=`/anime/${id}/episodes`
     return dispatch(
         apiCallStart({
             baseURL,
@@ -44,3 +46,4 @@ export const fetchTopAired = (status) => (dispatch) =>{
 
     );
 }
+
