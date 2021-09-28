@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 const AnimeListContainer = styled.div`
-  margin: 20px auto;
+  margin: 50px auto;
 `;
 const ListTitleContainer = styled.div`
   display: flex;
@@ -31,13 +31,13 @@ const ViewAllBtn = styled(Link)`
   }
 `;
 
-const HomeAnimeList = ({ animeData, title }) => {
+const HomeAnimeList = ({ animeData, title, btnView }) => {
   return (
     <AnimeListContainer>
       <Container>
         <ListTitleContainer>
           <ListTitle>{title}</ListTitle>
-          <ViewAllBtn>View All</ViewAllBtn>
+          {btnView &&  <ViewAllBtn to={{ pathname:`/${title}`}} >View All</ViewAllBtn> }
         </ListTitleContainer>
         {animeData && (
           <AnimeGridContainer>

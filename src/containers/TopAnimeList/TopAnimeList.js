@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
+import HomeAnimeList from "../../components/HomePageAnimeList";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchTopUpcoming } from "../../redux/Slices/topUpcoming";
-import HomeAnimeList from "../HomePageAnimeList";
 
-export const Upcoming = () => {
+function TopAnimeList({ title }) {
   const topUpcomingAnime = useSelector((state) => state.topUpcoming.data);
   const dispatch = useDispatch();
-
+    
 
 
   useEffect(() => {
@@ -14,6 +14,12 @@ export const Upcoming = () => {
   }, []);
 
   return (
-    <HomeAnimeList animeData={topUpcomingAnime?.top?.slice(0,10)} title={"Top Upcoming Anime"} btnView={true}/>
+    <HomeAnimeList
+      animeData={topUpcomingAnime?.top}
+      title={title}
+      btnView={false}
+    />
   );
-};
+}
+
+export default TopAnimeList;

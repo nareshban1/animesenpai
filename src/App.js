@@ -7,6 +7,8 @@ import { AnimeInfo } from "./containers/AnimeInfo/AnimeInfo";
 import { Home } from "./containers/Home/Home";
 import NavBar from "./components/Navbar";
 import SearchResults from "./containers/SearchResults/SearchResults";
+import Footer from "./components/Footer/Footer";
+import MoreList from "./containers/MoreList/MoreList";
 
 const AppContainer = styled.div`
   background-color: ${(props) => props.theme.mainBackground};
@@ -27,7 +29,9 @@ function App() {
           <Route exact path="/" component={Home} />
           <Route exact path="/animeinfo/:id" component={AnimeInfo} />
           <Route exact path="/searchResults/:title" component={SearchResults} />
+          <Route exact path="/:title" component={MoreList} />
         </Switch>
+        <Footer/>
       </AppContainer>
     </ThemeProvider>
   );
