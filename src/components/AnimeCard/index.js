@@ -28,7 +28,7 @@ export const AnimeCard = ({ info }) => {
 
 
   return (
-    <AnimeContainer to={`/animeinfo/${info?.id}`}>
+    <AnimeContainer to={`/animeinfo/${info?.mal_id}`}>
       <AnimeImage src={info?.cover_image} alt="" />
       <AnimeName>{info?.titles?.en}</AnimeName>
     </AnimeContainer>

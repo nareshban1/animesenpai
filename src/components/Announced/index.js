@@ -12,6 +12,7 @@ export const AnnouncedAnime  = () => {
           dispatch(fetchAnnounced());
         }, [dispatch]);
       
+
         return (
           <HomeAnimeList animeData={announced?.anime?.slice(0,10)} title={"Announced Animes"} btnView={true}/>
         );

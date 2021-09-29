@@ -6,6 +6,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 import { Carousel } from "react-responsive-carousel";
 import { Container } from "../Styled/Commons";
 import { format } from "date-fns";
+import { Link } from "react-router-dom";
 
 export const AnimeGridContainer = styled.div`
   display: grid;
@@ -57,7 +58,7 @@ const CarouselAnimeDetails = styled.div`
   width: 100%;
   position: absolute;
   bottom: 0;
-  background-color: #000000a5;
+  background-image: linear-gradient(-180deg, #007CEF00 , #007CEF70 ,#007CEF99 );;
   z-index: 1;
   display: flex;
   align-items: center;
@@ -101,7 +102,7 @@ const AnimeScore = styled.h1`
   margin-left: 20px;
 `;
 
-const CarouselViewMore = styled.button`
+const CarouselViewMore = styled(Link)`
   padding: 20px;
   border-radius: 15px;
   height: 100%;
@@ -163,7 +164,7 @@ export const Trending = () => {
                           {format(new Date(data.start_date), "yyyy")}
                         </AnimeYear>
                       </AnimeTitleScoreContainer>
-                      <CarouselViewMore>More Details</CarouselViewMore>
+                      <CarouselViewMore to={`/animeinfo/${data.mal_id}`}>More Details</CarouselViewMore>
                     </CarouselAnimeDetails>
                   </CarouselAnimeCard>
                 </CarouselAnimeContainer>

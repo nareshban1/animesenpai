@@ -3,7 +3,7 @@ import HomeAnimeList from "../../components/HomePageAnimeList";
 import { fetchTopSeason } from "../../redux/Slices/AnimeSeason";
 
 import { useDispatch, useSelector } from "react-redux";
-function AnnouncedSeasonalList({ title }) {
+function SeasonalList({ title }) {
   const animeData = useSelector((state) => state.animeSeason.data);
   const dispatch = useDispatch();
     
@@ -22,4 +22,4 @@ function AnnouncedSeasonalList({ title }) {
   );
 }
 
-export default AnnouncedSeasonalList;
+export default SeasonalList;
