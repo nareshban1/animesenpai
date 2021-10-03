@@ -36,7 +36,9 @@ const HomeAnimeList = ({ animeData, title, btnView }) => {
     <AnimeListContainer>
       <Container>
         <ListTitleContainer>
+          {title &&
           <ListTitle>{title}</ListTitle>
+          }
           {btnView &&  <ViewAllBtn to={{ pathname:`/${title}`}} >View All</ViewAllBtn> }
         </ListTitleContainer>
         {animeData && (

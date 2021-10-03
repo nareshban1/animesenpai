@@ -6,9 +6,12 @@ import styled from "styled-components";
 import { fetchJikanAnimeDetail } from "../../redux/Slices/JikanAnimeDetail";
 import { fetchJikanAnimeCharacters } from "../../redux/Slices/JikanCharacters";
 import { fetchJikanAnimeEpisodes } from "../../redux/Slices/JikanEpisodes";
+import { fetchJikanAnimeRecommendations } from "../../redux/Slices/JikanRecommentation";
 import { changeScroll } from "../../redux/Slices/ScrollColor";
-import { Container } from "../../components/Styled/Commons";
+import { AnimeGridContainer, Container } from "../../components/Styled/Commons";
 import { PadContent } from "../../components/Styled/Commons";
+import HomeAnimeList from "../../components/HomePageAnimeList";
+import { JikanAnimeCard } from "../../components/AnimeCard/JikanAnimeCard";
 
 const AnimeInfoContainer = styled.div`
   margin-top: 0px;
@@ -134,18 +137,122 @@ const ScoredBy = styled.p``;
 
 const AnimeGenreDetailsContainer = styled.div`
   background-color: transparent;
-  border:1px solid;
+  border: 1px solid;
   border-color: ${(props) => props.theme.mainBackground};
   height: 100px;
   width: calc(100% - 180px);
   margin-left: auto;
-  padding:10px;
+  padding: 10px 0;
   border-radius: 20px;
   display: flex;
+  flex-direction: column;
 `;
 
 const TopDetailContainer = styled.div`
-`
+  height: 50%;
+  width: 100%;
+  display: flex;
+  padding: 0px 10px 10px 10px;
+  border-bottom: 1px solid ${(props) => props.theme.mainBackground};
+  align-items: center;
+  box-sizing: border-box;
+`;
+
+const BottomDetailContainer = styled.div`
+  height: 50%;
+  width: 100%;
+  display: flex;
+  padding: 10px 10px 0px 10px;
+  align-items: center;
+  box-sizing: border-box;
+`;
+
+const Details = styled.p`
+  margin-right: 20px;
+  font-size: 1rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+`;
+
+const DetailsTitle = styled.span`
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-right: 5px;
+`;
+
+const InfoContainer = styled.div`
+  margin: 20px auto;
+`;
+
+const InfoTitle = styled.h1`
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-family: "Poppins", "sans-serif";
+  margin-bottom: 20px;
+`;
+
+const CharacterStaffGrid = styled.div`
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 0.5fr));
+  grid-gap: 20px;
+`;
+
+const CharacterCardContainer = styled.div`
+  display: flex;
+  height: 100px;
+  box-sizing: border-box;
+  overflow: hidden;
+  background-color: ${(props) => props.theme.primaryColor};
+  border-radius: 8px;
+  color: white;
+`;
+
+const CharacterActorInfo = styled.div`
+  padding: 0 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`;
+
+const CharacterCard = styled.div`
+  display: flex;
+  height: 100%;
+  width: 100%;
+
+  & ${CharacterActorInfo} {
+    text-align: left;
+  }
+`;
+
+const VoiceActorCard = styled.div`
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: flex-end;
+
+  & ${CharacterActorInfo} {
+    text-align: right;
+  }
+`;
+const CharacterImageContainer = styled.div`
+  height: 100%;
+`;
+const VoiceActorImageContainer = styled.div`
+  height: 100%;
+`;
+
+const CharacterImage = styled.img`
+  height: 100%;
+`;
+const VoiceActorImage = styled.img`
+  height: 100%;
+`;
+const NameCharStaff = styled.p``;
+const RoleLanguage = styled.p`
+  font-size: 0.9rem;
+`;
 
 export const AnimeInfo = ({ match }) => {
   const animeDetails = useSelector((state) => state.animeDetail.data);
@@ -158,6 +265,9 @@ export const AnimeInfo = ({ match }) => {
   const jikananimeEpisodes = useSelector(
     (state) => state.jikanAnimeEpisodes.data
   );
+  const jikanRecommendation = useSelector(
+    (state) => state.jikanrecommendations.data
+  );
   const dispatch = useDispatch();
 
   const animeID = match.params.id;
@@ -167,11 +277,14 @@ export const AnimeInfo = ({ match }) => {
     dispatch(fetchJikanAnimeDetail(animeID));
     dispatch(fetchJikanAnimeCharacters(animeID));
     dispatch(fetchJikanAnimeEpisodes(animeID));
-  }, [dispatch]);
+    dispatch(fetchJikanAnimeRecommendations(animeID));
+  }, [dispatch,animeID]);
 
   const getMainCharacter = (character) => {
     return character.role === "Main";
   };
+
+  console.log(jikanRecommendation);
   return (
     <PadContent>
       <AnimeInfoContainer>
@@ -235,40 +348,102 @@ export const AnimeInfo = ({ match }) => {
                 <ScoredBy>{jikananimeDetails?.scored_by}</ScoredBy>
               </AnimeScoreContainer>
               <AnimeGenreDetailsContainer>
-              <p>Source: {jikananimeDetails?.source}</p>
-          <p>Status: {jikananimeDetails?.airing}</p>
-          <p>PG Rating: {jikananimeDetails?.rating}</p>
-          <p>Braodcast: {jikananimeDetails?.broadcast}</p>
-          Genres: {jikananimeDetails?.genres?.map((genre, index) => (
-            <p>{genre?.name}</p>
-          ))}
-          Episodes: {animeDetails?.data?.documents?.[0]?.episodes_count}
-
+                <TopDetailContainer>
+                  <Details>
+                    <DetailsTitle>Source:</DetailsTitle>{" "}
+                    {jikananimeDetails?.source}
+                  </Details>
+                  <Details>
+                    {" "}
+                    <DetailsTitle> Genres:</DetailsTitle>{" "}
+                    {jikananimeDetails?.genres?.map((genre, index) => (
+                      <>{genre?.name}, </>
+                    ))}
+                  </Details>
+                  <Details>
+                    <DetailsTitle>Status:</DetailsTitle>{" "}
+                    {jikananimeDetails?.airing}
+                  </Details>
+                  <Details>
+                    <DetailsTitle>Episodes:</DetailsTitle>{" "}
+                    {animeDetails?.data?.documents?.[0]?.episodes_count}
+                  </Details>
+                </TopDetailContainer>
+                <BottomDetailContainer>
+                  <Details>
+                    <DetailsTitle>PG Rating:</DetailsTitle>{" "}
+                    {jikananimeDetails?.rating}
+                  </Details>
+                  <Details>
+                    <DetailsTitle>Broadcast:</DetailsTitle>{" "}
+                    {jikananimeDetails?.broadcast}
+                  </Details>
+                </BottomDetailContainer>
               </AnimeGenreDetailsContainer>
             </AnimeMoreDetails>
           </Container>
         </AnimeDetails>
-
-        <Container>
-          {animeDetails?.data?.documents.length && (
-            <>
-              {/* <AnimePlayer animeID={animeDetails?.data?.documents?.[0]?.id}/> */}
-            </>
-          )}
-    
-
-         
-          {jikananimeCharacters?.characters
-            ?.filter(getMainCharacter)
-            .map((character, index) => (
-              <>
-                <img src={character.image_url} alt="character_image" />
-                <p>{character.name}</p>
-                <p>{character.role}</p>
-              </>
-            ))}
-        </Container>
       </AnimeInfoContainer>
+      <Container>
+        <InfoContainer>
+          <InfoTitle>Characters</InfoTitle>
+          <CharacterStaffGrid>
+            {jikananimeCharacters?.characters
+              ?.filter(getMainCharacter)
+              .map((character, index) => (
+                <CharacterCardContainer key={index}>
+                  <CharacterCard>
+                    <CharacterImageContainer>
+                      <CharacterImage
+                        src={character.image_url}
+                        alt="character_image"
+                      />
+                    </CharacterImageContainer>
+                    <CharacterActorInfo>
+                      <NameCharStaff>{character.name}</NameCharStaff>
+                      <RoleLanguage>{character.role}</RoleLanguage>
+                    </CharacterActorInfo>
+                  </CharacterCard>
+                  {character.voice_actors?.[0] && (
+                    <VoiceActorCard>
+                      <CharacterActorInfo>
+                        <NameCharStaff>
+                          {character.voice_actors?.[0]?.name}
+                        </NameCharStaff>
+                        <RoleLanguage>
+                          {character.voice_actors?.[0]?.language}
+                        </RoleLanguage>
+                      </CharacterActorInfo>
+                      <VoiceActorImageContainer>
+                        <VoiceActorImage
+                          src={character.voice_actors?.[0]?.image_url}
+                          alt="voiceactor_image"
+                        />
+                      </VoiceActorImageContainer>
+                    </VoiceActorCard>
+                  )}
+                </CharacterCardContainer>
+              ))}
+          </CharacterStaffGrid>
+        </InfoContainer>
+
+        {jikanRecommendation && (
+          <InfoContainer>
+            <InfoTitle>Recommendations</InfoTitle>
+            <AnimeGridContainer>
+              {jikanRecommendation?.recommendations?.slice(0,15).map((data, index) => (
+                <JikanAnimeCard info={data} key={index} />
+              ))}
+            </AnimeGridContainer>
+          </InfoContainer>
+        )}
+      </Container>
+
+      {animeDetails?.data?.documents.length && (
+        <>
+          {/* <AnimePlayer animeID={animeDetails?.data?.documents?.[0]?.id}/> */}
+        </>
+      )}
     </PadContent>
   );
 };
