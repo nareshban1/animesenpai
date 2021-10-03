@@ -366,7 +366,7 @@ export const AnimeInfo = ({ match }) => {
                     {" "}
                     <DetailsTitle> Genres:</DetailsTitle>{" "}
                     {jikananimeDetails?.genres?.map((genre, index) => (
-                      <>{genre?.name}, </>
+                      <p key={index}>{genre?.name}, </p>
                     ))}
                   </Details>
                   <Details>
