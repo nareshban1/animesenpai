@@ -12,6 +12,7 @@ import { AnimeGridContainer, Container } from "../../components/Styled/Commons";
 import { PadContent } from "../../components/Styled/Commons";
 import HomeAnimeList from "../../components/HomePageAnimeList";
 import { JikanAnimeCard } from "../../components/AnimeCard/JikanAnimeCard";
+import { fetchJikanAnimeStats } from "../../redux/Slices/JikanStats";
 
 const AnimeInfoContainer = styled.div`
   margin-top: 0px;
@@ -195,7 +196,7 @@ const InfoTitle = styled.h1`
 const CharacterStaffGrid = styled.div`
   display: grid;
   width: 100%;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 0.5fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 0.5fr));
   grid-gap: 20px;
 `;
 
@@ -238,16 +239,20 @@ const VoiceActorCard = styled.div`
 `;
 const CharacterImageContainer = styled.div`
   height: 100%;
+  width:70px;
 `;
 const VoiceActorImageContainer = styled.div`
   height: 100%;
+  width:70px;
 `;
 
 const CharacterImage = styled.img`
   height: 100%;
+  width: 70px;
 `;
 const VoiceActorImage = styled.img`
   height: 100%;
+  width: 70px;
 `;
 const NameCharStaff = styled.p``;
 const RoleLanguage = styled.p`
@@ -268,6 +273,9 @@ export const AnimeInfo = ({ match }) => {
   const jikanRecommendation = useSelector(
     (state) => state.jikanrecommendations.data
   );
+  const jikanStats = useSelector(
+    (state) => state.jikanstats.data
+  );
   const dispatch = useDispatch();
 
   const animeID = match.params.id;
@@ -278,13 +286,14 @@ export const AnimeInfo = ({ match }) => {
     dispatch(fetchJikanAnimeCharacters(animeID));
     dispatch(fetchJikanAnimeEpisodes(animeID));
     dispatch(fetchJikanAnimeRecommendations(animeID));
+    dispatch(fetchJikanAnimeStats(animeID));
   }, [dispatch,animeID]);
 
   const getMainCharacter = (character) => {
     return character.role === "Main";
   };
 
-  console.log(jikanRecommendation);
+  console.log(jikananimeCharacters);
   return (
     <PadContent>
       <AnimeInfoContainer>
@@ -426,6 +435,54 @@ export const AnimeInfo = ({ match }) => {
               ))}
           </CharacterStaffGrid>
         </InfoContainer>
+        <InfoContainer>
+          <InfoTitle>Staff</InfoTitle>
+          <CharacterStaffGrid>
+            {jikananimeCharacters?.staff
+              ?.slice(0,5)
+              .map((character, index) => (
+                <CharacterCardContainer key={index}>
+                  <CharacterCard>
+                    <CharacterImageContainer>
+                      <CharacterImage
+                        src={character.image_url}
+                        alt="character_image"
+                      />
+                    </CharacterImageContainer>
+                    <CharacterActorInfo>
+                      <NameCharStaff>{character.name}</NameCharStaff>
+                      <RoleLanguage>{character.positions}</RoleLanguage>
+                    </CharacterActorInfo>
+                  </CharacterCard>
+                  {character.voice_actors?.[0] && (
+                    <VoiceActorCard>
+                      <CharacterActorInfo>
+                        <NameCharStaff>
+                          {character.voice_actors?.[0]?.name}
+                        </NameCharStaff>
+                        <RoleLanguage>
+                          {character.voice_actors?.[0]?.language}
+                        </RoleLanguage>
+                      </CharacterActorInfo>
+                      <VoiceActorImageContainer>
+                        <VoiceActorImage
+                          src={character.voice_actors?.[0]?.image_url}
+                          alt="voiceactor_image"
+                        />
+                      </VoiceActorImageContainer>
+                    </VoiceActorCard>
+                  )}
+                </CharacterCardContainer>
+              ))}
+          </CharacterStaffGrid>
+        </InfoContainer>
+
+        {jikanStats && (
+          <InfoContainer>
+            <InfoTitle>Anime Stats</InfoTitle>
+            
+          </InfoContainer>
+        )}
 
         {jikanRecommendation && (
           <InfoContainer>

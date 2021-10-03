@@ -15,6 +15,7 @@ import AnimeSeason from "./Slices/AnimeSeason";
 import Announced from "./Slices/Announced";
 import ScrollColor from "./Slices/ScrollColor";
 import JikanRecommentation from "./Slices/JikanRecommentation";
+import JikanStats from "./Slices/JikanStats";
 
 export const store = configureStore({
     reducer:{
@@ -30,6 +31,7 @@ export const store = configureStore({
         jikanAnimeCharacters: JikanCharacters,
         jikanAnimeEpisodes: JikanEpisodes,
         jikanrecommendations:JikanRecommentation,
+        jikanstats:JikanStats,
         animeSeason:AnimeSeason,
         announced:Announced,
         scrollColor:ScrollColor,

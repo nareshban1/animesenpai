@@ -48,6 +48,15 @@ const Links = styled(Link)`
   }
 `;
 
+const Appinfo = styled.h5`
+  font-family: "Poppins", sans-serif;
+  margin-left: 50px;
+  color:white;
+  background-color: crimson;
+  padding: 10px;
+  border-radius: 25px;
+`;
+
 function NavBar(props) {
 
   const [scrollNav, setScrollNav] = useState(false);
@@ -84,6 +93,7 @@ function NavBar(props) {
           <LogoLink to="/">
             <AppLogo>AnimeSenpai</AppLogo>
           </LogoLink>
+          <Appinfo>Still under development</Appinfo>
           <SearchBar />
           <NavLinks>
             <Links to="/">Home</Links>
