@@ -70,10 +70,6 @@ function NavBar(props) {
       }
   };
   
-  
-
-  console.log(scroll)
-  
   useEffect(() => {
     if(scroll === true){
       window.addEventListener("scroll", changeNav);

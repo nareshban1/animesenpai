@@ -141,6 +141,7 @@ export const Trending = () => {
           {trending?.map((data, index) => (
             <MainCarouselBackground
               image={data.banner_image || data.cover_image}
+              key={index}
             >
               <Container>
                 <CarouselAnimeContainer>

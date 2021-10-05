@@ -1,0 +1,1 @@
+import { JikanAnimeCard } from "./AnimeCard/JikanAnimeCard";

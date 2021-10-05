@@ -10,6 +10,7 @@ import SearchResults from "./containers/SearchResults/SearchResults";
 import Footer from "./components/Footer/Footer";
 import MoreList from "./containers/MoreList/MoreList";
 import ScrollToTop from "./helpers/ScrollToTop"
+import AnimeStream from "./containers/AnimeStream/AnimeStream";
 
 
 const AppContainer = styled.div`
@@ -37,6 +38,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/animeinfo/:id" component={AnimeInfo} />
+          <Route exact path="/watchanime/:id" component={AnimeStream} />
           <Route exact path="/searchResults/:title" component={SearchResults} />
           <Route exact path="/:title" component={MoreList} />
         </Switch>

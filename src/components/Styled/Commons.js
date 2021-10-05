@@ -16,3 +16,14 @@ export const AnimeGridContainer=styled.div`
 export const PadContent = styled.div`
   padding-top: 50px;
 `;
+
+export const InfoContainer = styled.div`
+  margin: 20px auto;
+`;
+
+export const InfoTitle = styled.h1`
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-family: "Poppins", "sans-serif";
+  margin-bottom: 20px;
+`;

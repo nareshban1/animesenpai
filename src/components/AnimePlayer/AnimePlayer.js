@@ -5,6 +5,8 @@ import Pagination from "../../components/Pagination/Pagination";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { fetchAnimeEpisodes } from '../../redux/Slices/AnimeEpisodes';
+import { changeScroll } from '../../redux/Slices/ScrollColor';
+import { PadContent } from '../Styled/Commons';
 
 
 const EpisodeCard = styled.div`
@@ -22,16 +24,21 @@ const EpisodesContainer = styled.div`
 `
 
 function AnimePlayer({animeID}) {
-    console.log(animeID);
     const animeEpisode = useSelector((state) => state.animeEpisodes);
     const page = useSelector((state) => state.pageNumber.pageNo);
     const dispatch = useDispatch();
-    const [currentEpisode, setCurrentEpisode] = useState(animeEpisode?.data?.documents?.[0]?.video)
+    const [currentEpisode, setCurrentEpisode] = useState()
     useEffect(() => {
+        dispatch(changeScroll(false));
         dispatch(fetchAnimeEpisodes(animeID,page));
-    }, [page])
+    }, [page,animeID])
+
+      useEffect(() => {
+        setCurrentEpisode(animeEpisode?.data?.data?.documents?.[0].video)
+      }, [animeEpisode])
+    
     return (
-        <>
+        <PadContent>
          <ReactPlayer
               controls
               url={currentEpisode}
@@ -58,7 +65,7 @@ function AnimePlayer({animeID}) {
             <p>Episodes not available</p>
           )  }
           </>}
-          </>
+          </PadContent>
     )
 }
 
