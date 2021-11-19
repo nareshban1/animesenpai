@@ -108,9 +108,9 @@ const AnimeSchedule = () => {
             </DaysContainer>
             
 
-          {selected && 
+          {animeSchedule[selected] && 
             <ScheduledGrid>
-            {animeSchedule[selected]?.map((data) =>
+            {animeSchedule[selected].map((data) =>
               (
                 <ScheduledAnimeCards >
                 <Small>{data.title}</Small>
