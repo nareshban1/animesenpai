@@ -107,7 +107,7 @@ const MenuBar = styled.div`
 
     ${({ show }) => show? `
     right:0;
-  `:`right:-100%;
+  `:`right:-150%;
         `}
   }
 

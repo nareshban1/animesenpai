@@ -8,11 +8,7 @@ import { Container, Small, Strong, Subtitle, TitleH3 } from "../Styled/Commons";
 import { Link } from "react-router-dom";
 import Markdown from "markdown-to-jsx";
 
-export const AnimeGridContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  grid-gap: 20px;
-`;
+
 
 const CarouselContainer = styled.div`
   width: initial;
@@ -34,12 +30,18 @@ const CarouselAnimeCard = styled.div`
   display: flex;
   flex-direction: column;
   background-color: ${(props) => props.theme.primaryColor};
+  @media (max-width: 580px) {
+    height:315px;
+  }
   
 `;
 
 const CarouselAnimeImageContainer = styled.div`
   height: 325px;
   width: 100%;
+  @media (max-width: 580px) {
+    height:250px;
+  }
 `;
 const CarouselAnimeImage = styled.img`
   height: 100%;
@@ -53,6 +55,9 @@ const CarouselAnimeDetails = styled(Link)`
   display: flex;
   justify-content: space-between;
   padding: 10px 15px;
+  @media (max-width: 580px) {
+    height:65px;
+  }
 `;
 
 const AnimeTitleSummaryContainer = styled.div`
@@ -88,9 +93,7 @@ const AnimeTitleContainer = styled.div`
   text-overflow: ellipsis;
   text-align:left;
 
-  @media (max-width: 770px) {
-    white-space: initial;
-  }
+  
   
 `;
 

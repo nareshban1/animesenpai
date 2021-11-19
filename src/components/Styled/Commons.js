@@ -35,8 +35,13 @@ border-radius: 10px;
 
 export const AnimeGridContainer=styled.div`
     display: grid;
-    grid-template-columns: repeat(auto-fill,minmax(300px,1fr));
-    grid-gap: 20px;
+    grid-template-columns: repeat(auto-fill,minmax(180px,.5fr));
+    grid-gap: 10px;
+    row-gap: 15px;
+
+    @media (max-width: 550px) {
+      grid-template-columns: repeat(2,minmax(135px,.5fr));
+    }
 `
 
 export const PadContent = styled.div`
@@ -68,6 +73,7 @@ export const Subtitle = styled.p`
   font-size: 24px;
   font-weight: 500;
   font-family: "Poppins", "sans-serif";
+  color:${(props) => props.color};
 `;
 export const Strong = styled.p`
   font-size: 16px;

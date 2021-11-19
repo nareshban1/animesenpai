@@ -1,24 +1,26 @@
 import React from "react";
-import { AnimeGridContainer, Container } from "../Styled/Commons";
+import { AnimeGridContainer, Subtitle} from "../Styled/Commons";
 import { JikanAnimeCard } from "../AnimeCard/JikanAnimeCard";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 const AnimeListContainer = styled.div`
-  margin: 50px auto;
+  margin: 20px auto;
+  padding: 0;
 `;
 const ListTitleContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 `;
 
 const ListTitle = styled.h1`
   font-size: 1.5rem;
   font-weight: 700;
   font-family: "Poppins", "sans-serif";
+  color: ${(props) => props.theme.textColorSecondary};
 `;
 const ViewAllBtn = styled(Link)`
   font-size: 1.1rem;
@@ -34,10 +36,10 @@ const ViewAllBtn = styled(Link)`
 const HomeAnimeList = ({ animeData, title, btnView }) => {
   return (
     <AnimeListContainer>
-      <Container>
+      
         <ListTitleContainer>
           {title &&
-          <ListTitle>{title}</ListTitle>
+          <Subtitle color="white">{title}</Subtitle>
           }
           {btnView &&  <ViewAllBtn to={{ pathname:`/${title}`}} >View All</ViewAllBtn> }
         </ListTitleContainer>
@@ -48,7 +50,7 @@ const HomeAnimeList = ({ animeData, title, btnView }) => {
             ))}
           </AnimeGridContainer>
         )}
-      </Container>
+      
     </AnimeListContainer>
   );
 };

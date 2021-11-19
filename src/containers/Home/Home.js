@@ -23,6 +23,7 @@ export const Home = () => {
       <FlexContainer>
         <LeftContainer>
           <Trending />
+          <Upcoming/>
         </LeftContainer>
         <RightContainer>
           
