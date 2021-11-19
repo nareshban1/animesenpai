@@ -100,6 +100,7 @@ const AnimeSchedule = () => {
                     <Days
                       selected={selected.toLowerCase() === key}
                       onClick={() => setSelected(key)}
+                      key={key}
                     >
                       {key.slice(0, 3)}
                     </Days>
@@ -110,9 +111,9 @@ const AnimeSchedule = () => {
 
           {animeSchedule[selected] && 
             <ScheduledGrid>
-            {animeSchedule[selected].map((data) =>
+            {animeSchedule[selected].map((data,index) =>
               (
-                <ScheduledAnimeCards >
+                <ScheduledAnimeCards  to={`/animeinfo/${data?.mal_id}`} key={index}>
                 <Small>{data.title}</Small>
                 </ScheduledAnimeCards>
               )
