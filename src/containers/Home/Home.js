@@ -6,6 +6,12 @@ import { Upcoming } from "../../components/Upcoming";
 import { AnnouncedAnime } from "../../components/Announced";
 import { useDispatch } from "react-redux";
 import { changeScroll } from "../../redux/Slices/ScrollColor";
+import {
+  Container,
+  FlexContainer,
+  LeftContainer,
+  RightContainer,
+} from "../../components/Styled/Commons";
 export const Home = () => {
   const dispatch = useDispatch();
 
@@ -13,11 +19,21 @@ export const Home = () => {
     dispatch(changeScroll(true));
   }, []);
   return (
-    <>
-      {/* <Trending />
-      <Upcoming />
-      <AnimeSeason />
-      <AnnouncedAnime /> */}
-    </>
+    <Container>
+      <FlexContainer>
+        <LeftContainer>
+          <Trending />
+        </LeftContainer>
+        <RightContainer>
+          
+        </RightContainer>
+      </FlexContainer>
+    </Container>
   );
 };
+
+{
+  /* 
+      <AnimeSeason />
+      <AnnouncedAnime /> */
+}

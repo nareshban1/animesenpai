@@ -28,7 +28,7 @@ function App() {
         <NavBar/>
         <ScrollToTop>
         <Routes>
-          <Route exact path="/" component={Home} />
+          <Route exact path="/" element={<Home/>} />
         </Routes>
         </ScrollToTop>
         </Main>

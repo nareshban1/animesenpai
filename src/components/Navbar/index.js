@@ -87,7 +87,7 @@ const MenuBar = styled.div`
   box-sizing:border-box;
   flex-direction: column;
   width: auto;
-  max-width:100vw;
+  width:100vw;
   background-color: ${(props) => props.theme.dimBackground};
   height: calc(100vh - 80px);
   position: fixed;

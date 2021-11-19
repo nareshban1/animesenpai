@@ -6,8 +6,32 @@ export const Container = styled.div`
     padding: 10px;
     margin: 0 auto;
     box-sizing: border-box;
+`
+export const FlexContainer=styled.div`
+  display:flex;
+  
+  @media (max-width: 1280px) {
+    flex-direction: column;
+  }
 
 `
+
+export const LeftContainer =styled.div`
+max-width: 965px;
+height: 100%;
+border-radius: 10px;
+overflow: hidden;
+box-sizing: border-box;
+`
+export const RightContainer =styled.div`
+max-width: 330px;
+height: 100%;
+box-sizing: border-box;
+overflow: hidden;
+border-radius: 10px;
+`
+
+
 
 export const AnimeGridContainer=styled.div`
     display: grid;

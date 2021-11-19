@@ -4,9 +4,9 @@ import styled from "styled-components";
 import { fetchANITrending } from "../../redux/Slices/trending";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
-import { Container } from "../Styled/Commons";
-import { format } from "date-fns";
+import { Container, Small, Strong, Subtitle, TitleH3 } from "../Styled/Commons";
 import { Link } from "react-router-dom";
+import Markdown from "markdown-to-jsx";
 
 export const AnimeGridContainer = styled.div`
   display: grid;
@@ -15,106 +15,107 @@ export const AnimeGridContainer = styled.div`
 `;
 
 const CarouselContainer = styled.div`
-  height: 80vh;
-  width: 100%;
+  width: initial;
+  border-radius: 10px;
+  overflow: hidden;
 `;
 
 const MainCarousel = styled(Carousel)`
-  width: 100%;
-`;
-
-const MainCarouselBackground = styled.div`
-  height: 80vh;
-  width: 100%;
+  width: auto;
+  border-radius: 10px;
   background-color: ${(props) => props.theme.primaryColor};
-  background-image: url(${({ image }) => image});
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-blend-mode: overlay;
-`;
-
-const CarouselAnimeContainer = styled.div`
-  height: 100%;
-  padding: 80px 0;
+  z-index: -10;
 `;
 
 const CarouselAnimeCard = styled.div`
-  height: 100%;
-  border-radius: 20px;
-  background-color: ${(props) => props.theme.mainBackground};
-  overflow: hidden;
-  position: relative;
+  border-radius: 10px;
+  height:415px;
+  width:100%;
+  display: flex;
+  flex-direction: column;
+  background-color: ${(props) => props.theme.primaryColor};
+  
 `;
 
 const CarouselAnimeImageContainer = styled.div`
-  height: 100%;
+  height: 325px;
   width: 100%;
 `;
 const CarouselAnimeImage = styled.img`
   height: 100%;
   width: 100%;
+  object-fit: cover;
 `;
-const CarouselAnimeDetails = styled.div`
+const CarouselAnimeDetails = styled(Link)`
   width: 100%;
-  position: absolute;
-  bottom: 0;
-  background-image: linear-gradient(-180deg, #007CEF00 , #007CEF70 ,#007CEF99 );;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  padding: 10px 20px;
+  height:100px;
   color: white;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  padding: 10px 15px;
 `;
 
-const AnimeTitleScoreContainer = styled.div`
+const AnimeTitleSummaryContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  width: 80%;
+  overflow: hidden;
+  @media (max-width: 925px) {
+    width: 78%;
+  }
+
+  @media (max-width: 870px) {
+    width: 76%;
+  }
+
+  @media (max-width: 770px) {
+    width: 70%;
+  }
+  @media (max-width: 615px) {
+    width: 68%;
+  }
+
+  @media (max-width: 580px) {
+    width:100%;
+  }
 `;
 const AnimeTitleContainer = styled.div`
+  width: 100%;
   display: flex;
-  align-items: center;
   box-sizing: border-box;
-`;
-const AnimeTitle = styled.h1`
-  font-size: 4rem;
-  font-family: "Poppins", "sans-serif";
-  color: white;
-`;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-align:left;
 
-const AnimeYear = styled.h1`
-  font-size: 1.5rem;
-  font-family: "Poppins", "sans-serif";
-  color: white;
-`;
-
-const AnimeScore = styled.h1`
-  font-size: 1.5rem;
-  font-family: "Poppins", "sans-serif";
-  color: white;
-  box-sizing: border-box;
-  padding: 5px 20px;
-  border-radius: 25px;
-  background: ${(props) => props.theme.primaryColor};
-  margin-left: 20px;
+  @media (max-width: 770px) {
+    white-space: initial;
+  }
+  
 `;
 
 const CarouselViewMore = styled(Link)`
-  padding: 20px;
-  border-radius: 15px;
-  height: 100%;
-  font-size: 2rem;
-  background: ${(props) => props.theme.primaryColor};
-  border: 1px solid ${(props) => props.theme.primaryColor};
+  padding: 10px;
+  border-radius: 10px;
+  align-self: flex-end;
+  background: ${(props) => props.theme.secondaryBackground};
+  border: 1px solid ${(props) => props.theme.secondaryBackground};
   color: ${(props) => props.theme.textColorSecondary};
-  transition: 0ms.5s all ease;
   transition: 0.5s all ease;
-
   &:hover {
     background: transparent;
+  }
+
+  @media (max-width: 580px) {
+    display: none;
+  }
+`;
+
+const Summary = styled(Markdown)`
+    text-align: left;
+
+    @media (max-width: 770px) {
+    display: none;
   }
 `;
 
@@ -124,6 +125,8 @@ export const Trending = () => {
   const dispatch = useDispatch();
   const trending = trendingAnime?.data?.documents?.slice(0, 10);
 
+
+  console.log(trending);
   useEffect(() => {
     dispatch(fetchANITrending());
   }, [dispatch]);
@@ -137,43 +140,37 @@ export const Trending = () => {
           dynamicHeight={false}
           showThumbs={false}
           showStatus={false}
+          showIndicators={false}
         >
           {trending?.map((data, index) => (
-            <MainCarouselBackground
-              image={data.banner_image || data.cover_image}
-              key={index}
-            >
-              <Container>
-                <CarouselAnimeContainer>
-                  |
-                  <CarouselAnimeCard>
+              
+                  <CarouselAnimeCard key={index}>
                     <CarouselAnimeImageContainer>
                       <CarouselAnimeImage
                         src={data.banner_image || data.cover_image}
                         alt=""
                       />
                     </CarouselAnimeImageContainer>
-                    <CarouselAnimeDetails>
-                      <AnimeTitleScoreContainer>
+                    <CarouselAnimeDetails to={`/animeinfo/${data.mal_id}`}>
+                      <AnimeTitleSummaryContainer>
                         <AnimeTitleContainer>
-                          <AnimeTitle>{data.titles?.en} </AnimeTitle>
-                          <AnimeScore>Score: {data.score}</AnimeScore>
-                          <AnimeScore>Trending</AnimeScore>
+                          <TitleH3>{data.titles?.en}</TitleH3>
                         </AnimeTitleContainer>
-                        <AnimeYear>
-                          Start Year:{" "}
-                          {format(new Date(data.start_date), "yyyy")}
-                        </AnimeYear>
-                      </AnimeTitleScoreContainer>
-                      <CarouselViewMore to={`/animeinfo/${data.mal_id}`}>More Details</CarouselViewMore>
+                        <Small><Summary children={data.descriptions?.en}/></Small>
+                      </AnimeTitleSummaryContainer>
+                      <CarouselViewMore to={`/animeinfo/${data.mal_id}`}><Subtitle> More Details</Subtitle> </CarouselViewMore>
                     </CarouselAnimeDetails>
+                        
+                        
+                        
+                     
+                    
                   </CarouselAnimeCard>
-                </CarouselAnimeContainer>
-              </Container>
-            </MainCarouselBackground>
+                
           ))}
         </MainCarousel>
       )}
     </CarouselContainer>
   );
 };
+ {/* <CarouselViewMore to={`/animeinfo/${data.mal_id}`}> <Subtitle> More Details </Subtitle> </CarouselViewMore> */}
