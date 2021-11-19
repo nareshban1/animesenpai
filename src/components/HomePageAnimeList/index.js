@@ -4,9 +4,10 @@ import { JikanAnimeCard } from "../AnimeCard/JikanAnimeCard";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-const AnimeListContainer = styled.div`
-  margin: 20px auto;
+export const AnimeListContainer = styled.div`
+  margin: 30px auto;
   padding: 0;
+  transition: 0.3s ease;
 `;
 const ListTitleContainer = styled.div`
   display: flex;

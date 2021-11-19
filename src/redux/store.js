@@ -1,7 +1,6 @@
 import { configureStore} from "@reduxjs/toolkit";
 import apiMiddleware from "./middleware/apiMiddleware";
 import trendingReducer from "./Slices/trending";
-import themeChange from "./Slices/themeChange";
 import AnimeDetail from "./Slices/AnimeDetail";
 import AnimeEpisodes from "./Slices/AnimeEpisodes";
 import topAired from "./Slices/topAired";
@@ -13,16 +12,15 @@ import JikanCharacters from "./Slices/JikanCharacters";
 import JikanEpisodes from "./Slices/JikanEpisodes";
 import AnimeSeason from "./Slices/AnimeSeason";
 import Announced from "./Slices/Announced";
-import ScrollColor from "./Slices/ScrollColor";
 import JikanRecommentation from "./Slices/JikanRecommentation";
 import JikanStats from "./Slices/JikanStats";
+import JikanSchedule from "./Slices/JikanSchedule";
 
 export const store = configureStore({
     reducer:{
         trending: trendingReducer,
         topAired: topAired,
         topUpcoming: topUpcoming,
-        themeChanger: themeChange,
         animeDetail:AnimeDetail,
         animeEpisodes:AnimeEpisodes,
         searchanime:searchAnime,
@@ -34,7 +32,8 @@ export const store = configureStore({
         jikanstats:JikanStats,
         animeSeason:AnimeSeason,
         announced:Announced,
-        scrollColor:ScrollColor,
+        schedule:JikanSchedule,
+        
 
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(apiMiddleware),

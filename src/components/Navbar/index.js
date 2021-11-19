@@ -4,13 +4,20 @@ import styled from "styled-components";
 import SearchBar from "../SearchBar";
 import { Container } from "../Styled/Commons";
 import { RiMenuFoldLine as MenuIcon } from "react-icons/ri";
-import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock';
+import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks ,BodyScrollOptions } from 'body-scroll-lock';
+
 const NavBarContainer = styled.div`
   width: 100%;
   height: 80px;
   z-index: 10;
   transition: 0.5s ease all;
   position: relative;
+
+
+  @media (max-width: 500px) {
+    width: 100vw;
+  }
+  
   
 `;
 
@@ -48,6 +55,7 @@ const MobileNavLinks = styled.div`
   height: 100%;
   display: none;
   margin-left: auto;
+  
 
   color: ${(props) => props.theme.textColorPrimary};
   @media (max-width: 915px) {
@@ -55,9 +63,12 @@ const MobileNavLinks = styled.div`
     align-items: center;
     justify-content: center;
   }
+
+  
 `;
 
 const Menu = styled(MenuIcon)`
+  
   font-size: 40px;
   color: ${(props) => props.theme.primaryColor};
 
@@ -129,6 +140,7 @@ function NavBar() {
 
   const [showMenu,setShowMenu]=useState(false);
 
+  
 
  
   useEffect(() => {
@@ -147,7 +159,7 @@ function NavBar() {
           </LogoLink>
           <MobileNavLinks onClick={()=>{
             setShowMenu(!showMenu)
-          }}>
+          }} >
             <Menu></Menu>
           </MobileNavLinks>
           <SearchBarContainer>

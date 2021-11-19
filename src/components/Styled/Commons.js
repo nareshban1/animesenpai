@@ -6,6 +6,10 @@ export const Container = styled.div`
     padding: 10px;
     margin: 0 auto;
     box-sizing: border-box;
+
+    @media (max-width: 1280px) {
+      max-width: 965px;
+    }
 `
 export const FlexContainer=styled.div`
   display:flex;
@@ -29,6 +33,16 @@ height: 100%;
 box-sizing: border-box;
 overflow: hidden;
 border-radius: 10px;
+`
+
+export const ListContainer =styled.div`
+max-width: 965px;
+height: 100%;
+border-radius: 10px;
+overflow: hidden;
+box-sizing: border-box;
+padding: 10px;
+background-color:${(props) => props.theme.secondaryBackground};
 `
 
 

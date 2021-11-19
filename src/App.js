@@ -5,7 +5,7 @@ import {Routes, Route } from "react-router-dom";
 import { Home } from "./containers/Home/Home";
 import NavBar from "./components/Navbar";
 import Footer from "./components/Footer/Footer";
-import ScrollToTop from "./helpers/ScrollToTop"
+
 
 
 const AppContainer = styled.div`
@@ -26,11 +26,11 @@ function App() {
       <AppContainer>
         <Main>
         <NavBar/>
-        <ScrollToTop>
+  
         <Routes>
           <Route exact path="/" element={<Home/>} />
         </Routes>
-        </ScrollToTop>
+      
         </Main>
         <Footer/>
       </AppContainer>

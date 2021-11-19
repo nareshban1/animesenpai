@@ -5,18 +5,19 @@ import { Trending } from "../../components/Trending";
 import { Upcoming } from "../../components/Upcoming";
 import { AnnouncedAnime } from "../../components/Announced";
 import { useDispatch } from "react-redux";
-import { changeScroll } from "../../redux/Slices/ScrollColor";
+
 import {
   Container,
   FlexContainer,
   LeftContainer,
   RightContainer,
 } from "../../components/Styled/Commons";
+import AnimeSchedule from "../../components/AnimeSchedule";
 export const Home = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(changeScroll(true));
+    
   }, []);
   return (
     <Container>
@@ -24,6 +25,7 @@ export const Home = () => {
         <LeftContainer>
           <Trending />
           <Upcoming/>
+          <AnimeSchedule/>
         </LeftContainer>
         <RightContainer>
           

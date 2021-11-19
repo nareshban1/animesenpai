@@ -11,9 +11,8 @@ import Markdown from "markdown-to-jsx";
 
 
 const CarouselContainer = styled.div`
-  width: initial;
+  width: 100%;
   border-radius: 10px;
-  overflow: hidden;
 `;
 
 const MainCarousel = styled(Carousel)`

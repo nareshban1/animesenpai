@@ -2,7 +2,7 @@ const darkColor="#262626";
 const darkBackground="#1C1C1C";
 const white="#ffffff";
 const primaryColor="#5EAA7A";
-const primaryColorDim="#5EAA7Aef";
+const primaryColorDim="#5EAA7A";
 
 
 
