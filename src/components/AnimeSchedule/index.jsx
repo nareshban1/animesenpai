@@ -110,9 +110,11 @@ const AnimeSchedule = () => {
 
           {selected && 
             <ScheduledGrid>
-            {animeSchedule[selected].map((data,index)=>
+            {animeSchedule[selected]?.map((data) =>
               (
-                <>hi</>
+                <ScheduledAnimeCards >
+                <Small>{data.title}</Small>
+                </ScheduledAnimeCards>
               )
               
             )}
