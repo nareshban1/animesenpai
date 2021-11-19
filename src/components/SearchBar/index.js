@@ -1,37 +1,39 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router";
+import { useNavigate } from "react-router";
 import styled from "styled-components";
-import {FaSearch} from "react-icons/fa"
+import {FaSearch} from "react-icons/fa";
 
 
 const SearchBarContainer = styled.div`
-    margin-left: auto;
     font-family: "Poppins", sans-serif;
+    margin-left: 20px;
+    
 `;
 
 const SearchForm = styled.form`
-    height: 40px;
+    height: 50px;
     overflow: hidden;
-    border-radius:20px;
+    border-radius:25px;
     box-sizing:border-box;
     display: flex;
-    width: 300px;
-    background-color:  ${(props) => props.theme.mainBackground} ;
+    width: 100%auto;
+    background-color:  ${(props) => props.theme.secondaryBackground} ;
 `;
 
 const SearchInput = styled.input`
   height: 100%;
   width:100%;
   border:none;
-  padding: 0px 10px;
+  padding: 0px 20px;
   outline:none;
   background-color: transparent;
+  color:  ${(props) => props.theme.textColorSecondary} ;
   font-family: "Poppins", sans-serif;
 `;
 
 const SearchButton = styled.button`
   height: 100%;
-  width: 40px;
+  width: 50px;
   border:none;
   transition: 0.3s all ease;
   background-color: transparent;
@@ -49,23 +51,26 @@ const SearchButton = styled.button`
 `;
 
 const SearchIcon = styled(FaSearch)`
-    font-size: 1rem;
-
+    font-size: 1.2rem;
+    color: ${(props) => props.theme.primaryColor};
 `;
 
+
+
+
 function SearchBar() {
+
   const [searchQuery, setSearchQuery] = useState("");
-  const history= useHistory();
+  const navigate= useNavigate();
 
 
   const handleSearch = (e) =>{
       e.preventDefault();
       console.log(searchQuery);
-      history.push(`/searchResults/${searchQuery}`);
+      navigate(`/searchResults/${searchQuery}`,{replace:true});
 
   }
   return (
-    <SearchBarContainer>
       <SearchForm onSubmit={handleSearch}>
         <SearchInput
           type="text"
@@ -77,7 +82,6 @@ function SearchBar() {
         />
         <SearchButton type="submit" disabled={searchQuery === ""}><SearchIcon/></SearchButton>
       </SearchForm>
-    </SearchBarContainer>
   );
 }
 

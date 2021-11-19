@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { Link, withRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import SearchBar from "../SearchBar";
 import { Container } from "../Styled/Commons";
-import {  useSelector } from "react-redux";
+import { RiMenuFoldLine as MenuIcon } from "react-icons/ri";
+import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock';
 const NavBarContainer = styled.div`
   width: 100%;
-  height: 60px;
-  background-color: ${(props) =>
-    props.scrollNav ? props.theme.primaryColor : "transparent"};
-  position: fixed;
-  top: 0;
+  height: 80px;
   z-index: 10;
   transition: 0.5s ease all;
+  position: relative;
+  
 `;
 
 const NavBarContents = styled.div`
@@ -20,27 +19,62 @@ const NavBarContents = styled.div`
   height: 100%;
   display: flex;
   align-items: center;
+
+  @media (max-width: 768px) {
+  }
 `;
 
-export const AppLogo = styled.h1`
-  color: ${(props) => props.theme.mainBackground};
+export const AppLogo = styled.h2`
+  color: ${(props) => props.theme.textColorPrimary};
   font-family: "Poppins", sans-serif;
+  font-size: 40px;
   font-weight: 800;
+
+  @media (max-width: 425px) {
+    font-size: 32px;
+  }
 `;
 
 const NavLinks = styled.ul`
   font-family: "Poppins", sans-serif;
+  margin-left: auto;
+
+  @media (max-width: 915px) {
+    display: none;
+  }
+`;
+
+const MobileNavLinks = styled.div`
+  height: 100%;
+  display: none;
+  margin-left: auto;
+
+  color: ${(props) => props.theme.textColorPrimary};
+  @media (max-width: 915px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+`;
+
+const Menu = styled(MenuIcon)`
+  font-size: 40px;
+  color: ${(props) => props.theme.primaryColor};
+
+  @media (max-width: 425px) {
+    font-size: 32px;
+  }
 `;
 
 export const LogoLink = styled(Link)`
-  color: ${(props) => props.theme.mainBackground};
+  color: ${(props) => props.theme.textColorPrimary};
 `;
 
 const Links = styled(Link)`
   margin-left: 20px;
   font-size: 1.1rem;
   font-weight: 600;
-  color: ${(props) => props.theme.mainBackground};
+  color: ${(props) => props.theme.textColorPrimary};
   transition: 0.3s ease all;
 
   :hover {
@@ -48,49 +82,77 @@ const Links = styled(Link)`
   }
 `;
 
-const Appinfo = styled.h5`
-  font-family: "Poppins", sans-serif;
-  margin-left: 50px;
-  color:white;
-  background-color: crimson;
+const MenuBar = styled.div`
+  display: none;
+  box-sizing:border-box;
+  flex-direction: column;
+  width: auto;
+  max-width:100vw;
+  background-color: ${(props) => props.theme.dimBackground};
+  height: calc(100vh - 80px);
+  position: fixed;
+  align-items: flex-end;
   padding: 10px;
-  border-radius: 25px;
+  transition: 500ms;
+
+  
+
+  ${Links}{
+    padding: 10px 0;
+    color:white;
+  }
+
+  @media (max-width: 915px) {
+    display: flex;
+
+    ${({ show }) => show? `
+    right:0;
+  `:`right:-100%;
+        `}
+  }
+
+  
+
+  
 `;
 
-function NavBar(props) {
 
-  const [scrollNav, setScrollNav] = useState(false);
-  
-  const scroll = useSelector((state) => state.scrollColor.name);
-  const changeNav = () => {
-      if (window.scrollY >= 60) {
-        setScrollNav(true);
-      } else {
-        setScrollNav(false);
-      }
-  };
-  
+export const SearchBarContainer = styled.div`
+    width: 380px;
+    margin-left:20px;
+    @media (max-width: 915px) {
+        display: none;
+    }
+`;
+
+function NavBar() {
+
+  const [showMenu,setShowMenu]=useState(false);
+
+
+ 
   useEffect(() => {
-    if(scroll === true){
-      window.addEventListener("scroll", changeNav);
-    }
-    else{
-      setScrollNav(true)
-    }
-    return () => {
-      window.removeEventListener("scroll", changeNav);
-    };
-  }, [scroll]);
 
+
+  }, []);
+  {
+    showMenu ? disableBodyScroll(document) : enableBodyScroll(document);
+  }
   return (
-    <NavBarContainer scrollNav={scrollNav}>
+    <NavBarContainer>
       <Container>
         <NavBarContents>
           <LogoLink to="/">
             <AppLogo>AnimeSenpai</AppLogo>
           </LogoLink>
-          <Appinfo>Still under development</Appinfo>
+          <MobileNavLinks onClick={()=>{
+            setShowMenu(!showMenu)
+          }}>
+            <Menu></Menu>
+          </MobileNavLinks>
+          <SearchBarContainer>
           <SearchBar />
+          </SearchBarContainer>
           <NavLinks>
             <Links to="/">Home</Links>
             <Links to="/">Genres</Links>
@@ -98,8 +160,16 @@ function NavBar(props) {
           </NavLinks>
         </NavBarContents>
       </Container>
+     
+      <MenuBar show={showMenu}>
+        <SearchBar />
+        <Links to="/">Home</Links>
+        <Links to="/">Genres</Links>
+        <Links to="/">Types</Links>
+      </MenuBar>
+      
     </NavBarContainer>
   );
 }
 
-export default withRouter(NavBar);
+export default NavBar;

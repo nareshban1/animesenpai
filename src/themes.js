@@ -1,22 +1,17 @@
-const darkColor="#0B0C10";
-const lightdarkColor="#1F2883";
-const greyColor="#C5C6C7";
-const lightblueColor="#66FCF1";
-const lightbluedarkColor="#45A29E";
+const darkColor="#262626";
+const darkBackground="#1C1C1C";
 const white="#ffffff";
-const primaryColor="#007CEF";
+const primaryColor="#5EAA7A";
+const primaryColorDim="#5EAA7A30";
 
 
 
-export const lightTheme = {
-    mainBackground: white,
+export const MainTheme = {
+    mainBackground: darkBackground,
+    secondaryBackground: darkColor,
+    dimBackground: primaryColorDim,
     primaryColor:primaryColor,
-    textColorPrimary:darkColor,
+    textColorPrimary:primaryColor,
     textColorSecondary:white,
-    secondaryColor:lightblueColor,
 }
 
-export const darkTheme = {
-    mainBackground:"black",
-    primaryColor:"white",
-}

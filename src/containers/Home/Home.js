@@ -14,10 +14,10 @@ export const Home = () => {
   }, []);
   return (
     <>
-      <Trending />
+      {/* <Trending />
       <Upcoming />
       <AnimeSeason />
-      <AnnouncedAnime />
+      <AnnouncedAnime /> */}
     </>
   );
 };

@@ -5,22 +5,31 @@ import { Container } from "../Styled/Commons";
 
 const FooterContainer = styled.div`
   height: 250px;
-  background: ${(props) => props.theme.primaryColor};
+  background: ${(props) => props.theme.secondaryBackground};
   color: ${(props) => props.theme.textColorSecondary};
   
 
 `;
+
+const FooterContentContainer = styled.div`
+  
+  
+`;
+
 const FooterDescription = styled.p`
   color: ${(props) => props.theme.textColorSecondary};
   font-size: 1.2rem;
 `;
-const FooterContentContainer = styled.div`
+
+const FooterLinksContainer = styled.div`
   display: flex;
-  justify-content: space-between;
-  height: 100%;
-  display: flex;
-  align-items: center;
-`;
+`
+const FooterLinks = styled.ul`
+  
+`
+const FooterLink = styled.li`
+cursor: pointer;
+`
 
 const Footer = () => {
   return (
@@ -35,6 +44,18 @@ const Footer = () => {
             MyAnimeList API).
           </FooterDescription>
         </FooterContentContainer>
+        <FooterLinksContainer>
+          
+          <FooterLinks>
+          Links
+            <FooterLink>
+              Upcoming
+            </FooterLink>
+            <FooterLink>
+              Most Watched
+            </FooterLink>
+          </FooterLinks>
+        </FooterLinksContainer>
       </Container>
     </FooterContainer>
   );

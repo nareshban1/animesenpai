@@ -10,6 +10,8 @@
 :root {
   --primary-font: "Poppins", "open-sans";
   --secondary-font: "Jost";
+  --primary-color:#5EAA7A;
+  --dark-background:#1C1C1C;
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Condensed:wght@100;200;300;400;500;600;700;800;900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;1,100;1,200;1,300;1,400&display=swap");
@@ -19,25 +21,26 @@
 
 /* width */
 ::-webkit-scrollbar {
-  width: 15px;
+  width: 10px;
   transition: 0.5 all ease;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: white;
+  background: var(--dark-background)
   
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #007CEF;
+  background: var(--primary-color);
   border-radius: 20px;
-  border: 2px solid white;
+  transition: 1s all ease-in-out;
+  
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #007CEF80;
-  border-radius: 20px;
+  background: var(--primary-color);
+  border-radius: 0px;
 }
 
