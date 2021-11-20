@@ -8,7 +8,7 @@ import {
 } from "../Styled/Commons";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { AnimeListContainer } from "../HomePageAnimeList";
+import { AnimeListContainer } from "../Styled/Commons";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchJikanAnimeSchedule } from "../../redux/Slices/JikanSchedule";
 import { format } from "date-fns";
@@ -35,6 +35,17 @@ const DaysContainer = styled.div`
   grid-gap: 10px;
   margin-top: 10px;
   overflow-x: auto;
+
+  
+  
+&::-webkit-scrollbar {
+  height: 5px;
+}
+
+&::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+}
+
 `;
 
 const ScheduledGrid = styled.div`
@@ -42,7 +53,11 @@ const ScheduledGrid = styled.div`
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 10px;
   margin-top: 10px;
-  overflow-x: auto;
+
+
+  @media (max-width: 480px) {
+      grid-template-columns: 1fr;
+    }
 `;
 
 const ScheduledAnimeCards = styled(Link)`
@@ -55,8 +70,6 @@ const ScheduledAnimeCards = styled(Link)`
   overflow: hidden;
   display: flex;
   align-items: center;
-  white-space: nowrap;
-  text-overflow: clip;
   height: 50px;
   box-sizing: border-box;
   cursor: pointer;
@@ -64,6 +77,8 @@ const ScheduledAnimeCards = styled(Link)`
 
   ${Small} {
     width: 100%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
     overflow: hidden;
   }
 

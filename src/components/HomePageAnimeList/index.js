@@ -1,14 +1,10 @@
 import React from "react";
-import { AnimeGridContainer, Subtitle} from "../Styled/Commons";
+import { AnimeGridContainer, Subtitle,AnimeListContainer} from "../Styled/Commons";
 import { JikanAnimeCard } from "../AnimeCard/JikanAnimeCard";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-export const AnimeListContainer = styled.div`
-  margin: 30px auto;
-  padding: 0;
-  transition: 0.3s ease;
-`;
+
 const ListTitleContainer = styled.div`
   display: flex;
   flex-direction: row;
@@ -17,12 +13,7 @@ const ListTitleContainer = styled.div`
   margin-bottom: 10px;
 `;
 
-const ListTitle = styled.h1`
-  font-size: 1.5rem;
-  font-weight: 700;
-  font-family: "Poppins", "sans-serif";
-  color: ${(props) => props.theme.textColorSecondary};
-`;
+
 const ViewAllBtn = styled(Link)`
   font-size: 1.1rem;
   font-weight: 700;

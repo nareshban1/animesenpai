@@ -3,7 +3,7 @@ import {breakpoints} from "../../helpers/Breakpoints"
 
 
 export const Container = styled.div`
-    max-width: 1320px;
+    max-width: 1340px;
     height: 100%;
     padding: 0 10px;
     margin: 0 auto;
@@ -15,6 +15,7 @@ export const Container = styled.div`
 `
 export const FlexContainer=styled.div`
   display:flex;
+  justify-content: space-between;
   
   @media (max-width: 1280px) {
     flex-direction: column;
@@ -22,22 +23,31 @@ export const FlexContainer=styled.div`
 
 `
 export const LeftContainer =styled.div`
-max-width: 965px;
+max-width: 73%;
 height: 100%;
 border-radius: 5px;
 overflow: hidden;
 box-sizing: border-box;
+
+@media (max-width: 1280px) {
+  max-width: 100%;
+  }
 `
 export const RightContainer =styled.div`
-max-width: 330px;
+max-width: 25%;
 height: 100%;
 box-sizing: border-box;
 overflow: hidden;
 border-radius: 5px;
+
+@media (max-width: 1280px) {
+  max-width: 100%;
+  margin-bottom: 20px;
+  }
 `
 
 export const ListContainer =styled.div`
-max-width: 965px;
+max-width: 100%;
 height: 100%;
 border-radius: 5px;
 overflow: hidden;
@@ -46,16 +56,42 @@ padding: 10px;
 background-color:${(props) => props.theme.secondaryBackground};
 `
 
+export const RightListContainer =styled.div`
+max-width: 100%;
+height: 100%;
+border-radius: 5px;
+overflow: hidden;
+box-sizing: border-box;
+padding: 10px;
+background-color:${(props) => props.theme.secondaryBackground};
+`
+
+export const AnimeListContainer = styled.div`
+  margin: 30px auto;
+  padding: 0;
+  transition: 0.3s ease;
+`;
+
+export const GridContainer = styled.div`
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 15px;
+
+  ${breakpoints("grid-template-columns", "", [
+    { 1280: "repeat(2,1fr)" },
+    { 580: "repeat(1,1fr)" },
+  ])};
+`;
+
 export const AnimeGridContainer=styled.div`
     display: grid;
     grid-template-columns: repeat(5,1fr);
-    grid-template-rows: 19.5rem;
+    grid-template-rows: 18rem;
     grid-gap: 10px;
     row-gap: 15px;
 
-    @media (max-width: 550px) {
-      grid-template-columns: repeat(2,minmax(135px,.5fr));
-    }
+  
 
     ${breakpoints("grid-template-columns", "", [
     { 768: "repeat(4,1fr)" },

@@ -1,16 +1,10 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import styled from "styled-components";
 import { fetchTopAired } from "../../redux/Slices/topAired";
-import { AnimeCard } from "../AnimeCard";
+import SmallCard from "../AnimeCard/SmallCard";
+import { RightListContainer, Subtitle,GridContainer } from "../Styled/Commons";
 
 
-export const AnimeGridContainer=styled.div`
-    display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
-    grid-gap: 20px;
-
-`
 export const TopAired = () => {
   const topAiredAnime = useSelector((state) => state.topAired.data);
   const dispatch = useDispatch();
@@ -20,15 +14,15 @@ export const TopAired = () => {
   }, [dispatch]);
 
   return (
-    <>
-      <h1>Top Aired Anime</h1>
+    <RightListContainer>
+      <Subtitle color="white">Top Aired</Subtitle>
       {topAiredAnime && (
-        <AnimeGridContainer>
-          {topAiredAnime?.data?.documents?.map((data, index) => (
-            <AnimeCard info={data} key={index}/>
+        <GridContainer>
+          {topAiredAnime?.data?.documents?.slice(0, 9).map((data, index) => (
+            <SmallCard info={data} key={index} />
           ))}
-        </AnimeGridContainer>
+        </GridContainer>
       )}
-    </>
+    </RightListContainer>
   );
 };

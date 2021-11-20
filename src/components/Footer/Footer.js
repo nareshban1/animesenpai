@@ -44,7 +44,7 @@ const Footer = () => {
             MyAnimeList API).
           </FooterDescription>
         </FooterContentContainer>
-        <FooterLinksContainer>
+        {/* <FooterLinksContainer>
           
           <FooterLinks>
           Links
@@ -55,7 +55,7 @@ const Footer = () => {
               Most Watched
             </FooterLink>
           </FooterLinks>
-        </FooterLinksContainer>
+        </FooterLinksContainer> */}
       </Container>
     </FooterContainer>
   );

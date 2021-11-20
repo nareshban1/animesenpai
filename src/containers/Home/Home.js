@@ -28,7 +28,8 @@ export const Home = () => {
           <AnimeSchedule/>
         </LeftContainer>
         <RightContainer>
-          
+          <TopAired/>
+          <AnimeSeason />
         </RightContainer>
       </FlexContainer>
     </Container>
@@ -37,6 +38,6 @@ export const Home = () => {
 
 {
   /* 
-      <AnimeSeason />
-      <AnnouncedAnime /> */
+      
+       */
 }

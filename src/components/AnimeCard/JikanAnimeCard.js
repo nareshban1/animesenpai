@@ -7,14 +7,14 @@ import styled from "styled-components";
 const AnimeImage = styled.img`
   height:100%;
   width: 100%;
-  border-radius: 10px;
+  border-radius: 5px;
   object-fit: fit;
 `;
 
 const AnimeImageContainer = styled.div`
   height:85%;
   width: 100%;
-  border-radius: 10px;
+  border-radius: 5px;
 
 `;
 
