@@ -8,7 +8,7 @@ import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks ,BodyScrol
 
 const NavBarContainer = styled.div`
   width: 100%;
-  height: 80px;
+  height: 85px;
   z-index: 10;
   transition: 0.5s ease all;
   position: relative;

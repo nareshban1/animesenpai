@@ -5,25 +5,29 @@ import styled from "styled-components";
 
 
 const AnimeImage = styled.img`
-  height:245px;
+  height:100%;
+  width: 100%;
+  border-radius: 10px;
+  object-fit: fit;
+`;
+
+const AnimeImageContainer = styled.div`
+  height:85%;
   width: 100%;
   border-radius: 10px;
 
-  @media (max-width: 550px) {
-      min-height:200px;
-      max-height:210px;
-    }
 `;
 
 const AnimeName = styled.div`
   color:white;
   overflow: hidden;
-  height:45px;
+  text-overflow: ellipsis;
+  height:15%;
  
 `;
 
 const AnimeContainer = styled(Link)`
-  
+  height:100%;
   transition: 0.3s all ease;
   display: flex;
   flex-direction: column;
@@ -35,7 +39,9 @@ const AnimeContainer = styled(Link)`
 export const JikanAnimeCard = ({ info }) => {
   return (
     <AnimeContainer to={`/animeinfo/${info?.mal_id}`}>
+      <AnimeImageContainer>
       <AnimeImage src={info?.image_url} alt="" />
+      </AnimeImageContainer>
       <AnimeName>{info?.title}</AnimeName>
     </AnimeContainer>
   );

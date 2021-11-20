@@ -4,43 +4,48 @@ import styled from "styled-components";
 import { fetchANITrending } from "../../redux/Slices/trending";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
-import { Container, Small, Strong, Subtitle, TitleH3 } from "../Styled/Commons";
+import { Body, Button, Small, Subtitle, TitleH3 } from "../Styled/Commons";
 import { Link } from "react-router-dom";
 import Markdown from "markdown-to-jsx";
-
+import {breakpoints} from "../../helpers/Breakpoints"
 
 
 const CarouselContainer = styled.div`
   width: 100%;
-  border-radius: 10px;
+  transition:0.5s ease;
 `;
 
 const MainCarousel = styled(Carousel)`
   width: auto;
-  border-radius: 10px;
-  background-color: ${(props) => props.theme.primaryColor};
-  z-index: -10;
+  transition:0.5s ease;
+
 `;
 
 const CarouselAnimeCard = styled.div`
-  border-radius: 10px;
-  height:415px;
+  border-radius: 5px;
+  height:25.5rem;
   width:100%;
   display: flex;
   flex-direction: column;
   background-color: ${(props) => props.theme.primaryColor};
-  @media (max-width: 580px) {
-    height:315px;
-  }
+  transition:0.5s ease;
+  ${breakpoints("height", "rem", [
+    { 800: 23 },
+    { 600: 19},
+    { 580: 15 }
+  ])};
   
 `;
 
 const CarouselAnimeImageContainer = styled.div`
-  height: 325px;
+  height: 20.3rem;
   width: 100%;
-  @media (max-width: 580px) {
-    height:250px;
-  }
+  transition:0.5s ease;
+  ${breakpoints("height", "rem", [
+    { 800: 17.5 },
+    { 600: 14},
+    { 580: 10.6 }
+  ])};
 `;
 const CarouselAnimeImage = styled.img`
   height: 100%;
@@ -49,47 +54,35 @@ const CarouselAnimeImage = styled.img`
 `;
 const CarouselAnimeDetails = styled(Link)`
   width: 100%;
-  height:100px;
+  height:6.25rem;
   color: white;
-  display: flex;
-  justify-content: space-between;
   padding: 10px 15px;
-  @media (max-width: 580px) {
-    height:65px;
-  }
+  transition:0.5s ease;
+  ${breakpoints("height", "rem", [
+    { 800: 5.5 },
+    { 600: 5},
+    { 580: 4.4 }
+  ])};
+  display:grid;
+  grid-template-columns: 4fr 1fr;
+  grid-column-gap: 15px;
 `;
 
 const AnimeTitleSummaryContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 80%;
   overflow: hidden;
-  @media (max-width: 925px) {
-    width: 78%;
-  }
+  transition:0.5s ease;
+  
+  
 
-  @media (max-width: 870px) {
-    width: 76%;
-  }
-
-  @media (max-width: 770px) {
-    width: 70%;
-  }
-  @media (max-width: 615px) {
-    width: 68%;
-  }
-
-  @media (max-width: 580px) {
-    width:100%;
-  }
+  
 `;
 const AnimeTitleContainer = styled.div`
   width: 100%;
   display: flex;
   box-sizing: border-box;
-  white-space: nowrap;
-  text-overflow: ellipsis;
   text-align:left;
 
   
@@ -97,24 +90,32 @@ const AnimeTitleContainer = styled.div`
 `;
 
 const CarouselViewMore = styled(Link)`
-  padding: 10px;
-  border-radius: 10px;
+  padding:0.625rem;
+  border-radius: 5px;
   align-self: flex-end;
   background: ${(props) => props.theme.secondaryBackground};
   border: 1px solid ${(props) => props.theme.secondaryBackground};
   color: ${(props) => props.theme.textColorSecondary};
-  transition: 0.5s all ease;
+ 
   &:hover {
     background: transparent;
   }
 
-  @media (max-width: 580px) {
+  
+  ${breakpoints("padding", "rem", [
+    { 800: 0.5 },
+    { 600: 0.45},
+  ])};
+  @media (max-width: 590px) {
     display: none;
   }
 `;
 
 const Summary = styled(Markdown)`
     text-align: left;
+    text-overflow:ellipsis;
+    overflow:hidden;
+    height:2.5rem;
 
     @media (max-width: 770px) {
     display: none;
@@ -160,7 +161,7 @@ export const Trending = () => {
                         </AnimeTitleContainer>
                         <Small><Summary children={data.descriptions?.en}/></Small>
                       </AnimeTitleSummaryContainer>
-                      <CarouselViewMore to={`/animeinfo/${data.mal_id}`}><Subtitle> More Details</Subtitle> </CarouselViewMore>
+                      <CarouselViewMore to={`/animeinfo/${data.mal_id}`}><Button> More Details</Button> </CarouselViewMore>
                     </CarouselAnimeDetails>
                         
                         
