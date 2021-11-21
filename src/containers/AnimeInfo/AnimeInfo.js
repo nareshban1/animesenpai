@@ -6,12 +6,13 @@ import { fetchJikanAnimeDetail } from "../../redux/Slices/JikanAnimeDetail";
 import { Container, FlexContainer, LeftContainer, RightContainer } from "../../components/Styled/Commons";
 import CharacterStaff from "../../components/CharactersStaff";
 import AnimeStats from "../../components/AnimeStats";
-// import AnimeDetails from "../../components/AnimeDetails/AnimeDetails";
-import AnimeRecommendations from "../../components/AnimeRecommendation";
 import { SidebarTrending } from "../../components/Trending/Sidebar"
 import { Link, useParams } from "react-router-dom";
+// import AnimeDetails from "../../components/AnimeDetails/AnimeDetails";
+// import AnimeRecommendations from "../../components/AnimeRecommendation";
 
 const AnimeDetails = React.lazy(() => import("../../components/AnimeDetails/AnimeDetails"));
+const AnimeRecommendations = React.lazy(() => import("../../components/AnimeRecommendation"));
 
 export const AnimeInfo = () => {
   const animeDetails = useSelector((state) => state.animeDetail.data);
@@ -35,7 +36,9 @@ export const AnimeInfo = () => {
         <LeftContainer>
           <Suspense fallback={"Loading.."}>
             {jikananimeDetails?.loading ? null : <AnimeDetails aniapi={animeDetails?.data?.documents?.[0]} jikan={jikananimeDetails} />}
-
+          </Suspense>
+          <Suspense fallback={"Loading.."}>
+            <AnimeRecommendations animeID={animeID} />
           </Suspense>
         </LeftContainer>
         <RightContainer>

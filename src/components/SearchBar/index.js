@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import styled from "styled-components";
-import {FaSearch} from "react-icons/fa";
+import { FaSearch } from "react-icons/fa";
 
 
 const SearchBarContainer = styled.div`
@@ -61,27 +61,27 @@ const SearchIcon = styled(FaSearch)`
 function SearchBar() {
 
   const [searchQuery, setSearchQuery] = useState("");
-  const navigate= useNavigate();
+  const navigate = useNavigate();
 
 
-  const handleSearch = (e) =>{
-      e.preventDefault();
-      console.log(searchQuery);
-      navigate(`/searchResults/${searchQuery}`,{replace:true});
+  const handleSearch = (e) => {
+    e.preventDefault();
+    navigate(`/searchResults/${searchQuery}`, { replace: true });
+    setSearchQuery("");
 
   }
   return (
-      <SearchForm onSubmit={handleSearch}>
-        <SearchInput
-          type="text"
-          placeholder="Enter anime name"
-          value={searchQuery}
-          onChange={(e) => {
-            setSearchQuery(e.target.value);
-          }}
-        />
-        <SearchButton type="submit" disabled={searchQuery === ""}><SearchIcon/></SearchButton>
-      </SearchForm>
+    <SearchForm onSubmit={handleSearch}>
+      <SearchInput
+        type="text"
+        placeholder="Enter anime name"
+        value={searchQuery}
+        onChange={(e) => {
+          setSearchQuery(e.target.value);
+        }}
+      />
+      <SearchButton type="submit" disabled={searchQuery === ""}><SearchIcon /></SearchButton>
+    </SearchForm>
   );
 }
 

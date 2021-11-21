@@ -26,7 +26,7 @@ const AnimeDetails = ({ aniapi, jikan
                         </RankContainer>
                     </TitleRanksContainer>
                     <Small fontstyle="italic">
-                        {jikan?.title_english}
+                        {jikan?.title_english},
                         {jikan?.title_synonyms?.[0]},
                         {jikan?.title_japanese}
                     </Small>

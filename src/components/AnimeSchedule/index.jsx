@@ -1,11 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  Container,
-  ListContainer,
-  Pre,
-  Small,
-  Subtitle,
-} from "../Styled/Commons";
+import { ListContainer, Small, Subtitle } from "../Styled/Commons";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { AnimeListContainer } from "../Styled/Commons";
@@ -36,16 +30,13 @@ const DaysContainer = styled.div`
   margin-top: 10px;
   overflow-x: auto;
 
-  
-  
-&::-webkit-scrollbar {
-  height: 5px;
-}
+  &::-webkit-scrollbar {
+    height: 5px;
+  }
 
-&::-webkit-scrollbar-thumb {
-  background: var(--primary-color);
-}
-
+  &::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+  }
 `;
 
 const ScheduledGrid = styled.div`
@@ -54,10 +45,9 @@ const ScheduledGrid = styled.div`
   grid-gap: 10px;
   margin-top: 10px;
 
-
   @media (max-width: 480px) {
-      grid-template-columns: 1fr;
-    }
+    grid-template-columns: 1fr;
+  }
 `;
 
 const ScheduledAnimeCards = styled(Link)`
@@ -98,9 +88,6 @@ const AnimeSchedule = () => {
     dispatch(fetchJikanAnimeSchedule());
   }, [dispatch]);
 
- 
-  
-
   return (
     <AnimeListContainer>
       <ListContainer>
@@ -122,21 +109,19 @@ const AnimeSchedule = () => {
                   );
                 })}
             </DaysContainer>
-            
 
-          {animeSchedule[selected] && 
-            <ScheduledGrid>
-            {animeSchedule[selected].map((data,index) =>
-              (
-                <ScheduledAnimeCards  to={`/animeinfo/${data?.mal_id}`} key={index}>
-                <Small>{data.title}</Small>
-                </ScheduledAnimeCards>
-              )
-              
+            {animeSchedule[selected] && (
+              <ScheduledGrid>
+                {animeSchedule[selected].map((data, index) => (
+                  <ScheduledAnimeCards
+                    to={`/animeinfo/${data?.mal_id}`}
+                    key={index}
+                  >
+                    <Small>{data.title}</Small>
+                  </ScheduledAnimeCards>
+                ))}
+              </ScheduledGrid>
             )}
-            </ScheduledGrid>
-          }
-            
           </>
         )}
       </ListContainer>
