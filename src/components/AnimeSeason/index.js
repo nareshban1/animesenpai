@@ -1,12 +1,8 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchTopSeason } from "../../redux/Slices/AnimeSeason";
-import SmallCard from "../AnimeCard/SmallCard";
+import RightList from "../RightList";
 import {
-  RightListContainer,
-  Strong,
-  Subtitle,
-  GridContainer,
   InfoContainer,
 } from "../Styled/Commons";
 
@@ -21,16 +17,11 @@ const AnimeSeason = () => {
 
   return (
     <InfoContainer>
-      <RightListContainer>
-        <Subtitle color="white">Season Top</Subtitle>
+      <>
         {topseason && (
-          <GridContainer>
-            {topseason?.anime?.slice(0, 10).map((data, index) => (
-              <SmallCard info={data} key={index} />
-            ))}
-          </GridContainer>
+          <RightList header="Top Aired" dataset={topseason?.anime?.slice(0, 10)} />
         )}
-      </RightListContainer>
+      </>
     </InfoContainer>
   );
 };

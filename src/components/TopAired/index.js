@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchTopAired } from "../../redux/Slices/topAired";
-import SmallCard from "../AnimeCard/SmallCard";
-import { RightListContainer, Subtitle,GridContainer } from "../Styled/Commons";
+import RightList from "../RightList";
+
 
 
 export const TopAired = () => {
@@ -14,15 +14,10 @@ export const TopAired = () => {
   }, [dispatch]);
 
   return (
-    <RightListContainer>
-      <Subtitle color="white">Top Aired</Subtitle>
+    <>
       {topAiredAnime && (
-        <GridContainer>
-          {topAiredAnime?.data?.documents?.slice(0, 9).map((data, index) => (
-            <SmallCard info={data} key={index} />
-          ))}
-        </GridContainer>
+        <RightList header="Top Aired" dataset={topAiredAnime?.data?.documents?.slice(0, 9)} />
       )}
-    </RightListContainer>
+    </>
   );
 };

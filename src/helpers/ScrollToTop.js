@@ -1,18 +1,12 @@
-import React, { useEffect, Fragment } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
-function ScrollToTop({children }) {
-  const navigate = useNavigate();
+export default function ScrollToTop() {
+  const { pathname } = useLocation();
+
   useEffect(() => {
-    const unlisten = navigate(() => {
-      window.scrollTo(0, 0);
-    });
-    return () => {
-      unlisten();
-    }
-  }, []);
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
-  return <Fragment>{children}</Fragment>;
+  return null;
 }
-
-export default ScrollToTop;

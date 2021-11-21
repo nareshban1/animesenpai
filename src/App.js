@@ -1,12 +1,11 @@
 import React from "react";
 import styled, { ThemeProvider } from "styled-components";
-import { MainTheme} from "./themes";
-import {Routes, Route } from "react-router-dom";
+import { MainTheme } from "./themes";
+import { Routes, Route } from "react-router-dom";
 import { Home } from "./containers/Home/Home";
+import { AnimeInfo } from "./containers/AnimeInfo/AnimeInfo";
 import NavBar from "./components/Navbar";
 import Footer from "./components/Footer/Footer";
-
-
 
 const AppContainer = styled.div`
   background-color: ${(props) => props.theme.mainBackground};
@@ -18,21 +17,18 @@ const Main = styled.div`
   min-height: 100vh;
 `;
 
-
 function App() {
-
   return (
-    <ThemeProvider theme={MainTheme} >
+    <ThemeProvider theme={MainTheme}>
       <AppContainer>
         <Main>
-        <NavBar/>
-  
-        <Routes>
-          <Route exact path="/" element={<Home/>} />
-        </Routes>
-      
+          <NavBar />
+          <Routes>
+            <Route exact path="/" element={<Home />} />
+            <Route exact path="/animeinfo/:id" element={<AnimeInfo />} />
+          </Routes>
         </Main>
-        <Footer/>
+        <Footer />
       </AppContainer>
     </ThemeProvider>
   );

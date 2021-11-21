@@ -1,13 +1,13 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { fetchANITrending } from "../../redux/Slices/trending";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
-import { Body, Button, Small, Subtitle, TitleH3 } from "../Styled/Commons";
+import { Button, Small, TitleH3 } from "../Styled/Commons";
 import { Link } from "react-router-dom";
 import Markdown from "markdown-to-jsx";
-import {breakpoints} from "../../helpers/Breakpoints"
+import { breakpoints } from "../../helpers/Breakpoints"
 
 
 const CarouselContainer = styled.div`
@@ -30,10 +30,10 @@ const CarouselAnimeCard = styled.div`
   background-color: ${(props) => props.theme.primaryColor};
   transition:0.5s ease;
   ${breakpoints("height", "rem", [
-    { 800: 23 },
-    { 600: 19},
-    { 580: 15 }
-  ])};
+  { 800: 23 },
+  { 600: 19 },
+  { 580: 15 }
+])};
   
 `;
 
@@ -42,10 +42,10 @@ const CarouselAnimeImageContainer = styled.div`
   width: 100%;
   transition:0.5s ease;
   ${breakpoints("height", "rem", [
-    { 800: 17.5 },
-    { 600: 14},
-    { 580: 10.6 }
-  ])};
+  { 800: 17.5 },
+  { 600: 14 },
+  { 580: 10.6 }
+])};
 `;
 const CarouselAnimeImage = styled.img`
   height: 100%;
@@ -59,10 +59,10 @@ const CarouselAnimeDetails = styled(Link)`
   padding: 10px 15px;
   transition:0.5s ease;
   ${breakpoints("height", "rem", [
-    { 800: 5.5 },
-    { 600: 5},
-    { 580: 4.4 }
-  ])};
+  { 800: 5.5 },
+  { 600: 5 },
+  { 580: 4.4 }
+])};
   display:grid;
   grid-template-columns: 4fr 1fr;
   grid-column-gap: 15px;
@@ -103,9 +103,9 @@ const CarouselViewMore = styled(Link)`
 
   
   ${breakpoints("padding", "rem", [
-    { 800: 0.5 },
-    { 600: 0.45},
-  ])};
+  { 800: 0.5 },
+  { 600: 0.45 },
+])};
   @media (max-width: 590px) {
     display: none;
   }
@@ -124,7 +124,6 @@ const Summary = styled(Markdown)`
 
 export const Trending = () => {
   const trendingAnime = useSelector((state) => state.trending.data);
-  console.log(trendingAnime);
   const dispatch = useDispatch();
   const trending = trendingAnime?.data?.documents?.slice(0, 10);
 
@@ -146,34 +145,34 @@ export const Trending = () => {
           showIndicators={false}
         >
           {trending?.map((data, index) => (
-              
-                  <CarouselAnimeCard key={index}>
-                    <CarouselAnimeImageContainer>
-                      <CarouselAnimeImage
-                        src={data.banner_image || data.cover_image}
-                        alt=""
-                      />
-                    </CarouselAnimeImageContainer>
-                    <CarouselAnimeDetails to={`/animeinfo/${data.mal_id}`}>
-                      <AnimeTitleSummaryContainer>
-                        <AnimeTitleContainer>
-                          <TitleH3>{data.titles?.en}</TitleH3>
-                        </AnimeTitleContainer>
-                        <Small><Summary children={data.descriptions?.en}/></Small>
-                      </AnimeTitleSummaryContainer>
-                      <CarouselViewMore to={`/animeinfo/${data.mal_id}`}><Button> More Details</Button> </CarouselViewMore>
-                    </CarouselAnimeDetails>
-                        
-                        
-                        
-                     
-                    
-                  </CarouselAnimeCard>
-                
+
+            <CarouselAnimeCard key={index}>
+              <CarouselAnimeImageContainer>
+                <CarouselAnimeImage
+                  src={data.banner_image || data.cover_image}
+                  alt=""
+                />
+              </CarouselAnimeImageContainer>
+              <CarouselAnimeDetails to={`/animeinfo/${data.mal_id}`}>
+                <AnimeTitleSummaryContainer>
+                  <AnimeTitleContainer>
+                    <TitleH3>{data.titles?.en}</TitleH3>
+                  </AnimeTitleContainer>
+                  <Small><Summary children={data.descriptions?.en} /></Small>
+                </AnimeTitleSummaryContainer>
+                <CarouselViewMore to={`/animeinfo/${data.mal_id}`}><Button> More Details</Button> </CarouselViewMore>
+              </CarouselAnimeDetails>
+
+
+
+
+
+            </CarouselAnimeCard>
+
           ))}
         </MainCarousel>
       )}
     </CarouselContainer>
   );
 };
- {/* <CarouselViewMore to={`/animeinfo/${data.mal_id}`}> <Subtitle> More Details </Subtitle> </CarouselViewMore> */}
+{/* <CarouselViewMore to={`/animeinfo/${data.mal_id}`}> <Subtitle> More Details </Subtitle> </CarouselViewMore> */ }

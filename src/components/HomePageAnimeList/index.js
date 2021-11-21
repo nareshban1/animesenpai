@@ -1,5 +1,5 @@
 import React from "react";
-import { AnimeGridContainer, Subtitle,AnimeListContainer} from "../Styled/Commons";
+import { AnimeGridContainer, Subtitle, AnimeListContainer } from "../Styled/Commons";
 import { JikanAnimeCard } from "../AnimeCard/JikanAnimeCard";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
@@ -28,21 +28,21 @@ const ViewAllBtn = styled(Link)`
 const HomeAnimeList = ({ animeData, title, btnView }) => {
   return (
     <AnimeListContainer>
-      
-        <ListTitleContainer>
-          {title &&
+
+      <ListTitleContainer>
+        {title &&
           <Subtitle color="white">{title}</Subtitle>
-          }
-          {btnView &&  <ViewAllBtn to={{ pathname:`/${title}`}} >View All</ViewAllBtn> }
-        </ListTitleContainer>
-        {animeData && (
-          <AnimeGridContainer>
-            {animeData?.map((data, index) => (
-              <JikanAnimeCard info={data} key={index} />
-            ))}
-          </AnimeGridContainer>
-        )}
-      
+        }
+        {btnView && <ViewAllBtn to={{ pathname: `/${title}` }} >View All</ViewAllBtn>}
+      </ListTitleContainer>
+      {animeData && (
+        <AnimeGridContainer>
+          {animeData?.map((data, index) => (
+            <JikanAnimeCard info={data} key={index} />
+          ))}
+        </AnimeGridContainer>
+      )}
+
     </AnimeListContainer>
   );
 };

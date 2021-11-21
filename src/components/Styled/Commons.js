@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {breakpoints} from "../../helpers/Breakpoints"
+import { breakpoints } from "../../helpers/Breakpoints"
 
 
 export const Container = styled.div`
@@ -13,57 +13,58 @@ export const Container = styled.div`
       max-width: 965px;
     }
 `
-export const FlexContainer=styled.div`
+export const FlexContainer = styled.div`
   display:flex;
   justify-content: space-between;
+  
   
   @media (max-width: 1280px) {
     flex-direction: column;
   }
 
 `
-export const LeftContainer =styled.div`
-max-width: 73%;
-height: 100%;
-border-radius: 5px;
-overflow: hidden;
-box-sizing: border-box;
+export const LeftContainer = styled.div`
+  width: 73%;
+  height: 100%;
+  border-radius: 5px;
+  overflow: hidden;
+  box-sizing: border-box;
 
 @media (max-width: 1280px) {
-  max-width: 100%;
+  width: 100%;
   }
 `
-export const RightContainer =styled.div`
-max-width: 25%;
-height: 100%;
-box-sizing: border-box;
-overflow: hidden;
-border-radius: 5px;
+export const RightContainer = styled.div`
+  width: 25%;
+  height: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  border-radius: 5px;
 
-@media (max-width: 1280px) {
-  max-width: 100%;
-  margin-bottom: 20px;
-  }
+  @media (max-width: 1280px) {
+    width: 100%;
+    margin-bottom: 20px;
+    }
 `
 
-export const ListContainer =styled.div`
-max-width: 100%;
-height: 100%;
-border-radius: 5px;
-overflow: hidden;
-box-sizing: border-box;
-padding: 10px;
-background-color:${(props) => props.theme.secondaryBackground};
+export const ListContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  overflow: hidden;
+  box-sizing: border-box;
+  padding: 10px;
+  background-color:${(props) => props.theme.secondaryBackground};
 `
 
-export const RightListContainer =styled.div`
-max-width: 100%;
-height: 100%;
-border-radius: 5px;
-overflow: hidden;
-box-sizing: border-box;
-padding: 10px;
-background-color:${(props) => props.theme.secondaryBackground};
+export const RightListContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  overflow: hidden;
+  box-sizing: border-box;
+  padding: 10px;
+  background-color:${(props) => props.theme.secondaryBackground};
 `
 
 export const AnimeListContainer = styled.div`
@@ -79,12 +80,12 @@ export const GridContainer = styled.div`
   grid-gap: 15px;
 
   ${breakpoints("grid-template-columns", "", [
-    { 1280: "repeat(2,1fr)" },
-    { 580: "repeat(1,1fr)" },
-  ])};
+  { 1280: "repeat(2,1fr)" },
+  { 580: "repeat(1,1fr)" },
+])};
 `;
 
-export const AnimeGridContainer=styled.div`
+export const AnimeGridContainer = styled.div`
     display: grid;
     grid-template-columns: repeat(5,1fr);
     grid-template-rows: 18rem;
@@ -94,10 +95,10 @@ export const AnimeGridContainer=styled.div`
   
 
     ${breakpoints("grid-template-columns", "", [
-    { 768: "repeat(4,1fr)" },
-    { 580: "repeat(3,1fr)" },
-    { 480: "repeat(2,1fr)" }
-  ])};
+  { 768: "repeat(4,1fr)" },
+  { 580: "repeat(3,1fr)" },
+  { 480: "repeat(2,1fr)" }
+])};
 
 
 `
@@ -122,11 +123,11 @@ export const Title = styled.h1`
   transition: 0.5s all ease;
   color:${(props) => props.color};
   ${breakpoints("font-size", "rem", [
-    { 1200: 4 },
-    { 800: 3 },
-    { 600: 2.4 },
-    { 580: 1.6 }
-  ])};
+  { 1200: 4 },
+  { 800: 3 },
+  { 600: 2.4 },
+  { 580: 1.6 }
+])};
 `;
 
 export const TitleH2 = styled.h2`
@@ -135,11 +136,11 @@ export const TitleH2 = styled.h2`
   transition: 0.5s all ease;
   color:${(props) => props.color};
   ${breakpoints("font-size", "rem", [
-    { 1200: 4 },
-    { 800: 3 },
-    { 600: 2.4 },
-    { 580: 1.6 }
-  ])};
+  { 1200: 4 },
+  { 800: 3 },
+  { 600: 2.4 },
+  { 580: 1.6 }
+])};
 `;
 
 export const TitleH3 = styled.h3`
@@ -148,10 +149,10 @@ export const TitleH3 = styled.h3`
   transition: 0.5s all ease;
   color:${(props) => props.color};
   ${breakpoints("font-size", "rem", [
-    { 800: 1.5 },
-    { 600: 1.3 },
-    { 580: 1.1 }
-  ])};
+  { 800: 1.5 },
+  { 600: 1.3 },
+  { 580: 1.1 }
+])};
 `;
 export const Subtitle = styled.p`
   font-size: 1.5rem;
@@ -159,10 +160,10 @@ export const Subtitle = styled.p`
   transition: 0.5s all ease;
   color:${(props) => props.color};
   ${breakpoints("font-size", "rem", [
-    { 800: 1.5 },
-    { 600: 1.2 },
-    { 580: 1 }
-  ])};
+  { 800: 1.5 },
+  { 600: 1.2 },
+  { 580: 1 }
+])};
   
 `;
 export const Strong = styled.p`
@@ -179,6 +180,7 @@ export const Small = styled.p`
   font-size: 14px;
   font-weight: 400;
   color:${(props) => props.color};
+  font-style: ${(props) => props.fontstyle};;
 `;
 export const Button = styled.p`
   font-size: 18px;

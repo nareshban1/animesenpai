@@ -4,6 +4,7 @@ import { AppLogo, LogoLink } from "../Navbar";
 import { Container } from "../Styled/Commons";
 
 const FooterContainer = styled.div`
+  margin-top: 20px;
   height: 250px;
   background: ${(props) => props.theme.secondaryBackground};
   color: ${(props) => props.theme.textColorSecondary};
@@ -36,9 +37,9 @@ const Footer = () => {
     <FooterContainer>
       <Container>
         <FooterContentContainer>
-        <LogoLink to="/">
-          <AppLogo>AnimeSenpai</AppLogo>
-        </LogoLink>
+          <LogoLink to="/">
+            <AppLogo>AnimeSenpai</AppLogo>
+          </LogoLink>
           <FooterDescription>
             This app was created using ANIAPI and JIKAN API(Unofficial
             MyAnimeList API).

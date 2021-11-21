@@ -5,11 +5,13 @@ import App from "./App";
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
 import { BrowserRouter } from "react-router-dom";
+import ScrollToTop from "./helpers/ScrollToTop";
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <BrowserRouter>
+      <BrowserRouter onUpdate={() => window.scrollTo(0, 0)}>
+        <ScrollToTop />
         <App />
       </BrowserRouter>
     </Provider>

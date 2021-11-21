@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchJikanAnimeCharacters } from "../../redux/Slices/JikanCharacters";
-import { InfoContainer, InfoTitle } from "../Styled/Commons";
+import { InfoContainer, Title } from "../Styled/Commons";
 
 const CharacterStaffGrid = styled.div`
   display: grid;
@@ -82,7 +82,7 @@ function CharacterStaff({ animeID }) {
     return character.role === "Main";
   };
 
-  
+
   useEffect(() => {
     dispatch(fetchJikanAnimeCharacters(animeID));
     return () => {
@@ -93,7 +93,7 @@ function CharacterStaff({ animeID }) {
   return (
     <>
       <InfoContainer>
-        <InfoTitle>Characters</InfoTitle>
+        <Title>Characters</Title>
         <CharacterStaffGrid>
           {jikananimeCharacters?.characters
             ?.filter(getMainCharacter)
@@ -134,7 +134,7 @@ function CharacterStaff({ animeID }) {
         </CharacterStaffGrid>
       </InfoContainer>
       <InfoContainer>
-        <InfoTitle>Staff</InfoTitle>
+        <Title>Staff</Title>
         <CharacterStaffGrid>
           {jikananimeCharacters?.staff?.slice(0, 5).map((character, index) => (
             <CharacterCardContainer key={index}>

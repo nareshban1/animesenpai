@@ -40,9 +40,9 @@ const SmallCard = ({ info }) => {
   return (
     <AnimeContainer to={`/animeinfo/${info?.mal_id}`}>
       <AnimeImageContainer>
-        <AnimeImage src={info?.cover_image ||info?.image_url } alt="" />
+        <AnimeImage src={info?.cover_image || info?.image_url} alt="" />
       </AnimeImageContainer>
-      <AnimeName>{info?.titles?.en||info?.title }</AnimeName>
+      <AnimeName>{info?.titles?.en || info?.title}</AnimeName>
     </AnimeContainer>
   );
 };
