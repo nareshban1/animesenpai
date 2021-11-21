@@ -14,6 +14,6 @@ export const Upcoming = () => {
   }, []);
 
   return (
-    <HomeAnimeList animeData={topUpcomingAnime?.top?.slice(0,15)} title={"Upcoming"} btnView={true}/>
+    <HomeAnimeList animeData={topUpcomingAnime?.top?.slice(0, 15)} title={"Upcoming"} btnView={false} />
   );
 };

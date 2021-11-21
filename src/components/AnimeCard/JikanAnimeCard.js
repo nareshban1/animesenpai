@@ -8,7 +8,7 @@ const AnimeContainer = styled(Link)`
   flex-direction: column;
   text-align: center;
   overflow: hidden;
-
+  
 `;
 
 const AnimeImageContainer = styled.div`
@@ -32,6 +32,7 @@ const AnimeName = styled.div`
   overflow: hidden;
   text-overflow: ellipsis;
   height:15%;
+  color:${(props) => props.theme.textColorSecondary};
  
 `;
 

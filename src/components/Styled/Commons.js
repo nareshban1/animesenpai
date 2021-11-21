@@ -88,9 +88,7 @@ export const GridContainer = styled.div`
 export const AnimeGridContainer = styled.div`
     display: grid;
     grid-template-columns: repeat(5,1fr);
-    grid-template-rows: 18rem;
     grid-gap: 10px;
-    row-gap: 15px;
 
   
 
