@@ -133,45 +133,6 @@ function CharacterStaff({ animeID }) {
             ))}
         </CharacterStaffGrid>
       </InfoContainer>
-      <InfoContainer>
-        <Title>Staff</Title>
-        <CharacterStaffGrid>
-          {jikananimeCharacters?.staff?.slice(0, 5).map((character, index) => (
-            <CharacterCardContainer key={index}>
-              <CharacterCard>
-                <CharacterImageContainer>
-                  <CharacterImage
-                    src={character.image_url}
-                    alt="character_image"
-                  />
-                </CharacterImageContainer>
-                <CharacterActorInfo>
-                  <NameCharStaff>{character.name}</NameCharStaff>
-                  <RoleLanguage>{character.positions}</RoleLanguage>
-                </CharacterActorInfo>
-              </CharacterCard>
-              {character.voice_actors?.[0] && (
-                <VoiceActorCard>
-                  <CharacterActorInfo>
-                    <NameCharStaff>
-                      {character.voice_actors?.[0]?.name}
-                    </NameCharStaff>
-                    <RoleLanguage>
-                      {character.voice_actors?.[0]?.language}
-                    </RoleLanguage>
-                  </CharacterActorInfo>
-                  <VoiceActorImageContainer>
-                    <VoiceActorImage
-                      src={character.voice_actors?.[0]?.image_url}
-                      alt="voiceactor_image"
-                    />
-                  </VoiceActorImageContainer>
-                </VoiceActorCard>
-              )}
-            </CharacterCardContainer>
-          ))}
-        </CharacterStaffGrid>
-      </InfoContainer>
     </>
   );
 }
