@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { AppLogo, LogoLink } from "../Navbar";
-import { Container } from "../Styled/Commons";
+import { Body, Container, Subtitle } from "../Styled/Commons";
 
 const FooterContainer = styled.div`
   margin-top: 20px;
@@ -13,8 +13,10 @@ const FooterContainer = styled.div`
 `;
 
 const FooterContentContainer = styled.div`
-  
-  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
 `;
 
 const FooterDescription = styled.p`
@@ -44,6 +46,9 @@ const Footer = () => {
             This app was created using ANIAPI and JIKAN API(Unofficial
             MyAnimeList API).
           </FooterDescription>
+          <Body>
+            Inspired from 9anime.to.
+          </Body>
         </FooterContentContainer>
         {/* <FooterLinksContainer>
           
