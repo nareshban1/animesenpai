@@ -1,33 +1,37 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { AnimeCard } from '../../components/AnimeCard';
-import { AnimeGridContainer } from '../../components/TopAired';
 import { searchByTitle } from '../../redux/Slices/searchAnime';
+import { Link, useParams } from "react-router-dom";
+import { Container, FlexContainer, LeftContainer, RightContainer } from "../../components/Styled/Commons";
+import { TopAired } from "../../components/TopAired";
+import AnimeSeason from "../../components/AnimeSeason";
+import HomeAnimeList from "../../components/HomePageAnimeList";
+
+function SearchResults() {
+  const searchResults = useSelector(state => state.searchanime.data)
+  const dispatch = useDispatch()
+  let params = useParams();
+  useEffect(() => {
+    dispatch(searchByTitle(params.query));
+  }, [dispatch])
+
+  return (
 
 
-
-
-
-function SearchResults({match}) {
-    const searchResults = useSelector(state => state.searchanime.data)
-    const dispatch = useDispatch()
-
-    useEffect(() => {
-        dispatch(searchByTitle(match.params.title));
-    }, [dispatch])
-
-    return (
-        <>
-      <h1>Search Results</h1>
-      {searchResults && (
-        <AnimeGridContainer>
-          {searchResults?.data?.documents?.map((data, index) => (
-            <AnimeCard info={data} key={index}/>
-          ))}
-        </AnimeGridContainer>
-      )}
-    </>
-    )
+    <Container>
+      <FlexContainer>
+        <LeftContainer>
+          {searchResults &&
+            <HomeAnimeList animeData={searchResults?.data?.documents} title={"Search Results"} btnView={false} />
+          }
+        </LeftContainer>
+        <RightContainer>
+          <TopAired />
+          <AnimeSeason />
+        </RightContainer>
+      </FlexContainer>
+    </Container>
+  )
 }
 
 export default SearchResults

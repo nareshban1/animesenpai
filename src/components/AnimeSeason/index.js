@@ -19,7 +19,7 @@ const AnimeSeason = () => {
     <InfoContainer>
       <>
         {topseason && (
-          <RightList header="Top Aired" dataset={topseason?.anime?.slice(0, 10)} />
+          <RightList header="Top Season" dataset={topseason?.anime?.slice(0, 10)} />
         )}
       </>
     </InfoContainer>

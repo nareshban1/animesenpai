@@ -13,6 +13,7 @@ import { breakpoints } from "../../helpers/Breakpoints"
 const CarouselContainer = styled.div`
   width: 100%;
   transition:0.5s ease;
+  margin-bottom:20px;
 `;
 
 const MainCarousel = styled(Carousel)`

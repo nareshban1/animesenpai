@@ -68,9 +68,9 @@ export const RightListContainer = styled.div`
 `
 
 export const AnimeListContainer = styled.div`
-  margin: 30px auto;
   padding: 0;
   transition: 0.3s ease;
+  margin-bottom: 20px;
 `;
 
 export const GridContainer = styled.div`
