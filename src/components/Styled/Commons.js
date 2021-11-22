@@ -29,6 +29,7 @@ export const LeftContainer = styled.div`
   border-radius: 5px;
   overflow: hidden;
   box-sizing: border-box;
+ 
   
 
 @media (max-width: 1280px) {

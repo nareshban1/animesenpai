@@ -3,7 +3,7 @@ import { ListContainer } from "../Styled/Commons";
 import { EpisodesContainer, EpisodeCard } from "./AnimeEpisodesStyles";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAnimeEpisodes } from '../../redux/Slices/AnimeEpisodes';
-
+import Pagination from '../Pagination/Pagination'
 
 const AnimeEpisodes = ({ animeID, setCurrentEpisode, currentEpisode }) => {
     const animeEpisode = useSelector((state) => state.animeEpisodes);
@@ -28,6 +28,7 @@ const AnimeEpisodes = ({ animeID, setCurrentEpisode, currentEpisode }) => {
     console.log(currentEpisode);
     return (
         <ListContainer>
+
             <EpisodesContainer>
                 {animeEpisode?.data?.data?.documents?.map((episode, index) => (
                     <EpisodeCard
@@ -39,6 +40,7 @@ const AnimeEpisodes = ({ animeID, setCurrentEpisode, currentEpisode }) => {
                     </EpisodeCard>
                 ))}
             </EpisodesContainer>
+            <Pagination />
         </ListContainer>
     );
 };
