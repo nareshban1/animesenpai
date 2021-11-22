@@ -43,7 +43,7 @@ export const AnimeInfo = () => {
   const [viewPlayer, setViewPlayer] = useState(false)
 
   useEffect(() => {
-
+    setViewPlayer(false)
     dispatch(fetchJikanAnimeDetail(animeID));
     dispatch(fetchAnimeDetail(animeID));
     dispatch(fetchJikanAnimeCharacters(animeID));
