@@ -20,3 +20,8 @@ export const WatchNowBtn = styled.button`
     { 600: 0.45 },
 ])};
   `;
+
+export const DisplayAvailability = styled.div`
+    width:100%;
+    display: ${(props) => props.display};
+`;

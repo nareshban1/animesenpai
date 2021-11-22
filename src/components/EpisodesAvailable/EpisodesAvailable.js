@@ -1,32 +1,38 @@
 import React from "react";
 import { Subtitle, ListContainer, HeaderFlex, Button } from "../Styled/Commons";
 import { useDispatch, useSelector } from "react-redux";
-import { WatchNowBtn } from "./AvailabilityStyles";
+import { DisplayAvailability, WatchNowBtn } from "./AvailabilityStyles";
 
-const EpisodesAvailable = () => {
+const EpisodesAvailable = ({ viewPlayer, setViewPlayer }) => {
     const animeEpisode = useSelector((state) => state.animeEpisodes);
-    console.log(animeEpisode);
+
+
+    const openPlayer = () => {
+        setViewPlayer(true);
+    }
     return (
-        <ListContainer>
-            {animeEpisode?.loading ? (
-                <>Loading</>
-            ) : (
-                <>
-                    {animeEpisode?.data?.data?.documents ? (
-                        <HeaderFlex>
-                            <Subtitle color="white">Episode are availabe to watch</Subtitle>
-                            <WatchNowBtn>
-                                <Button color="white">Watch Now</Button>
-                            </WatchNowBtn>
-                        </HeaderFlex>
-                    ) : (
-                        <HeaderFlex>
-                            <Subtitle color="white">Episodes are not available</Subtitle>
-                        </HeaderFlex>
-                    )}
-                </>
-            )}
-        </ListContainer>
+        <DisplayAvailability display={viewPlayer ? "none" : "block"}>
+            <ListContainer>
+                {animeEpisode?.loading ? (
+                    <>Loading</>
+                ) : (
+                    <>
+                        {animeEpisode?.data?.data?.documents?.length ? (
+                            <HeaderFlex>
+                                <Subtitle color="white">Episode are availabe to watch</Subtitle>
+                                <WatchNowBtn>
+                                    <Button color="white" onClick={openPlayer}>Watch Now</Button>
+                                </WatchNowBtn>
+                            </HeaderFlex>
+                        ) : (
+                            <HeaderFlex>
+                                <Subtitle color="white">Episodes are not available</Subtitle>
+                            </HeaderFlex>
+                        )}
+                    </>
+                )}
+            </ListContainer>
+        </DisplayAvailability>
     );
 };
 

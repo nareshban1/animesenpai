@@ -1,4 +1,4 @@
-import React, { useEffect, Suspense } from "react";
+import React, { useEffect, useState, Suspense } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   Container,
@@ -27,6 +27,10 @@ const CharacterStaff = React.lazy(() =>
   import("../../components/CharactersStaff/Characters")
 );
 
+const AnimePlayerEpisodes = React.lazy(() =>
+  import("../../components/AnimePlayerEpisodes/AnimePlayerEpisodes")
+);
+
 
 
 export const AnimeInfo = () => {
@@ -36,9 +40,8 @@ export const AnimeInfo = () => {
   const dispatch = useDispatch();
   let params = useParams();
   const animeID = params.id;
+  const [viewPlayer, setViewPlayer] = useState(false)
 
-
-  { }
   useEffect(() => {
 
     dispatch(fetchJikanAnimeDetail(animeID));
@@ -57,9 +60,12 @@ export const AnimeInfo = () => {
       <FlexContainer>
         <LeftContainer>
           <Suspense fallback={"Loading.."}>
+            <AnimePlayerEpisodes animeID={animeInfo?.data?.documents?.[0]?.id} viewPlayer={viewPlayer} />
+          </Suspense>
+          <Suspense fallback={"Loading.."}>
             <AnimeDetails />
           </Suspense>
-          <EpisodesAvailable />
+          <EpisodesAvailable setViewPlayer={setViewPlayer} viewPlayer={viewPlayer} />
           <Suspense fallback={"Loading.."}>
             <CharacterStaff />
           </Suspense>
@@ -74,16 +80,4 @@ export const AnimeInfo = () => {
     </Container>
   );
 };
-{
-  /* 
-        <AnimeStats animeID={animeID} />
-        <AnimeRecommendations animeID={animeID} /> */
-}
 
-{
-  /* <AnimeWatchButton
-      to={`/watchanime/${animeDetails?.data?.documents?.[0]?.id}`}
-    >
-      Watch Anime
-    </AnimeWatchButton> */
-}

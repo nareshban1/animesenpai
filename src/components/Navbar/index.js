@@ -4,7 +4,7 @@ import styled from "styled-components";
 import SearchBar from "../SearchBar";
 import { Container } from "../Styled/Commons";
 import { RiMenuFoldLine as MenuIcon } from "react-icons/ri";
-import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks ,BodyScrollOptions } from 'body-scroll-lock';
+import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks, BodyScrollOptions } from 'body-scroll-lock';
 
 const NavBarContainer = styled.div`
   width: 100%;
@@ -32,7 +32,7 @@ const NavBarContents = styled.div`
 `;
 
 export const AppLogo = styled.h2`
-  color: ${(props) => props.theme.textColorPrimary};
+  color: ${(props) => props.theme.primaryColor};
   font-family: "Poppins", sans-serif;
   font-size: 40px;
   font-weight: 800;
@@ -78,14 +78,14 @@ const Menu = styled(MenuIcon)`
 `;
 
 export const LogoLink = styled(Link)`
-  color: ${(props) => props.theme.textColorPrimary};
+  color: ${(props) => props.theme.primaryColor};
 `;
 
 const Links = styled(Link)`
   margin-left: 20px;
   font-size: 1.1rem;
   font-weight: 600;
-  color: ${(props) => props.theme.textColorPrimary};
+  color: ${(props) => props.theme.primaryColor};
   transition: 0.3s ease all;
 
   :hover {
@@ -116,9 +116,9 @@ const MenuBar = styled.div`
   @media (max-width: 915px) {
     display: flex;
 
-    ${({ show }) => show? `
+    ${({ show }) => show ? `
     right:0;
-  `:`right:-150%;
+  `: `right:-150%;
         `}
   }
 
@@ -138,11 +138,11 @@ export const SearchBarContainer = styled.div`
 
 function NavBar() {
 
-  const [showMenu,setShowMenu]=useState(false);
+  const [showMenu, setShowMenu] = useState(false);
 
-  
 
- 
+
+
   useEffect(() => {
 
 
@@ -157,13 +157,13 @@ function NavBar() {
           <LogoLink to="/">
             <AppLogo>AnimeSenpai</AppLogo>
           </LogoLink>
-          <MobileNavLinks onClick={()=>{
+          <MobileNavLinks onClick={() => {
             setShowMenu(!showMenu)
           }} >
             <Menu></Menu>
           </MobileNavLinks>
           <SearchBarContainer>
-          <SearchBar />
+            <SearchBar />
           </SearchBarContainer>
           <NavLinks>
             <Links to="/">Home</Links>
@@ -172,14 +172,14 @@ function NavBar() {
           </NavLinks>
         </NavBarContents>
       </Container>
-     
+
       <MenuBar show={showMenu}>
         <SearchBar />
         <Links to="/">Home</Links>
         <Links to="/">Genres</Links>
         <Links to="/">Types</Links>
       </MenuBar>
-      
+
     </NavBarContainer>
   );
 }

@@ -39,7 +39,6 @@ const AnimeName = styled.div`
 
 
 export const JikanAnimeCard = ({ info }) => {
-  console.log(info)
   return (
     <AnimeContainer to={`/animeinfo/${info?.mal_id}`}>
       <AnimeImageContainer>
