@@ -34,7 +34,7 @@ const { dataRequested, dataReceived, dataRequestFailed } = animeEpisodesSlice.ac
 
 export const fetchAnimeEpisodes = (id, page) => (dispatch) => {
     const baseURL = "https://api.aniapi.com";
-    const url = `/v1/episode?anime_id=${id}&source=dreamsub&locale=it&page=${page}`
+    const url = `/v1/episode?anime_id=${id}&source=gogoanime&locale=en&page=${page}`
 
 
     return dispatch(
