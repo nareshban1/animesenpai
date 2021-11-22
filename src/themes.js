@@ -12,7 +12,7 @@ export const MainTheme = {
     secondaryBackground: darkColor,
     dimBackground: primaryColorDim,
     primaryColor: primaryColor,
-    textColorPrimary: primaryColor,
+    textColorPrimary: white,
     textColorSecondary: textWhite,
 }
 

@@ -11,7 +11,7 @@ import {
   LeftContainer,
   RightContainer,
 } from "../../components/Styled/Commons";
-import AnimeSchedule from "../../components/AnimeSchedule";
+import AnimeSchedule from "../../components/AnimeSchedule/AnimeSchedule";
 export const Home = () => {
   return (
     <Container>

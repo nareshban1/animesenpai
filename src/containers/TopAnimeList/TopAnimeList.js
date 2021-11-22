@@ -6,7 +6,7 @@ import { fetchTopUpcoming } from "../../redux/Slices/topUpcoming";
 function TopAnimeList({ title }) {
   const topUpcomingAnime = useSelector((state) => state.topUpcoming.data);
   const dispatch = useDispatch();
-    
+
 
 
   useEffect(() => {

@@ -1,18 +1,11 @@
 import { useEffect } from "react";
 import { Body, Small, TitleH3 } from "../Styled/Commons"
 import { AnimeDetail, AnimeImage, AnimeImageContainer, AnimeSynopsis, AnimeTitlesContainer, AnimeTitleSynopsisContainer, MoreInfoContainer, MoreInfoLeft, MoreInfoRight, RankContainer, TitleRanksContainer } from "./Styles"
-import { fetchJikanAnimeDetail } from "../../redux/Slices/JikanAnimeDetail";
 import { useDispatch, useSelector } from "react-redux";
-const AnimeDetails = ({ animeID
-
-}) => {
+const AnimeDetails = () => {
     const jikan = useSelector(
         (state) => state.jikanAnimeDetails.data
     );
-    const dispatch = useDispatch();
-    useEffect(() => {
-        dispatch(fetchJikanAnimeDetail(animeID));
-    }, [animeID, dispatch]);
     return (
         <AnimeDetail>
             <AnimeImageContainer>

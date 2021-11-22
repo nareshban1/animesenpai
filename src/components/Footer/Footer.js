@@ -8,8 +8,6 @@ const FooterContainer = styled.div`
   height: 250px;
   background: ${(props) => props.theme.secondaryBackground};
   color: ${(props) => props.theme.textColorSecondary};
-  
-
 `;
 
 const FooterContentContainer = styled.div`
@@ -26,13 +24,11 @@ const FooterDescription = styled.p`
 
 const FooterLinksContainer = styled.div`
   display: flex;
-`
-const FooterLinks = styled.ul`
-  
-`
+`;
+const FooterLinks = styled.ul``;
 const FooterLink = styled.li`
-cursor: pointer;
-`
+  cursor: pointer;
+`;
 
 const Footer = () => {
   return (
@@ -46,12 +42,9 @@ const Footer = () => {
             This app was created using ANIAPI and JIKAN API(Unofficial
             MyAnimeList API).
           </FooterDescription>
-          <Body>
-            Inspired from 9anime.to.
-          </Body>
+          <Body>Inspired from 9anime.to.</Body>
         </FooterContentContainer>
         {/* <FooterLinksContainer>
-          
           <FooterLinks>
           Links
             <FooterLink>

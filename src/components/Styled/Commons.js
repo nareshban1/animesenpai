@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { breakpoints } from "../../helpers/Breakpoints"
-
+import { Link } from "react-router-dom";
 
 export const Container = styled.div`
     max-width: 1340px;
@@ -29,6 +29,7 @@ export const LeftContainer = styled.div`
   border-radius: 5px;
   overflow: hidden;
   box-sizing: border-box;
+  
 
 @media (max-width: 1280px) {
   width: 100%;
@@ -54,6 +55,7 @@ export const ListContainer = styled.div`
   overflow: hidden;
   box-sizing: border-box;
   padding: 10px;
+  margin-bottom: 20px;
   background-color:${(props) => props.theme.secondaryBackground};
 `
 
@@ -95,7 +97,8 @@ export const AnimeGridContainer = styled.div`
     ${breakpoints("grid-template-columns", "", [
   { 768: "repeat(4,1fr)" },
   { 580: "repeat(3,1fr)" },
-  { 480: "repeat(2,1fr)" }
+  { 480: "repeat(2,1fr)" },
+  { 375: "repeat(1,1fr)" }
 ])};
 
 
@@ -105,6 +108,21 @@ export const InfoContainer = styled.div`
   margin: 20px auto;
 `;
 
+
+export const HeaderFlex = styled.div`
+  display: flex;
+  width:100%;
+  justify-content: space-between;
+  align-items: center;
+`
+export const ViewAllBtn = styled(Link)`
+  color: ${(props) => props.theme.primaryColor};
+  transition: 0.3s all ease;
+
+  &:hover{
+      letter-spacing: 3px;
+  }
+`;
 
 
 
