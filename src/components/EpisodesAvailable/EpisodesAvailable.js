@@ -14,10 +14,10 @@ const EpisodesAvailable = ({ viewPlayer, setViewPlayer }) => {
         <DisplayAvailability display={viewPlayer ? "none" : "block"}>
             <ListContainer>
                 {animeEpisode?.loading ? (
-                    <>Loading</>
+                    <Subtitle color="white">Loading</Subtitle>
                 ) : (
                     <>
-                        {animeEpisode?.data?.data?.documents?.length ? (
+                        {animeEpisode?.data?.data ? (
                             <HeaderFlex>
                                 <Subtitle color="white">Episode are availabe to watch</Subtitle>
                                 <WatchNowBtn>

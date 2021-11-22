@@ -11,7 +11,6 @@ import { SidebarTrending } from "../../components/Trending/Sidebar";
 import { Link, useParams } from "react-router-dom";
 import { fetchAnimeEpisodes } from "../../redux/Slices/AnimeEpisodes";
 import { fetchAnimeDetail } from "../../redux/Slices/AnimeDetail";
-import EpisodesAvailable from "../../components/EpisodesAvailable/EpisodesAvailable";
 import { fetchJikanAnimeDetail } from "../../redux/Slices/JikanAnimeDetail";
 import { fetchJikanAnimeCharacters } from "../../redux/Slices/JikanCharacters";
 import { fetchJikanAnimeRecommendations } from "../../redux/Slices/JikanRecommentation";
@@ -31,6 +30,10 @@ const AnimePlayerEpisodes = React.lazy(() =>
   import("../../components/AnimePlayerEpisodes/AnimePlayerEpisodes")
 );
 
+const EpisodesAvailable = React.lazy(() =>
+  import("../../components/EpisodesAvailable/EpisodesAvailable")
+);
+
 
 
 export const AnimeInfo = () => {
@@ -47,8 +50,7 @@ export const AnimeInfo = () => {
     dispatch(fetchJikanAnimeDetail(animeID));
     dispatch(fetchAnimeDetail(animeID));
     dispatch(fetchJikanAnimeCharacters(animeID));
-    dispatch(fetchJikanAnimeRecommendations(animeID));
-    dispatch(fetchAnimeEpisodes(animeID, 1));
+    dispatch(fetchJikanAnimeRecommendations(animeID));;
   }, [animeID, dispatch]);
 
   useEffect(() => {
@@ -63,9 +65,11 @@ export const AnimeInfo = () => {
             <AnimePlayerEpisodes animeID={animeInfo?.data?.documents?.[0]?.id} viewPlayer={viewPlayer} />
           </Suspense>
           <Suspense fallback={"Loading.."}>
+            <EpisodesAvailable viewPlayer={viewPlayer} setViewPlayer={setViewPlayer} />
+          </Suspense>
+          <Suspense fallback={"Loading.."}>
             <AnimeDetails />
           </Suspense>
-          <EpisodesAvailable setViewPlayer={setViewPlayer} viewPlayer={viewPlayer} />
           <Suspense fallback={"Loading.."}>
             <CharacterStaff />
           </Suspense>

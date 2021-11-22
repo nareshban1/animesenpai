@@ -20,7 +20,7 @@ const AnimeEpisodes = ({ animeID, setCurrentEpisode, currentEpisode }) => {
             animeEpisode &&
                 setCurrentEpisode(animeEpisode?.data?.data?.documents?.[0])
         }
-    }, [animeEpisode])
+    }, [animeID])
 
     const changeEpisode = (episode) => {
         setCurrentEpisode(episode)

@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
-import { DisplayAvailability } from "./AnimePlayerEpisodesStyles";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchAnimeEpisodes } from "../../redux/Slices/AnimeEpisodes";
 import AnimeEpisodes from "../AnimeEpisodes/AnimeEpisodes";
 import AnimePlayer from "../AnimePlayer/AnimePlayer";
+import { DisplayAvailability } from "./AnimePlayerEpisodesStyles";
 
 const AnimePlayerEpisodes = ({ animeID, viewPlayer }) => {
     const [currentEpisode, setCurrentEpisode] = useState([]);
