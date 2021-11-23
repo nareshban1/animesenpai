@@ -7,6 +7,7 @@ import { AnimeInfo } from "./containers/AnimeInfo/AnimeInfo";
 import NavBar from "./components/Navbar";
 import Footer from "./components/Footer/Footer";
 import SearchResults from "./containers/SearchResults/SearchResults";
+import AnimeList from "./containers/AnimeList/AnimeList";
 
 const AppContainer = styled.div`
   background-color: ${(props) => props.theme.mainBackground};
@@ -28,6 +29,7 @@ function App() {
             <Route exact path="/" element={<Home />} />
             <Route exact path="/animeinfo/:id" element={<AnimeInfo />} />
             <Route exact path="/searchResults/:query" element={<SearchResults />} />
+            <Route exact path="/animelist/:name/:id" element={<AnimeList />} />
           </Routes>
         </Main>
         <Footer />

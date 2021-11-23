@@ -1,4 +1,4 @@
-import { configureStore} from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 import apiMiddleware from "./middleware/apiMiddleware";
 import trendingReducer from "./Slices/trending";
 import AnimeDetail from "./Slices/AnimeDetail";
@@ -15,25 +15,27 @@ import Announced from "./Slices/Announced";
 import JikanRecommentation from "./Slices/JikanRecommentation";
 import JikanStats from "./Slices/JikanStats";
 import JikanSchedule from "./Slices/JikanSchedule";
+import JikanGenre from "./Slices/JikanGenre";
 
 export const store = configureStore({
-    reducer:{
+    reducer: {
         trending: trendingReducer,
         topAired: topAired,
         topUpcoming: topUpcoming,
-        animeDetail:AnimeDetail,
-        animeEpisodes:AnimeEpisodes,
-        searchanime:searchAnime,
+        animeDetail: AnimeDetail,
+        animeEpisodes: AnimeEpisodes,
+        searchanime: searchAnime,
         pageNumber: pagination,
         jikanAnimeDetails: JikanAnimeDetail,
         jikanAnimeCharacters: JikanCharacters,
         jikanAnimeEpisodes: JikanEpisodes,
-        jikanrecommendations:JikanRecommentation,
-        jikanstats:JikanStats,
-        animeSeason:AnimeSeason,
-        announced:Announced,
-        schedule:JikanSchedule,
-        
+        jikanrecommendations: JikanRecommentation,
+        jikanstats: JikanStats,
+        animeSeason: AnimeSeason,
+        announced: Announced,
+        schedule: JikanSchedule,
+        jikanGenre: JikanGenre
+
 
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(apiMiddleware),
