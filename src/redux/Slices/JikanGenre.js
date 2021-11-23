@@ -34,7 +34,7 @@ export default jikanGenreSlice.reducer;
 const { dataRequested, dataReceived, dataRequestFailed } = jikanGenreSlice.actions;
 
 
-export const fetchJikanAnimeRecommendations = (id) => (dispatch) => {
+export const fetchJikanAnimeGenre = (id) => (dispatch) => {
     const baseURL = "https://api.jikan.moe/v3";
     const url = `/genre/anime/${id}`
     return dispatch(

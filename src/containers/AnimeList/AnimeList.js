@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchJikanAnimeRecommendations } from '../../redux/Slices/JikanGenre';
+import { fetchJikanAnimeGenre } from '../../redux/Slices/JikanGenre';
 import { Link, useParams } from "react-router-dom";
 import { Container, FlexContainer, LeftContainer, RightContainer } from "../../components/Styled/Commons";
 import { TopAired } from "../../components/TopAired";
@@ -12,7 +12,7 @@ function AnimeList() {
     const dispatch = useDispatch()
     let params = useParams();
     useEffect(() => {
-        dispatch(fetchJikanAnimeRecommendations(params.id));
+        dispatch(fetchJikanAnimeGenre(params.id));
     }, [dispatch, params.id])
 
     return (
