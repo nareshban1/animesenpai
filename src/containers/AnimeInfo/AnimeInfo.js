@@ -43,10 +43,9 @@ export const AnimeInfo = () => {
   const dispatch = useDispatch();
   let params = useParams();
   const animeID = params.id;
-  const [viewPlayer, setViewPlayer] = useState(false)
+  const animeEpisode = useSelector((state) => state.animeEpisodes);
 
   useEffect(() => {
-    setViewPlayer(false)
     dispatch(fetchJikanAnimeDetail(animeID));
     dispatch(fetchAnimeDetail(animeID));
     dispatch(fetchJikanAnimeCharacters(animeID));
@@ -54,19 +53,21 @@ export const AnimeInfo = () => {
   }, [animeID, dispatch]);
 
   useEffect(() => {
-    dispatch(fetchAnimeEpisodes(animeInfo?.data?.documents?.[0]?.id, 1));
+    {
+      animeInfo?.data?.documents?.[0] &&
+        dispatch(fetchAnimeEpisodes(animeInfo?.data?.documents?.[0]?.id, 1));
+    }
   }, [animeInfo, dispatch]);
 
   return (
     <Container>
       <FlexContainer>
         <LeftContainer>
-          <Suspense fallback={"Loading.."}>
-            <AnimePlayerEpisodes animeID={animeInfo?.data?.documents?.[0]?.id} viewPlayer={viewPlayer} />
-          </Suspense>
-          <Suspense fallback={"Loading.."}>
-            <EpisodesAvailable viewPlayer={viewPlayer} setViewPlayer={setViewPlayer} />
-          </Suspense>
+          {animeInfo?.data?.documents?.[0] &&
+            <Suspense fallback={"Loading.."}>
+              <AnimePlayerEpisodes animeID={animeInfo?.data?.documents?.[0]?.id} />
+            </Suspense>
+          }
           <Suspense fallback={"Loading.."}>
             <AnimeDetails />
           </Suspense>
@@ -81,7 +82,7 @@ export const AnimeInfo = () => {
           <SidebarTrending />
         </RightContainer>
       </FlexContainer>
-    </Container>
+    </Container >
   );
 };
 

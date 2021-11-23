@@ -12,11 +12,11 @@ export const EpisodeCard = styled.div`
   cursor: pointer;
 
   background-color: ${(props) =>
-        props.active ? props.theme.primaryColor : "#404040"};
+    props.active ? props.theme.primaryColor : "#404040"};
   color: ${(props) =>
-        props.active
-            ? props.theme.textColorPrimary
-            : props.theme.textColorSecondary};
+    props.active
+      ? props.theme.textColorPrimary
+      : props.theme.textColorSecondary};
 
   &:hover {
     background-color: ${(props) => props.theme.primaryColor};
@@ -25,6 +25,6 @@ export const EpisodeCard = styled.div`
 `;
 export const EpisodesContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
   grid-gap: 10px;
 `;

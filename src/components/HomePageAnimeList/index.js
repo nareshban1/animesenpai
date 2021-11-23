@@ -27,23 +27,26 @@ const ViewAllBtn = styled(Link)`
 
 const HomeAnimeList = ({ animeData, title, btnView }) => {
   return (
-    <AnimeListContainer>
+    <>
+      {animeData?.length &&
+        <AnimeListContainer>
+          <ListTitleContainer>
+            {title &&
+              <Subtitle color="white">{title}</Subtitle>
+            }
+            {btnView && <ViewAllBtn to={{ pathname: `/${title}` }} >View All</ViewAllBtn>}
+          </ListTitleContainer>
+          {animeData && (
+            <AnimeGridContainer>
+              {animeData?.map((data, index) => (
+                <JikanAnimeCard info={data} key={index} />
+              ))}
+            </AnimeGridContainer>
+          )}
+        </AnimeListContainer>
+      }
+    </>
 
-      <ListTitleContainer>
-        {title &&
-          <Subtitle color="white">{title}</Subtitle>
-        }
-        {btnView && <ViewAllBtn to={{ pathname: `/${title}` }} >View All</ViewAllBtn>}
-      </ListTitleContainer>
-      {animeData && (
-        <AnimeGridContainer>
-          {animeData?.map((data, index) => (
-            <JikanAnimeCard info={data} key={index} />
-          ))}
-        </AnimeGridContainer>
-      )}
-
-    </AnimeListContainer>
   );
 };
 

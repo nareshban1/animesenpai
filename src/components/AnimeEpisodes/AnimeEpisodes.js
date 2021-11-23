@@ -15,33 +15,30 @@ const AnimeEpisodes = ({ animeID, setCurrentEpisode, currentEpisode }) => {
         dispatch(fetchAnimeEpisodes(animeID, page));
     }, [page, animeID])
 
-    useEffect(() => {
-        {
-            animeEpisode &&
-                setCurrentEpisode(animeEpisode?.data?.data?.documents?.[0])
-        }
-    }, [animeID])
+
 
     const changeEpisode = (episode) => {
         setCurrentEpisode(episode)
     }
-    console.log(currentEpisode);
     return (
-        <ListContainer>
-
-            <EpisodesContainer>
-                {animeEpisode?.data?.data?.documents?.map((episode, index) => (
-                    <EpisodeCard
-                        onClick={() => changeEpisode(episode)}
-                        key={index}
-                        active={currentEpisode?.number === episode.number}
-                    >
-                        {episode.number}
-                    </EpisodeCard>
-                ))}
-            </EpisodesContainer>
-            <Pagination />
-        </ListContainer>
+        <>
+            {animeEpisode?.data?.data !== "" ?
+                <ListContainer>
+                    <EpisodesContainer>
+                        {animeEpisode?.data?.data?.documents?.map((episode, index) => (
+                            <EpisodeCard
+                                onClick={() => changeEpisode(episode)}
+                                key={index}
+                                active={currentEpisode?.number === episode.number}
+                            >
+                                {episode.number}
+                            </EpisodeCard>
+                        ))}
+                    </EpisodesContainer>
+                    <Pagination />
+                </ListContainer>
+                : null}
+        </>
     );
 };
 

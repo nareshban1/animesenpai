@@ -150,6 +150,10 @@ function NavBar() {
   {
     showMenu ? disableBodyScroll(document) : enableBodyScroll(document);
   }
+
+  const menuFunc = () => {
+    setShowMenu(!showMenu)
+  }
   return (
     <NavBarContainer>
       <Container>
@@ -157,9 +161,7 @@ function NavBar() {
           <LogoLink to="/">
             <AppLogo>AnimeSenpai</AppLogo>
           </LogoLink>
-          <MobileNavLinks onClick={() => {
-            setShowMenu(!showMenu)
-          }} >
+          <MobileNavLinks onClick={menuFunc} >
             <Menu></Menu>
           </MobileNavLinks>
           <SearchBarContainer>
@@ -175,9 +177,9 @@ function NavBar() {
 
       <MenuBar show={showMenu}>
         <SearchBar />
-        <Links to="/">Home</Links>
-        <Links to="/">Genres</Links>
-        <Links to="/">Types</Links>
+        <Links to="/" onClick={menuFunc}>Home</Links>
+        <Links to="/" onClick={menuFunc}>Genres</Links>
+        <Links to="/" onClick={menuFunc}>Types</Links>
       </MenuBar>
 
     </NavBarContainer>

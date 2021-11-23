@@ -1,15 +1,19 @@
 import { useEffect, useState } from "react";
 import AnimeEpisodes from "../AnimeEpisodes/AnimeEpisodes";
 import AnimePlayer from "../AnimePlayer/AnimePlayer";
-import { DisplayAvailability } from "./AnimePlayerEpisodesStyles";
+import { useDispatch, useSelector } from "react-redux";
 
-const AnimePlayerEpisodes = ({ animeID, viewPlayer }) => {
-    const [currentEpisode, setCurrentEpisode] = useState([]);
+const AnimePlayerEpisodes = ({ animeID, firstEpisode }) => {
+    const [currentEpisode, setCurrentEpisode] = useState();
+    const animeEpisode = useSelector((state) => state.animeEpisodes);
     return (
-        <DisplayAvailability display={viewPlayer ? "block" : "none"}>
-            <AnimePlayer currentEpisode={currentEpisode} />
+        <>
+            {currentEpisode &&
+                <AnimePlayer currentEpisode={currentEpisode} />
+            }
             <AnimeEpisodes animeID={animeID} currentEpisode={currentEpisode} setCurrentEpisode={setCurrentEpisode} />
-        </DisplayAvailability>
+
+        </>
     );
 };
 
