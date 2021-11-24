@@ -12,7 +12,7 @@ const Days = styled.p`
   padding: 10px;
   background-color: ${(props) =>
     props.selected ? props.theme.primaryColor : props.theme.mainBackground};
-  color: ${(props) => props.theme.textColorSecondary};
+  color: ${(props) => props.selected ? props.theme.textColorPrimary : props.theme.textColorSecondary};
   border-radius: 5px;
   text-align: center;
   cursor: pointer;
@@ -20,6 +20,7 @@ const Days = styled.p`
 
   &:hover {
     background-color: ${(props) => props.theme.primaryColor};
+    color:white;
   }
 `;
 
@@ -74,6 +75,7 @@ const ScheduledAnimeCards = styled(Link)`
 
   &:hover {
     background-color: ${(props) => props.theme.primaryColor};
+    color:${(props) => props.theme.textColorPrimary};
   }
 `;
 

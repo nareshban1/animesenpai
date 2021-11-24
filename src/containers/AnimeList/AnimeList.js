@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchJikanAnimeGenre } from '../../redux/Slices/JikanGenre';
 import { Link, useParams } from "react-router-dom";
 import AnimeResults from '../../components/AnimeResults/AnimeResults';
+import ScrollToTopOnPageChange from '../../helpers/ScrollToTopOnPageChange';
+
 
 function AnimeList() {
     const results = useSelector(state => state.jikanGenre)
@@ -19,7 +21,10 @@ function AnimeList() {
 
 
     return (
-        <AnimeResults loading={results?.loading} error={results?.error} animeData={results?.data?.anime} title={params.name + " Anime"} />
+        <>  <ScrollToTopOnPageChange page={page} />
+            <AnimeResults loading={results?.loading} error={results?.error} animeData={results?.data?.anime} title={params.name + " Anime"} pagination={true} />
+
+        </>
 
     )
 }

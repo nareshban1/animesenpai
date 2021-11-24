@@ -9,15 +9,11 @@ const JikanPagination = ({ onError }) => {
 
 
     const EpisodesNextPage = () => {
-        if (page <= 2) {
-            console.log(page)
-            dispatch(nextPage());
-        }
+        dispatch(nextPage());
     };
 
     const EpisodesPrevPage = () => {
         if (page > 1) {
-            console.log(page)
             dispatch(prevPage());
         }
     };

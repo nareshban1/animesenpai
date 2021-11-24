@@ -15,14 +15,14 @@ function Pagination() {
 
   const EpisodesNextPage = () => {
     if (page <= animeEpisodes?.data?.last_page) {
-      console.log(page)
+
       dispatch(nextPage());
     }
   };
 
   const EpisodesPrevPage = () => {
     if (page > 1) {
-      console.log(page)
+
       dispatch(prevPage());
     }
   };

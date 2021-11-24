@@ -129,7 +129,7 @@ export const Trending = () => {
   const trending = trendingAnime?.data?.documents?.slice(0, 10);
 
 
-  console.log(trending);
+
   useEffect(() => {
     dispatch(fetchANITrending());
   }, [dispatch]);

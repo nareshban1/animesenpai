@@ -15,6 +15,11 @@ function AnimePlayer({ currentEpisode }) {
           width='100%'
           height='100%'
           pip
+          playing={true}
+          playsinline={true}
+
+          onStart={console.log("Playing")}
+          onEnded={console.log("Anime end")}
         />
       </VideoContainer >
     </PlayerContainer>

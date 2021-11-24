@@ -26,7 +26,6 @@ const ViewAllBtn = styled(Link)`
 `;
 
 const HomeAnimeList = ({ animeData, title, onError, loading }) => {
-  console.log(animeData)
   return (
     <>
 
