@@ -6,7 +6,9 @@ import { Body, Container, Small } from "../Styled/Commons";
 import { RiMenuFoldLine as MenuIcon } from "react-icons/ri";
 import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks, BodyScrollOptions } from 'body-scroll-lock';
 import { genres } from "../../data/genreList";
-
+import { nextPage, prevPage, toPage } from "../../redux/Slices/pagination";
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchrandomAnime } from '../../redux/Slices/Random';
 const NavBarContainer = styled.div`
   width: 100%;
   height: 85px;
@@ -198,20 +200,22 @@ margin-left: 20px;
 function NavBar() {
 
   const [showMenu, setShowMenu] = useState(false);
-
-
-
-
-  useEffect(() => {
-
-
-  }, []);
+  const dispatch = useDispatch()
   {
     showMenu ? disableBodyScroll(document) : enableBodyScroll(document);
   }
 
   const menuFunc = () => {
     setShowMenu(!showMenu)
+  }
+
+  const genreClick = () => {
+    dispatch(toPage(1));
+
+  }
+
+  const changeRandom = () => {
+    dispatch(fetchrandomAnime());
   }
   return (
     <NavBarContainer>
@@ -231,13 +235,13 @@ function NavBar() {
             <Dropdown>Genres
               <DropdownMenu>
                 {genres.map((genre, index) => (
-                  <Genre key={index} to={`animelist/${genre.name}/${genre.id}`}>
+                  <Genre key={index} onClick={genreClick} to={`animelist/${genre.name}/${genre.id}`}>
                     <Small>{genre.name}</Small>
                   </Genre>
                 ))}
               </DropdownMenu>
             </Dropdown>
-            <Links to="/">Types</Links>
+            <Links onClick={changeRandom} to="/randomlist">Random</Links>
           </NavLinks>
         </NavBarContents>
       </Container>
@@ -248,13 +252,13 @@ function NavBar() {
         <Dropdown>Genres
           <DropdownMenu>
             {genres.map((genre, index) => (
-              <Genre key={index} onClick={menuFunc} to={`animelist/${genre.name}/${genre.id}`} >
+              <Genre key={index} onClick={() => { genreClick(); menuFunc() }} to={`animelist/${genre.name}/${genre.id}`} >
                 <Small>{genre.name}</Small>
               </Genre>
             ))}
           </DropdownMenu>
         </Dropdown>
-        <Links to="/" onClick={menuFunc}>Types</Links>
+        <Links onClick={changeRandom} to="/randomlist" onClick={menuFunc}>Random</Links>
       </MenuBar>
 
     </NavBarContainer>

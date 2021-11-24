@@ -4,7 +4,7 @@ import { fetchTopUpcoming } from "../../redux/Slices/topUpcoming";
 import HomeAnimeList from "../HomePageAnimeList";
 
 export const Upcoming = () => {
-  const topUpcomingAnime = useSelector((state) => state.topUpcoming.data);
+  const topUpcomingAnime = useSelector((state) => state.topUpcoming);
   const dispatch = useDispatch();
 
 
@@ -14,7 +14,6 @@ export const Upcoming = () => {
   }, []);
 
   return (
-
-    <HomeAnimeList animeData={topUpcomingAnime?.top?.slice(0, 15)} title={"Upcoming"} btnView={false} />
+    <HomeAnimeList loading={topUpcomingAnime?.loading} onError={topUpcomingAnime?.error} animeData={topUpcomingAnime?.data?.top?.slice(0, 15)} title={"Upcoming"} btnView={false} />
   );
 };

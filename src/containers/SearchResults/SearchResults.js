@@ -1,36 +1,22 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { searchByTitle } from '../../redux/Slices/searchAnime';
-import { Link, useParams } from "react-router-dom";
-import { Container, FlexContainer, LeftContainer, RightContainer } from "../../components/Styled/Commons";
-import { TopAired } from "../../components/TopAired";
-import AnimeSeason from "../../components/AnimeSeason";
-import HomeAnimeList from "../../components/HomePageAnimeList";
+import { useParams } from "react-router-dom";
+
+import AnimeResults from '../../components/AnimeResults/AnimeResults';
 
 function SearchResults() {
-  const searchResults = useSelector(state => state.searchanime.data)
+  const searchResults = useSelector(state => state.searchanime)
   const dispatch = useDispatch()
   let params = useParams();
   useEffect(() => {
     dispatch(searchByTitle(params.query));
-  }, [dispatch])
+  }, [dispatch, params.query])
 
   return (
 
+    <AnimeResults loading={searchResults?.loading} error={searchResults?.error} animeData={searchResults?.data?.data?.documents.slice(0, 30)} title={"Search Results for " + params.query} />
 
-    <Container>
-      <FlexContainer>
-        <LeftContainer>
-          {searchResults &&
-            <HomeAnimeList animeData={searchResults?.data?.documents} title={"Search Results"} btnView={false} />
-          }
-        </LeftContainer>
-        <RightContainer>
-          <TopAired />
-          <AnimeSeason />
-        </RightContainer>
-      </FlexContainer>
-    </Container>
   )
 }
 

@@ -1,9 +1,9 @@
 import React from "react";
-import { AnimeGridContainer, Subtitle, AnimeListContainer } from "../Styled/Commons";
+import { AnimeGridContainer, Subtitle, AnimeListContainer, Body } from "../Styled/Commons";
 import { JikanAnimeCard } from "../AnimeCard/JikanAnimeCard";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-
+import { SpinnerCircular } from 'spinners-react';
 
 const ListTitleContainer = styled.div`
   display: flex;
@@ -25,26 +25,33 @@ const ViewAllBtn = styled(Link)`
   }
 `;
 
-const HomeAnimeList = ({ animeData, title, btnView }) => {
+const HomeAnimeList = ({ animeData, title, onError, loading }) => {
+  console.log(animeData)
   return (
     <>
-      {animeData?.length &&
-        <AnimeListContainer>
-          <ListTitleContainer>
-            {title &&
-              <Subtitle color="white">{title}</Subtitle>
-            }
-            {btnView && <ViewAllBtn to={{ pathname: `/${title}` }} >View All</ViewAllBtn>}
-          </ListTitleContainer>
-          {animeData && (
-            <AnimeGridContainer>
-              {animeData?.map((data, index) => (
-                <JikanAnimeCard info={data} key={index} />
-              ))}
-            </AnimeGridContainer>
-          )}
-        </AnimeListContainer>
-      }
+
+      <AnimeListContainer>
+        <ListTitleContainer>
+          {title &&
+            <Subtitle color="white">{title}</Subtitle>
+          }
+
+        </ListTitleContainer>
+        {loading ? <>
+
+          <SpinnerCircular />
+        </> : <>
+          <AnimeGridContainer>
+            {animeData?.map((data, index) => (
+              <JikanAnimeCard info={data} key={index} />
+            ))}
+          </AnimeGridContainer>
+        </>}
+        {(onError?.length !== 0 || animeData?.length === 0) &&
+          <Body color="white">No Anime Found</Body>
+        }
+      </AnimeListContainer>
+
     </>
 
   );

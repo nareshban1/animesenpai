@@ -14,7 +14,7 @@ import { fetchAnimeDetail } from "../../redux/Slices/AnimeDetail";
 import { fetchJikanAnimeDetail } from "../../redux/Slices/JikanAnimeDetail";
 import { fetchJikanAnimeCharacters } from "../../redux/Slices/JikanCharacters";
 import { fetchJikanAnimeRecommendations } from "../../redux/Slices/JikanRecommentation";
-
+import { SpinnerCircular } from 'spinners-react';
 
 const AnimeDetails = React.lazy(() =>
   import("../../components/AnimeDetails/AnimeDetails")
@@ -64,17 +64,17 @@ export const AnimeInfo = () => {
       <FlexContainer>
         <LeftContainer>
           {animeInfo?.data?.documents?.[0] &&
-            <Suspense fallback={"Loading.."}>
+            <Suspense fallback={<SpinnerCircular />}>
               <AnimePlayerEpisodes animeID={animeInfo?.data?.documents?.[0]?.id} />
             </Suspense>
           }
-          <Suspense fallback={"Loading.."}>
+          <Suspense fallback={<SpinnerCircular />}>
             <AnimeDetails />
           </Suspense>
-          <Suspense fallback={"Loading.."}>
+          <Suspense fallback={<SpinnerCircular />}>
             <CharacterStaff />
           </Suspense>
-          <Suspense fallback={"Loading.."}>
+          <Suspense fallback={<SpinnerCircular />}>
             <AnimeRecommendations />
           </Suspense>
         </LeftContainer>

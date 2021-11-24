@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { apiCallStart } from "../middleware/apiActions";
 
-const jikanrecommendationSlice = createSlice({
-    name: "recommendation",
+const randomSlice = createSlice({
+    name: "random",
     initialState: {
         data: [],
         loading: false,
@@ -10,10 +10,9 @@ const jikanrecommendationSlice = createSlice({
     },
     reducers: {
         dataRequested: (state) => {
-            state.data = []
             state.loading = true;
+            state.data = []
             state.error = []
-
         },
 
         dataReceived: (state, action) => {
@@ -23,24 +22,23 @@ const jikanrecommendationSlice = createSlice({
         },
 
         dataRequestFailed: (state) => {
-            state.data = []
             state.loading = false;
+            state.data = []
             state.error = ["404"]
-
         },
 
 
     }
 });
 
-export default jikanrecommendationSlice.reducer;
+export default randomSlice.reducer;
 
-const { dataRequested, dataReceived, dataRequestFailed } = jikanrecommendationSlice.actions;
+const { dataRequested, dataReceived, dataRequestFailed } = randomSlice.actions;
 
 
-export const fetchJikanAnimeRecommendations = (id) => (dispatch) => {
-    const baseURL = "https://api.jikan.moe/v3";
-    const url = `/anime/${id}/recommendations`
+export const fetchrandomAnime = () => (dispatch) => {
+    const baseURL = "https://api.aniapi.com";
+    const url = `/v1/random/anime/30`
     return dispatch(
         apiCallStart({
             baseURL,
@@ -52,4 +50,3 @@ export const fetchJikanAnimeRecommendations = (id) => (dispatch) => {
 
     );
 }
-

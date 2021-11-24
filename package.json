@@ -26,6 +26,7 @@
     "react-router-dom": "^6.0.2",
     "react-scripts": "4.0.3",
     "react-translate": "^7.0.1",
+    "spinners-react": "^1.0.6",
     "styled-components": "^5.3.1"
   },
   "scripts": {
