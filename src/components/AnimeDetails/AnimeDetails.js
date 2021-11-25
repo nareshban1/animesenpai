@@ -55,7 +55,7 @@ const AnimeDetails = () => {
                                 ))}</Small>
                         </MoreInfoLeft>
                         <MoreInfoRight>
-                            <Small>Scores:&nbsp;&nbsp;{jikan?.data?.score}/{jikan?.scored_by}</Small>
+                            <Small>Scores:&nbsp;&nbsp;{jikan?.data?.score}/{jikan?.data?.scored_by}</Small>
                             <Small>Premiered:&nbsp;&nbsp;{jikan?.data?.premiered}</Small>
                             <Small>Duration:&nbsp;&nbsp;{jikan?.data?.duration}</Small>
                             <Small>Source:&nbsp;&nbsp;{jikan?.data?.source}</Small>
