@@ -63,12 +63,6 @@ const AnimeDetails = () => {
                             <Small>Episodes:&nbsp;&nbsp;{jikan?.data?.episodes}</Small>
                         </MoreInfoRight>
                     </MoreInfoContainer>
-
-
-
-
-
-
                 </AnimeTitleSynopsisContainer>
             </>}
         </AnimeDetail>

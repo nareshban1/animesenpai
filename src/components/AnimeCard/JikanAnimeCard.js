@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { Small } from "../Styled/Commons";
 
 const AnimeContainer = styled(Link)`
   height:300px;
@@ -44,7 +45,7 @@ export const JikanAnimeCard = ({ info }) => {
       <AnimeImageContainer>
         <AnimeImage src={info?.image_url || info?.cover_image} alt="" />
       </AnimeImageContainer>
-      <AnimeName>{info?.title || info?.titles?.en}</AnimeName>
+      <AnimeName>{info?.title || info?.titles?.en || info?.name}</AnimeName>
     </AnimeContainer>
   );
 };

@@ -4,11 +4,13 @@ import { Link } from "react-router-dom";
 export const CharacterStaffGrid = styled.div`
   display: grid;
   width: 100%;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 10px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 15px;
   margin-top: 10px;
-
-  @media (max-width: 480px) {
+  @media (max-width: 820px) {
+    grid-template-columns: repeat(3, 1fr);
+    }
+  @media (max-width: 580px) {
     grid-template-columns: repeat(2, 1fr);
     }
 
@@ -17,7 +19,7 @@ export const CharacterStaffGrid = styled.div`
     }
 `;
 
-export const CharacterCardContainer = styled.div`
+export const CharacterCardContainer = styled(Link)`
   box-sizing: border-box;
   overflow: hidden;
   transition: 0.3s all;
@@ -26,15 +28,27 @@ export const CharacterCardContainer = styled.div`
   width: 100%;
   cursor: pointer;
 
+  &:hover{
+    background-color: ${(props) => props.theme.mainBackground};
+  }
+
 `;
 
 export const CharacterInfo = styled.div`
 text-align: left;
   width: 80%;
+  height: 100%;
+  
   padding-left: 10px;
   margin-left: auto;
   color: ${(props) => props.theme.textColorSecondary};
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  
 `;
+
 
 
 

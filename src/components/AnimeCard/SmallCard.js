@@ -13,6 +13,10 @@ const AnimeContainer = styled(Link)`
   @media (max-width: 1280px) {
     height: 100px;
   }
+
+  &:hover{
+    background-color:  ${(props) => props.theme.mainBackground};
+  }
 `;
 const AnimeImage = styled.img`
   height: 100%;
@@ -34,15 +38,17 @@ const AnimeImageContainer = styled.div`
   @media (max-width: 1280px) {
     width: 75px;
   }
+
+  
 `;
 
-const SmallCard = ({ info }) => {
+const SmallCard = ({ info, noImage }) => {
   return (
     <AnimeContainer to={`/animeinfo/${info?.mal_id}`}>
       <AnimeImageContainer>
-        <AnimeImage src={info?.cover_image || info?.image_url} alt="" />
+        <AnimeImage src={info?.cover_image || info?.image_url || noImage} alt="" />
       </AnimeImageContainer>
-      <AnimeName>{info?.titles?.en || info?.title}</AnimeName>
+      <AnimeName>{info?.titles?.en || info?.title || info?.name}</AnimeName>
     </AnimeContainer>
   );
 };

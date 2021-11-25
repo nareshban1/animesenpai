@@ -1,7 +1,9 @@
 import React, { useEffect } from "react";
+import { useState } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
-import { Subtitle, ListContainer, HeaderFlex, ViewAllBtn } from "../Styled/Commons";
+import { Subtitle, ListContainer, HeaderFlex, ViewAllBtn, Body, Small } from "../Styled/Commons";
+import CharacterCard from "./CharacterCard";
 import {
   CharacterStaffGrid,
   CharacterCardContainer,
@@ -10,42 +12,29 @@ import {
   CharacterImage,
 } from "./CharacterStyles";
 
-function CharacterStaff() {
+function CharacterStaff({ maincharacters, btnview }) {
   const jikananimeCharacters = useSelector(
     (state) => state.jikanAnimeCharacters.data
+  );
+  const jikan = useSelector(
+    (state) => state.jikanAnimeDetails
   );
 
   const getMainCharacter = (character) => {
     return character.role === "Main";
   };
 
-
   return (
     <ListContainer>
       <HeaderFlex>
-        <Subtitle color="white">Main Characters</Subtitle>
-        <ViewAllBtn to={`allcharacters/`} >View All</ViewAllBtn>
+        <Subtitle color="white">Characters</Subtitle>
+        {btnview && <ViewAllBtn to={`/allcharacters/${jikan?.data?.mal_id}/${jikan?.data?.title}`} >View All</ViewAllBtn>}
+
       </HeaderFlex>
       <CharacterStaffGrid>
-        {jikananimeCharacters?.characters
-          ?.filter(getMainCharacter)
-          .map((character, index) => (
-            <CharacterCardContainer key={index}>
-
-              <CharacterImageContainer>
-                <CharacterImage
-                  src={character.image_url}
-                  alt="character_image"
-                />
-              </CharacterImageContainer>
-              <CharacterInfo>
-                {character.name}
-              </CharacterInfo>
-
-            </CharacterCardContainer>
-          ))}
-      </CharacterStaffGrid>
-    </ListContainer>
+        <CharacterCard characterData={maincharacters ? jikananimeCharacters?.characters?.filter(getMainCharacter) : jikananimeCharacters?.characters} />
+      </CharacterStaffGrid >
+    </ListContainer >
   );
 }
 

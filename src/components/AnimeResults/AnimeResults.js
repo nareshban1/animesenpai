@@ -4,21 +4,16 @@ import { TopAired } from "../TopAired";
 import AnimeSeason from "../AnimeSeason";
 import HomeAnimeList from "../HomePageAnimeList";
 import JikanPagination from '../Pagination/JikanPagination';
+import ListPages from '../ListPages/ListPages';
 
 const AnimeResults = ({ loading, error, animeData, title, pagination }) => {
     return (
-        <Container>
-            <FlexContainer>
-                <LeftContainer>
-                    <HomeAnimeList loading={loading} onError={error} animeData={animeData} title={title} />
-                    {pagination && <JikanPagination onError={error} />}
-                </LeftContainer>
-                <RightContainer>
-                    <TopAired />
-                    <AnimeSeason />
-                </RightContainer>
-            </FlexContainer>
-        </Container>
+
+        <ListPages>
+            <HomeAnimeList loading={loading} onError={error} animeData={animeData} title={title} />
+            {pagination && <JikanPagination onError={error} />}
+        </ListPages>
+
     )
 }
 

@@ -96,7 +96,7 @@ const CarouselViewMore = styled(Link)`
   align-self: flex-end;
   background: ${(props) => props.theme.secondaryBackground};
   border: 1px solid ${(props) => props.theme.secondaryBackground};
-  color: ${(props) => props.theme.textColorSecondary};
+  color: ${(props) => props.theme.textColorPrimary};
  
   &:hover {
     background: transparent;

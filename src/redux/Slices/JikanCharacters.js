@@ -6,24 +6,29 @@ const jikananimecharactersSlice = createSlice({
     initialState: {
         data: [],
         loading: false,
+        error: [],
     },
     reducers: {
         dataRequested: (state) => {
-            state.data = []
+            state.data = [];
             state.loading = true;
+            state.error = [];
 
         },
 
         dataReceived: (state, action) => {
-            state.data = action.payload
+            state.data = action.payload;
             state.loading = false;
+            state.error = [];
         },
 
-        dataRequestFailed: (state) => {
-            state.data = []
+        dataRequestFailed: (state, action) => {
+            state.error = ["404"];
             state.loading = false;
+            state.data = [];
 
         },
+
 
 
     }

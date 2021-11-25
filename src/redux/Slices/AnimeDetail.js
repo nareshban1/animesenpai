@@ -2,47 +2,52 @@ import { createSlice } from "@reduxjs/toolkit";
 import { apiCallStart } from "../middleware/apiActions";
 
 const animedetailSlice = createSlice({
-    name:"anime",
-    initialState:{
-        data:[],
-        loading:false,
+    name: "anime",
+    initialState: {
+        data: [],
+        loading: false,
+        error: [],
     },
-    reducers:{
-        dataRequested:(state)=>{
-            state.data=[]
+    reducers: {
+        dataRequested: (state) => {
+            state.data = [];
             state.loading = true;
-    
+            state.error = [];
+
         },
 
-        dataReceived:(state,action)=>{
-            state.data=action.payload
+        dataReceived: (state, action) => {
+            state.data = action.payload;
             state.loading = false;
+            state.error = [];
         },
 
-        dataRequestFailed:(state)=>{
+        dataRequestFailed: (state, action) => {
+            state.error = ["404"];
             state.loading = false;
-       
+            state.data = [];
+
         },
-        
-        
+
+
     }
 });
 
 export default animedetailSlice.reducer;
 
-const {dataRequested,dataReceived,dataRequestFailed} = animedetailSlice.actions;
+const { dataRequested, dataReceived, dataRequestFailed } = animedetailSlice.actions;
 
 
-export const fetchAnimeDetail = (id) => (dispatch) =>{
-    const baseURL= "https://api.aniapi.com";
-    const url=`/v1/anime?mal_id=${id}`
+export const fetchAnimeDetail = (id) => (dispatch) => {
+    const baseURL = "https://api.aniapi.com";
+    const url = `/v1/anime?mal_id=${id}`
     return dispatch(
         apiCallStart({
             baseURL,
             url,
-            onStart:dataRequested.type,
-            onSuccess:dataReceived.type,
-            onError:dataRequestFailed.type,
+            onStart: dataRequested.type,
+            onSuccess: dataReceived.type,
+            onError: dataRequestFailed.type,
         })
 
     );

@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { breakpoints } from "../../helpers/Breakpoints"
 import { Link } from "react-router-dom";
 
+
 export const Container = styled.div`
     max-width: 1340px;
     height: 100%;
@@ -67,7 +68,11 @@ export const RightListContainer = styled.div`
   overflow: hidden;
   box-sizing: border-box;
   padding: 10px;
+  margin-bottom: 20px;
+
   background-color:${(props) => props.theme.secondaryBackground};
+
+  
 `
 
 export const AnimeListContainer = styled.div`
@@ -81,6 +86,15 @@ export const GridContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 15px;
+  max-height: 860px;
+  overflow-y:auto;
+  &::-webkit-scrollbar {
+    width: 2px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+  }
 
   ${breakpoints("grid-template-columns", "", [
   { 1280: "repeat(2,1fr)" },
