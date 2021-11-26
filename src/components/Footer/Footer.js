@@ -1,47 +1,36 @@
 import React from "react";
-import styled from "styled-components";
+import { letters } from "../../data/letters";
 import { AppLogo, LogoLink } from "../Navbar";
 import { Body, Container } from "../Styled/Commons";
-
-const FooterContainer = styled.div`
-  margin-top: 20px;
-  height: 250px;
-  background: ${(props) => props.theme.secondaryBackground};
-  color: ${(props) => props.theme.textColorSecondary};
-`;
-
-const FooterContentContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 100%;
-`;
-
-const FooterDescription = styled.p`
-  color: ${(props) => props.theme.textColorSecondary};
-  font-size: 1.2rem;
-`;
-
-const FooterLinksContainer = styled.div`
-  display: flex;
-`;
-const FooterLinks = styled.ul``;
-const FooterLink = styled.li`
-  cursor: pointer;
-`;
-
+import { FooterContainer, FooterContentContainer, FooterDescription, LetterContainer, Letters } from "./FooterStyles";
+import { useDispatch } from 'react-redux';
+import { toPage } from "../../redux/Slices/pagination";
 const Footer = () => {
+  const dispatch = useDispatch();
+
+  const btnClick = () => {
+    dispatch(toPage(1));
+
+  }
   return (
     <FooterContainer>
       <Container>
         <FooterContentContainer>
+          <LetterContainer>
+            {letters.map((letter, index) => (
+              <Letters to={`/a-zlist/${letter.name}`} state={letter.letter} key={index} onClick={btnClick}>
+                {letter.name}
+              </Letters>
+            ))}
+
+          </LetterContainer>
           <LogoLink to="/">
             <AppLogo>AnimeSenpai</AppLogo>
           </LogoLink>
-          <FooterDescription>
+          <Body>
             This app was created using ANIAPI and JIKAN API(Unofficial
             MyAnimeList API).
-          </FooterDescription>
+          </Body>
           <Body>Inspired from 9anime.to.</Body>
         </FooterContentContainer>
         {/* <FooterLinksContainer>

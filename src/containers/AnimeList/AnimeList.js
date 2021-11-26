@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchJikanAnimeGenre } from "../../redux/Slices/JikanGenre";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useLocation } from "react-router-dom";
 import AnimeResults from "../../components/AnimeResults/AnimeResults";
 import ScrollToTopOnPageChange from "../../helpers/ScrollToTopOnPageChange";
 import { motion } from "framer-motion";
@@ -12,6 +12,7 @@ function AnimeList() {
     const page = useSelector((state) => state.pageNumber.pageNo);
     const dispatch = useDispatch();
     let params = useParams();
+
     useEffect(() => { }, [params.id]);
 
     useEffect(() => {

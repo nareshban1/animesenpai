@@ -18,6 +18,7 @@ import JikanSchedule from "./Slices/JikanSchedule";
 import JikanGenre from "./Slices/JikanGenre";
 import randomAnime from "./Slices/Random";
 import JikanCharacter from "./Slices/CharacterDetail";
+import ByLetter from "./Slices/ByLetter";
 
 export const store = configureStore({
     reducer: {
@@ -39,6 +40,7 @@ export const store = configureStore({
         jikanGenre: JikanGenre,
         randomanime: randomAnime,
         characterinfo: JikanCharacter,
+        byletteranime: ByLetter,
 
 
     },

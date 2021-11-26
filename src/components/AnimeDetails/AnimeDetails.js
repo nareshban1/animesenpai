@@ -6,6 +6,9 @@ const AnimeDetails = () => {
     const jikan = useSelector(
         (state) => state.jikanAnimeDetails
     );
+    const animeInfo = useSelector(
+        (state) => state.animeDetail.data
+    );
     return (
         <AnimeDetail>
             {jikan?.loading ? <><SpinnerCircular /></> : <>
@@ -59,7 +62,7 @@ const AnimeDetails = () => {
                             <Small>Duration:&nbsp;&nbsp;{jikan?.data?.duration}</Small>
                             <Small>Source:&nbsp;&nbsp;{jikan?.data?.source}</Small>
                             <Small>AirTime:&nbsp;&nbsp;{jikan?.data?.broadcast}</Small>
-                            <Small>Episodes:&nbsp;&nbsp;{jikan?.data?.episodes}</Small>
+                            <Small>Episodes:&nbsp;&nbsp;{jikan?.data?.episodes || animeInfo?.data?.documents?.[0]?.episodes_count}</Small>
                         </MoreInfoRight>
                     </MoreInfoContainer>
                 </AnimeTitleSynopsisContainer>

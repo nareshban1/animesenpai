@@ -12,6 +12,7 @@ import Random from "./containers/Random/Random";
 import { AnimatePresence } from 'framer-motion/dist/es/index';
 import CharacterList from "./containers/CharacterList/CharacterList";
 import CharacterInfo from "./containers/CharacterInfo/CharacterInfo";
+import AZList from "./containers/AZList/AZList";
 
 const AppContainer = styled.div`
   background-color: ${(props) => props.theme.mainBackground};
@@ -39,6 +40,7 @@ function App() {
               <Route exact path="/randomlist" element={<Random />} />
               <Route exact path="/allcharacters/:id/:title" element={<CharacterList />} />
               <Route exact path="/characterinfo/:id" element={<CharacterInfo />} />
+              <Route exact path="/a-zlist/:name" element={<AZList />} />
             </Routes>
           </AnimatePresence>
         </Main>

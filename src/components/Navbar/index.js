@@ -20,7 +20,7 @@ const NavBarContainer = styled.div`
 
 
   @media (max-width: 500px) {
-    width: 100vw;
+    width: 100%;
   }
   
   
@@ -31,6 +31,7 @@ const NavBarContents = styled.div`
   height: 100%;
   display: flex;
   align-items: center;
+ 
 
   @media (max-width: 768px) {
   }
