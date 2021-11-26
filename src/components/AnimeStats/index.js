@@ -1,13 +1,9 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import {
   AnimeListContainer,
   ListContainer,
   Subtitle,
-  InfoContainer,
-  Pre,
   Small,
-  Body,
 } from "../Styled/Commons";
 import { SpinnerCircular } from "spinners-react";
 import { StatCardContainer, StatCard, ScoreContainer, StatsData, StatsBar } from "./AnimeStatsStyles.js";
@@ -20,7 +16,7 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
-import { Bar } from 'react-chartjs-2';
+
 
 ChartJS.register(
   CategoryScale,
@@ -49,6 +45,34 @@ function AnimeStats() {
         text: 'Anime Scores',
       },
     },
+    scales: {
+      x: {
+        display: true,
+        title: {
+          display: true,
+          text: 'Votes per Score',
+          color: '#5EAA7A',
+          font: {
+            family: 'Poppins',
+            size: 16,
+          },
+
+        }
+      },
+      y: {
+        display: true,
+        title: {
+          display: true,
+          text: 'Votes',
+          color: '#5EAA7A',
+          font: {
+            family: 'Poppins',
+            size: 16,
+          },
+
+        }
+      },
+    }
 
   };
 
@@ -58,7 +82,7 @@ function AnimeStats() {
   const scores = [];
   {
     jikanStats?.data?.scores &&
-      Object.values(jikanStats?.data?.scores).forEach(val => scores.push(val.percentage))
+      Object.values(jikanStats?.data?.scores).forEach(val => scores.push(val.votes))
   }
 
   const data = {
@@ -72,7 +96,7 @@ function AnimeStats() {
     ],
   };
 
-  console.log(scores)
+
 
   return (
     <AnimeListContainer>
@@ -117,7 +141,7 @@ function AnimeStats() {
               </StatCard>
             </StatCardContainer>
             <ScoreContainer>
-              <Small color={"#5EAA7A"}>SCORES</Small>
+              <Small color={"#5EAA7A"}>SCORE DISTRIBUTION</Small>
               <StatsBar options={options} data={data} />;
             </ScoreContainer>
           </StatsData>

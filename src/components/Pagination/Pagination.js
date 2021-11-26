@@ -1,5 +1,3 @@
-import React, { useState } from "react";
-import styled from "styled-components";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { nextPage, prevPage, toPage } from "../../redux/Slices/pagination";

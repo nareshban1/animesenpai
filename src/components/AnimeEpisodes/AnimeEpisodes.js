@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { Body, ListContainer } from "../Styled/Commons";
 import { EpisodesContainer, EpisodeCard } from "./AnimeEpisodesStyles";
 import { useDispatch, useSelector } from "react-redux";
@@ -13,7 +13,7 @@ const AnimeEpisodes = ({ animeID, setCurrentEpisode, currentEpisode }) => {
 
     useEffect(() => {
         dispatch(fetchAnimeEpisodes(animeID, page));
-    }, [page, animeID])
+    }, [page, animeID, dispatch])
 
 
 

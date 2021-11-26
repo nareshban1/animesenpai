@@ -1,7 +1,3 @@
-import React from 'react'
-import { Container, FlexContainer, LeftContainer, RightContainer } from "../Styled/Commons";
-import { TopAired } from "../TopAired";
-import AnimeSeason from "../AnimeSeason";
 import HomeAnimeList from "../HomePageAnimeList";
 import JikanPagination from '../Pagination/JikanPagination';
 import ListPages from '../ListPages/ListPages';

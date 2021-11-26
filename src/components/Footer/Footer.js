@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { AppLogo, LogoLink } from "../Navbar";
-import { Body, Container, Subtitle } from "../Styled/Commons";
+import { Body, Container } from "../Styled/Commons";
 
 const FooterContainer = styled.div`
   margin-top: 20px;

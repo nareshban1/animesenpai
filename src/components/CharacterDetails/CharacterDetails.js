@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react'
-import { useDispatch, useSelector } from "react-redux";
-import { AnimeDetail, AnimeImage, AnimeImageContainer, AnimeSynopsis, AnimeTitlesContainer, AnimeTitleSynopsisContainer, MoreInfoContainer, MoreInfoLeft, MoreInfoRight, RankContainer, TitleRanksContainer } from "../AnimeDetails/Styles"
+import { useSelector } from "react-redux";
+import { AnimeDetail, AnimeImage, AnimeImageContainer, AnimeSynopsis, AnimeTitlesContainer, AnimeTitleSynopsisContainer, RankContainer, TitleRanksContainer } from "../AnimeDetails/Styles"
 import { SpinnerCircular } from 'spinners-react';
-import { Body, Small, TitleH3 } from "../Styled/Commons"
+import { Small, TitleH3 } from "../Styled/Commons"
 import Markdown from 'markdown-to-jsx';
 import HomeAnimeList from "../HomePageAnimeList";
 
@@ -31,9 +31,9 @@ const CharacterDetails = () => {
                             </TitleRanksContainer>
                             <Small fontstyle="italic">
                                 {characterInfo?.data?.name_kanji},
-                                {characterInfo?.data?.nicknames?.map((names, index) => {
+                                {characterInfo?.data?.nicknames?.map((names, index) => (
                                     <Fragment key={index}>{names}</Fragment>
-                                })},
+                                ))},
                             </Small>
                         </AnimeTitlesContainer>
 

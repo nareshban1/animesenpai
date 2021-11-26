@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { Small } from "../Styled/Commons";
+
 
 const AnimeContainer = styled(Link)`
   height:300px;

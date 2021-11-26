@@ -1,6 +1,5 @@
 import React from 'react'
 import {
-    CharacterStaffGrid,
     CharacterCardContainer,
     CharacterInfo,
     CharacterImageContainer,

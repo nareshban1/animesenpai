@@ -167,7 +167,7 @@ export const TitleH2 = styled.h2`
   font-size: 40px;
   font-weight: 800;
   transition: 0.5s all ease;
-  color:${(props) => props.color};
+  color: ${(props) => props.color};
   ${breakpoints("font-size", "rem", [
   { 1200: 4 },
   { 800: 3 },
@@ -180,7 +180,7 @@ export const TitleH3 = styled.h3`
   font-size: 1.5rem;
   font-weight: 700;
   transition: 0.5s all ease;
-  color:${(props) => props.color};
+  color: ${(props) => props.color};
   ${breakpoints("font-size", "rem", [
   { 800: 1.5 },
   { 600: 1.3 },

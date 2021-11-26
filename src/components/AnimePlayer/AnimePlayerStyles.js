@@ -1,6 +1,5 @@
 import styled from "styled-components";
-import { breakpoints } from "../../helpers/Breakpoints"
-import { Link } from "react-router-dom";
+
 import ReactPlayer from "react-player";
 
 export const DisplayAvailability = styled.div`

@@ -8,12 +8,6 @@ import PageTransitions from '../../components/PageTransitions/PageTransitions';
 
 const Random = () => {
     const random = useSelector(state => state.randomanime)
-    const dispatch = useDispatch()
-    useEffect(() => {
-        dispatch(fetchrandomAnime());
-    }, [dispatch])
-
-
 
     return (
         <PageTransitions>

@@ -2,13 +2,15 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import SearchBar from "../SearchBar";
-import { Body, Container, Small } from "../Styled/Commons";
+import { Container, Small } from "../Styled/Commons";
 import { RiMenuFoldLine as MenuIcon } from "react-icons/ri";
-import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks, BodyScrollOptions } from 'body-scroll-lock';
+import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 import { genres } from "../../data/genreList";
-import { nextPage, prevPage, toPage } from "../../redux/Slices/pagination";
-import { useDispatch, useSelector } from 'react-redux';
+import { toPage } from "../../redux/Slices/pagination";
+import { useDispatch } from 'react-redux';
 import { fetchrandomAnime } from '../../redux/Slices/Random';
+
+
 const NavBarContainer = styled.div`
   width: 100%;
   height: 85px;

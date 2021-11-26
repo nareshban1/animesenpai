@@ -1,7 +1,6 @@
-import { useEffect } from "react";
-import { Body, Small, TitleH3 } from "../Styled/Commons"
+import { Small, TitleH3 } from "../Styled/Commons"
 import { AnimeDetail, AnimeImage, AnimeImageContainer, AnimeSynopsis, AnimeTitlesContainer, AnimeTitleSynopsisContainer, MoreInfoContainer, MoreInfoLeft, MoreInfoRight, RankContainer, TitleRanksContainer } from "./Styles"
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { SpinnerCircular } from 'spinners-react';
 const AnimeDetails = () => {
     const jikan = useSelector(
@@ -16,7 +15,7 @@ const AnimeDetails = () => {
                 <AnimeTitleSynopsisContainer>
                     <AnimeTitlesContainer>
                         <TitleRanksContainer>
-                            <TitleH3 color={(props) => props.theme.primaryColor}>
+                            <TitleH3 color="#5EAA7A">
                                 {jikan?.data?.title}
                             </TitleH3>
                             <RankContainer>

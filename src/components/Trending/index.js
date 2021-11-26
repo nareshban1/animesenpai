@@ -132,7 +132,13 @@ export const Trending = () => {
 
   useEffect(() => {
     dispatch(fetchANITrending());
+    return () => {
+
+    }
+
   }, [dispatch]);
+
+
 
   return (
     <CarouselContainer>
@@ -176,4 +182,3 @@ export const Trending = () => {
     </CarouselContainer>
   );
 };
-{/* <CarouselViewMore to={`/animeinfo/${data.mal_id}`}> <Subtitle> More Details </Subtitle> </CarouselViewMore> */ }

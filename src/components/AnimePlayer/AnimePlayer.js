@@ -17,9 +17,6 @@ function AnimePlayer({ currentEpisode }) {
           pip
           playing={true}
           playsinline={true}
-
-          onStart={console.log("Playing")}
-          onEnded={console.log("Anime end")}
         />
       </VideoContainer >
     </PlayerContainer>

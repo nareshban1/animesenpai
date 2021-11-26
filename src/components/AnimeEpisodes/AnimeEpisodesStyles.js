@@ -1,6 +1,5 @@
 import styled from "styled-components";
-import { breakpoints } from "../../helpers/Breakpoints";
-import { Link } from "react-router-dom";
+
 
 export const EpisodeCard = styled.div`
   height: 30px;

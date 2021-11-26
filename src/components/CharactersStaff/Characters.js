@@ -1,15 +1,8 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
-
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { Subtitle, ListContainer, HeaderFlex, ViewAllBtn, Body, Small } from "../Styled/Commons";
 import CharacterCard from "./CharacterCard";
 import {
   CharacterStaffGrid,
-  CharacterCardContainer,
-  CharacterInfo,
-  CharacterImageContainer,
-  CharacterImage,
 } from "./CharacterStyles";
 
 function CharacterStaff({ maincharacters, btnview }) {
