@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { apiCallStart } from "../middleware/apiActions";
 
-const announcedSlice = createSlice({
-    name: "announced",
+const filterSlice = createSlice({
+    name: "filter",
     initialState: {
         data: [],
         loading: false,
@@ -33,14 +33,15 @@ const announcedSlice = createSlice({
     }
 });
 
-export default announcedSlice.reducer;
+export default filterSlice.reducer;
 
-const { dataRequested, dataReceived, dataRequestFailed } = announcedSlice.actions;
+const { dataRequested, dataReceived, dataRequestFailed } = filterSlice.actions;
 
 
-export const fetchAnnounced = ({ query, orderby, sort, page, genres, rating, status, type }) => (dispatch) => {
-    const baseURL = "https://api.jikan.moe/v3/search/anime?q=&order_by=title&sort=asc&page=60";
-    const url = `/season/later`
+export const filterAnime = (query, genres, rating, type, status, orderby, page) => (dispatch) => {
+    const baseURL = "https://api.jikan.moe/v3";
+    const url = `/search/anime?q=${query}&genre=${genres}&rated=${rating}&type=${type}&status=${status}&order_by=${orderby}&page=${page}`
+    console.log(baseURL + url)
     return dispatch(
         apiCallStart({
             baseURL,

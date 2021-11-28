@@ -238,8 +238,8 @@ function NavBar() {
             <Dropdown>Genres
               <DropdownMenu>
                 {genres.map((genre, index) => (
-                  <Genre key={index} onClick={genreClick} to={`animelist/${genre.name}/${genre.id}`}>
-                    <Small>{genre.name}</Small>
+                  <Genre key={index} onClick={genreClick} to={`animelist/${genre.label}/${genre.value}`}>
+                    <Small>{genre.label}</Small>
                   </Genre>
                 ))}
               </DropdownMenu>
@@ -256,8 +256,8 @@ function NavBar() {
         <Dropdown>Genres
           <DropdownMenu>
             {genres.map((genre, index) => (
-              <Genre key={index} onClick={() => { genreClick(); menuFunc() }} to={`animelist/${genre.name}/${genre.id}`} >
-                <Small>{genre.name}</Small>
+              <Genre key={index} onClick={() => { genreClick(); menuFunc() }} to={`animelist/${genre.label}/${genre.value}`} >
+                <Small>{genre.label}</Small>
               </Genre>
             ))}
           </DropdownMenu>

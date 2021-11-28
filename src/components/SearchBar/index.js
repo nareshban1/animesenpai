@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import styled from "styled-components";
 import { FaSearch } from "react-icons/fa";
-
+import { toPage } from "../../redux/Slices/pagination";
+import { useDispatch, useSelector } from 'react-redux';
+import { filterAnime } from '../../redux/Slices/FilterAnime';
 
 const SearchBarContainer = styled.div`
     font-family: "Poppins", sans-serif;
@@ -59,13 +61,14 @@ const SearchIcon = styled(FaSearch)`
 
 
 function SearchBar() {
-
+  const dispatch = useDispatch()
   const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();
 
 
   const handleSearch = (e) => {
     e.preventDefault();
+    dispatch(filterAnime(searchQuery, "", "", "", "", "", "", 1));
     navigate(`/searchResults/${searchQuery}`, { replace: true });
     setSearchQuery("");
 

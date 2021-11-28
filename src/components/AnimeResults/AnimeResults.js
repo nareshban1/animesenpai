@@ -4,7 +4,7 @@ import ListPages from '../ListPages/ListPages';
 
 const AnimeResults = (props) => {
 
-    console.log(props)
+
     return (
 
         <ListPages>
