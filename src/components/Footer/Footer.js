@@ -16,14 +16,14 @@ const Footer = () => {
     <FooterContainer>
       <Container>
         <FooterContentContainer>
-          <LetterContainer>
+          {/* <LetterContainer>
             {letters.map((letter, index) => (
               <Letters to={`/a-zlist/${letter.name}`} state={letter.letter} key={index} onClick={btnClick}>
                 {letter.name}
               </Letters>
             ))}
 
-          </LetterContainer>
+          </LetterContainer> */}
           <LogoLink to="/">
             <AppLogo>AnimeSenpai</AppLogo>
           </LogoLink>

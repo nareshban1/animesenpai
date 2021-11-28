@@ -40,7 +40,7 @@ function App() {
               <Route exact path="/randomlist" element={<Random />} />
               <Route exact path="/allcharacters/:id/:title" element={<CharacterList />} />
               <Route exact path="/characterinfo/:id" element={<CharacterInfo />} />
-              <Route exact path="/a-zlist/:name" element={<AZList />} />
+              <Route exact path="/a-zlist" element={<AZList />} />
             </Routes>
           </AnimatePresence>
         </Main>

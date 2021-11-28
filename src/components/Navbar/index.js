@@ -244,6 +244,7 @@ function NavBar() {
                 ))}
               </DropdownMenu>
             </Dropdown>
+            <Links to="/a-zlist" >All Anime</Links>
             <Links onClick={changeRandom} to="/randomlist">Random</Links>
           </NavLinks>
         </NavBarContents>
@@ -261,7 +262,9 @@ function NavBar() {
             ))}
           </DropdownMenu>
         </Dropdown>
+        <Links to="/a-zlist" onClick={menuFunc}>All Anime</Links>
         <Links onClick={changeRandom} to="/randomlist" onClick={menuFunc}>Random</Links>
+
       </MenuBar>
 
     </NavBarContainer>

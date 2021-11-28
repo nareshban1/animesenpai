@@ -47,4 +47,15 @@ export const Letters = styled(Link)`
     border-radius: 5px;
     color: ${(props) => props.theme.textColorSecondary};
     background-color: ${(props) => props.theme.mainBackground};
+    cursor: pointer;
+`
+
+export const Letter = styled.p`
+    display: grid;
+    place-items:center;
+    padding:5px;
+    border-radius: 5px;
+    color: ${(props) => props.theme.textColorSecondary};
+    background-color: ${(props) => props.theme.mainBackground};
+    cursor: pointer;
 `
