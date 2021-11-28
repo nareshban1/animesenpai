@@ -28,15 +28,14 @@ function SearchResults() {
       type: "",
       status: "",
       orderBy: "",
+      sort: "",
 
     },
     validationSchema: Yup.object({
 
     }),
     onSubmit: (values) => {
-
-      console.log(values.orderBy)
-      dispatch(filterAnime(values.query, getValues(values.genre), values.rating.value, getValues(values.type), getValues(values.status), values.orderBy.value, 1));
+      dispatch(filterAnime(values.query, getValues(values.genre), values.rating.value, getValues(values.type), getValues(values.status), values.orderBy.value, values.sort.value, 1));
 
     },
   });
@@ -55,7 +54,7 @@ function SearchResults() {
   }, [dispatch, params.query]);
 
   useEffect(() => {
-    dispatch(filterAnime(formik.values.query, getValues(formik.values.genre), getValues(formik.values.rating), getValues(formik.values.type), getValues(formik.values.status), getValues(formik.values.orderBy), page));
+    dispatch(filterAnime(formik.values.query, getValues(formik.values.genre), formik.values.rating.value, getValues(formik.values.type), getValues(formik.values.status), formik.values.orderBy.value, formik.values.sort.value, page));
   }, [dispatch, page]);
 
 
@@ -67,7 +66,7 @@ function SearchResults() {
         loading={searchResults?.loading}
         error={searchResults?.error}
         animeData={searchResults?.data?.results}
-        title={"Search Results for " + params.query}
+        title={"Search Results for " + formik.values.query}
         pagination={true}
       >
         <FilterForm formik={formik} />

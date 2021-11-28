@@ -103,3 +103,16 @@ export const order = [
     },
 
 ];
+
+export const sort = [
+    {
+        value: "asc",
+        label: "Ascending",
+    },
+    {
+        value: "desc",
+        label: "Descending",
+    },
+
+
+];

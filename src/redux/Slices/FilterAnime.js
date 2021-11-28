@@ -38,9 +38,9 @@ export default filterSlice.reducer;
 const { dataRequested, dataReceived, dataRequestFailed } = filterSlice.actions;
 
 
-export const filterAnime = (query, genres, rating, type, status, orderby, page) => (dispatch) => {
+export const filterAnime = (query, genres, rating, type, status, orderby, sort, page) => (dispatch) => {
     const baseURL = "https://api.jikan.moe/v3";
-    const url = `/search/anime?q=${query}&genre=${genres}&rated=${rating}&type=${type}&status=${status}&order_by=${orderby}&page=${page}`
+    const url = `/search/anime?q=${query}&genre=${genres}&rated=${rating}&type=${type}&status=${status}&order_by=${orderby}&sort=${sort}&page=${page}`
     console.log(baseURL + url)
     return dispatch(
         apiCallStart({
