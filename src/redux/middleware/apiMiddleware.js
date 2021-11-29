@@ -1,35 +1,36 @@
 import axios from "axios";
-import { apiCallStart,apiCallSuccess,apiCallFailed } from "./apiActions";
+import { apiCallStart, apiCallSuccess, apiCallFailed } from "./apiActions";
 
 
-const apiMiddleware = ({dispatch}) => (next) => async(action)=>{
-    if(action.type !== apiCallStart.type) return next(action);
+const apiMiddleware = ({ dispatch }) => (next) => async (action) => {
+    if (action.type !== apiCallStart.type) return next(action);
 
-    const { baseURL,url,method,data,onStart,onSuccess,onError} = action.payload;
-    if(onStart){
-        dispatch({type:onStart});
+    const { baseURL, url, method, data, onStart, onSuccess, onError } = action.payload;
+    if (onStart) {
+        dispatch({ type: onStart });
     }
-
+    let source = axios.CancelToken.source()
     next(action);
-    // https://kitsu.io/api/edge 
-    try{
+    try {
         //make api call and get response data
         const response = await axios.request({
             baseURL,
             url,
             method,
             data,
+            cancelToken: source.token,
+
         });
 
         //dispatch on success action from the reducer/slices
-        if(onSuccess){
-            dispatch({type:onSuccess,payload:response.data});
+        if (onSuccess) {
+            dispatch({ type: onSuccess, payload: response.data });
         }
     }
-    catch(error){
+    catch (error) {
         //dispatch on error if the api request was failed 
-        if(onError){
-            dispatch({type:onError ,payload:error.message});
+        if (onError) {
+            dispatch({ type: onError, payload: error.message });
         }
     }
 }

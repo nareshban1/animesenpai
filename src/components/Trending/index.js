@@ -131,9 +131,13 @@ export const Trending = () => {
 
 
   useEffect(() => {
-    dispatch(fetchANITrending());
-    return () => {
+    let mounted = true;
+    if (mounted) {
+      dispatch(fetchANITrending());
+    }
 
+    return () => {
+      mounted = false;
     }
 
   }, [dispatch]);
