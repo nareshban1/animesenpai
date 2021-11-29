@@ -27,6 +27,7 @@ function SearchResults() {
     },
     validationSchema: Yup.object({}),
     onSubmit: (values) => {
+      dispatch(toPage(1));
       dispatch(
         filterAnime(
           values.query,
@@ -50,20 +51,20 @@ function SearchResults() {
     return values.toString();
   };
 
-  useEffect(async () => {
-    await dispatch(toPage(1));
+  useEffect(() => {
+    dispatch(toPage(1));
   }, [dispatch, params.query]);
 
   useEffect(() => {
     dispatch(
       filterAnime(
-        formik.values.query,
-        getValues(formik.values.genre),
-        formik.values.rating.value,
-        getValues(formik.values.type),
-        getValues(formik.values.status),
-        formik.values.orderBy.value,
-        formik.values.sort.value,
+        formik.values.query || "",
+        getValues(formik.values.genre) || "",
+        formik.values.rating.value || "",
+        getValues(formik.values.type) || "",
+        getValues(formik.values.status) || "",
+        formik.values.orderBy.value || "",
+        formik.values.sort.value || "",
         page
       )
     );
@@ -71,6 +72,7 @@ function SearchResults() {
 
   return (
     <PageTransitions>
+
       <AnimeResults
         loading={searchResults?.loading}
         error={searchResults?.error}

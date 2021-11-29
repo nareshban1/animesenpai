@@ -8,7 +8,7 @@ export const Upcoming = () => {
   const dispatch = useDispatch();
 
 
-
+  console.log(topUpcomingAnime)
   useEffect(() => {
     dispatch(fetchTopUpcoming(1));
   }, []);

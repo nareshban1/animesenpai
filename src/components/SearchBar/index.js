@@ -60,7 +60,7 @@ const SearchIcon = styled(FaSearch)`
 
 
 
-function SearchBar() {
+function SearchBar({ onClick }) {
   const dispatch = useDispatch()
   const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();
@@ -83,7 +83,7 @@ function SearchBar() {
           setSearchQuery(e.target.value);
         }}
       />
-      <SearchButton type="submit" disabled={searchQuery === ""}><SearchIcon /></SearchButton>
+      <SearchButton type="submit" disabled={searchQuery === ""} onClick={onClick}><SearchIcon /></SearchButton>
     </SearchForm>
   );
 }

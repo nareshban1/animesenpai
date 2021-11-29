@@ -15,6 +15,7 @@ const AnimeSeason = () => {
     dispatch(fetchTopSeason());
   }, [dispatch]);
 
+
   return (
     <InfoContainer>
       <>

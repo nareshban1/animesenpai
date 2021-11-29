@@ -8,9 +8,13 @@ const AnimeResults = (props) => {
     return (
 
         <ListPages>
-            {props.children}
-            <HomeAnimeList loading={props.loading} onError={props.error} animeData={props.animeData} title={props.title} />
-            {props.pagination && <JikanPagination onError={props.error} />}
+
+            <>
+                {props.children}
+                <HomeAnimeList loading={props.loading} onError={props.error} animeData={props.animeData} title={props.title} />
+                {props.pagination && <JikanPagination onError={props.error} />}
+            </>
+
         </ListPages>
 
     )

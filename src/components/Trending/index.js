@@ -126,7 +126,6 @@ const Summary = styled(Markdown)`
 export const Trending = () => {
   const trendingAnime = useSelector((state) => state.trending.data);
   const dispatch = useDispatch();
-  const trending = trendingAnime?.data?.documents?.slice(0, 10);
 
 
 
@@ -146,43 +145,41 @@ export const Trending = () => {
 
   return (
     <CarouselContainer>
-      {trending && (
-        <MainCarousel
-          autoPlay
-          infiniteLoop
-          dynamicHeight={false}
-          showThumbs={false}
-          showStatus={false}
-          showIndicators={false}
-        >
-          {trending?.map((data, index) => (
+      <MainCarousel
+        autoPlay
+        infiniteLoop
+        dynamicHeight={false}
+        showThumbs={false}
+        showStatus={false}
+        showIndicators={false}
+      >
+        {trendingAnime?.data?.documents?.slice(0, 10).map((data, index) => (
 
-            <CarouselAnimeCard key={index}>
-              <CarouselAnimeImageContainer>
-                <CarouselAnimeImage
-                  src={data.banner_image || data.cover_image}
-                  alt=""
-                />
-              </CarouselAnimeImageContainer>
-              <CarouselAnimeDetails to={`/animeinfo/${data.mal_id}`}>
-                <AnimeTitleSummaryContainer>
-                  <AnimeTitleContainer>
-                    <TitleH3>{data.titles?.en}</TitleH3>
-                  </AnimeTitleContainer>
-                  <Small><Summary children={data.descriptions?.en} /></Small>
-                </AnimeTitleSummaryContainer>
-                <CarouselViewMore to={`/animeinfo/${data.mal_id}`}><Button> More Details</Button> </CarouselViewMore>
-              </CarouselAnimeDetails>
-
+          <CarouselAnimeCard key={index}>
+            <CarouselAnimeImageContainer>
+              <CarouselAnimeImage
+                src={data.banner_image || data.cover_image}
+                alt=""
+              />
+            </CarouselAnimeImageContainer>
+            <CarouselAnimeDetails to={`/animeinfo/${data.mal_id}`}>
+              <AnimeTitleSummaryContainer>
+                <AnimeTitleContainer>
+                  <TitleH3>{data.titles?.en}</TitleH3>
+                </AnimeTitleContainer>
+                <Small><Summary children={data.descriptions?.en} /></Small>
+              </AnimeTitleSummaryContainer>
+              <CarouselViewMore to={`/animeinfo/${data.mal_id}`}><Button> More Details</Button> </CarouselViewMore>
+            </CarouselAnimeDetails>
 
 
 
 
-            </CarouselAnimeCard>
 
-          ))}
-        </MainCarousel>
-      )}
+          </CarouselAnimeCard>
+
+        ))}
+      </MainCarousel>
     </CarouselContainer>
   );
 };

@@ -37,8 +37,8 @@ const { dataRequested, dataReceived, dataRequestFailed } = topupcomingSlice.acti
 
 
 export const fetchTopUpcoming = (page) => (dispatch) => {
-    const baseURL = "https://api.jikan.moe/v3/top/anime";
-    const url = `/${page}/upcoming`
+    const baseURL = "https://api.jikan.moe/v3";
+    const url = `/top/anime/${page}/upcoming`
     return dispatch(
         apiCallStart({
             baseURL,

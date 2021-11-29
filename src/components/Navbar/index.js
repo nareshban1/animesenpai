@@ -212,6 +212,10 @@ function NavBar() {
     setShowMenu(!showMenu)
   }
 
+  const hidemenuFunc = () => {
+    setShowMenu(false)
+  }
+
   const genreClick = () => {
     dispatch(toPage(1));
 
@@ -251,19 +255,19 @@ function NavBar() {
       </Container>
 
       <MenuBar show={showMenu}>
-        <SearchBar />
-        <Links to="/" onClick={menuFunc}>Home</Links>
+        <SearchBar onClick={hidemenuFunc} />
+        <Links to="/" onClick={hidemenuFunc}>Home</Links>
         <Dropdown>Genres
           <DropdownMenu>
             {genres.map((genre, index) => (
-              <Genre key={index} onClick={() => { genreClick(); menuFunc() }} to={`animelist/${genre.label}/${genre.value}`} >
+              <Genre key={index} onClick={() => { genreClick(); hidemenuFunc() }} to={`animelist/${genre.label}/${genre.value}`} >
                 <Small>{genre.label}</Small>
               </Genre>
             ))}
           </DropdownMenu>
         </Dropdown>
-        <Links to="/a-zlist" onClick={menuFunc}>All Anime</Links>
-        <Links onClick={changeRandom} to="/randomlist" onClick={menuFunc}>Random</Links>
+        <Links to="/a-zlist" onClick={hidemenuFunc}>All Anime</Links>
+        <Links onClick={changeRandom} to="/randomlist" onClick={hidemenuFunc}>Random</Links>
 
       </MenuBar>
 
