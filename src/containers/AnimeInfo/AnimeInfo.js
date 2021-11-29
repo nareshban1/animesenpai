@@ -58,6 +58,7 @@ export const AnimeInfo = () => {
     dispatch(fetchJikanAnimeStats(animeID));
   }, [animeID, dispatch]);
 
+
   useEffect(() => {
     {
       animeInfo?.data?.documents?.[0] &&

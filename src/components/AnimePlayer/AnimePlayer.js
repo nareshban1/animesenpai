@@ -9,7 +9,7 @@ function AnimePlayer({ currentEpisode }) {
           url={currentEpisode?.video}
           config={{
             file: {
-              forceHLS: true,
+              forceHLS: false,
             },
           }}
           width='100%'

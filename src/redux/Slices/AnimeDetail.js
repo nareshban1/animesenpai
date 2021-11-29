@@ -40,7 +40,7 @@ const { dataRequested, dataReceived, dataRequestFailed } = animedetailSlice.acti
 
 export const fetchAnimeDetail = (id) => (dispatch) => {
     const baseURL = "https://api.aniapi.com";
-    const url = `/v1/anime?mal_id=${id}`
+    const url = `/v1/anime?mal_id=${id}&nsfw=false`
     return dispatch(
         apiCallStart({
             baseURL,

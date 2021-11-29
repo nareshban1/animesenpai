@@ -11,6 +11,7 @@ const AnimeEpisodes = ({ animeID, setCurrentEpisode, currentEpisode }) => {
     const dispatch = useDispatch();
 
 
+
     useEffect(() => {
         dispatch(fetchAnimeEpisodes(animeID, page));
     }, [page, animeID, dispatch])
