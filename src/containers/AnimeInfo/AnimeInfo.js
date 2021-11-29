@@ -60,10 +60,18 @@ export const AnimeInfo = () => {
 
 
   useEffect(() => {
-    {
-      animeInfo?.data?.documents?.[0] &&
-        dispatch(fetchAnimeEpisodes(animeInfo?.data?.documents?.[0]?.id, 1));
+    let mounted = true;
+    if (mounted) {
+      {
+        animeInfo?.data?.documents?.[0] &&
+          dispatch(fetchAnimeEpisodes(animeInfo?.data?.documents?.[0]?.id, 1));
+      }
     }
+
+    return () => {
+      mounted = false;
+    }
+
   }, [animeInfo, dispatch]);
 
   return (
