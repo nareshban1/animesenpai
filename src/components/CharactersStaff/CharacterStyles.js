@@ -19,7 +19,7 @@ export const CharacterStaffGrid = styled.div`
   }
 `;
 
-export const CharacterCardContainer = styled(Link)`
+export const CharacterCardContainer = styled.a`
   box-sizing: border-box;
   overflow: hidden;
   transition: 0.3s all;

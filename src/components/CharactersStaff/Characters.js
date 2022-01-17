@@ -9,7 +9,7 @@ import {
 } from "../Styled/Commons";
 import CharacterCard from "./CharacterCard";
 import { CharacterStaffGrid } from "./CharacterStyles";
-
+import Link from "next/link"
 function CharacterStaff({ maincharacters, btnview }) {
   const jikananimeCharacters = useSelector(
     (state) => state.jikanAnimeCharacters.data
@@ -25,11 +25,12 @@ function CharacterStaff({ maincharacters, btnview }) {
       <HeaderFlex>
         <Subtitle color="white">Characters</Subtitle>
         {btnview && (
-          <ViewAllBtn
+          <Link
             href={`/allcharacters/${jikan?.data?.mal_id}/${jikan?.data?.title}`}
+            passHref
           >
-            View All
-          </ViewAllBtn>
+            <ViewAllBtn>View All</ViewAllBtn>
+          </Link>
         )}
       </HeaderFlex>
       <CharacterStaffGrid>

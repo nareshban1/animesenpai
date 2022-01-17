@@ -118,7 +118,7 @@ export const HeaderFlex = styled.div`
   justify-content: space-between;
   align-items: center;
 `;
-export const ViewAllBtn = styled(Link)`
+export const ViewAllBtn = styled.a`
   color: ${(props) => props.theme.primaryColor};
   transition: 0.3s all ease;
 

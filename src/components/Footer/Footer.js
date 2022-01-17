@@ -11,6 +11,7 @@ import {
 } from "./FooterStyles";
 import { useDispatch } from "react-redux";
 import { toPage } from "../../redux/Slices/pagination";
+import Link from "next/link"
 const Footer = () => {
   const dispatch = useDispatch();
 
@@ -29,9 +30,11 @@ const Footer = () => {
             ))}
 
           </LetterContainer> */}
-          <LogoLink href="/">
+          <Link href="/" passHref>
+          <LogoLink>
             <AppLogo>AnimeSenpai</AppLogo>
           </LogoLink>
+          </Link>
           <Body>
             This app was created using ANIAPI and JIKAN API(Unofficial
             MyAnimeList API).

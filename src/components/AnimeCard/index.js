@@ -1,7 +1,7 @@
 import Link from "next/link";
 import styled from "styled-components";
 
-const AnimeContainer = styled(Link)`
+const AnimeContainer = styled.a`
   border-radius: 10px;
   overflow: hidden;
   min-height: 350px;
@@ -26,9 +26,11 @@ const AnimeName = styled.div`
 
 export const AnimeCard = ({ info }) => {
   return (
-    <AnimeContainer href={`/animeinfo/${info?.mal_id}`}>
-      <AnimeImage src={info?.cover_image} alt="" />
-      <AnimeName>{info?.titles?.en}</AnimeName>
-    </AnimeContainer>
+    <Link passHref href={`/animeinfo/${info?.mal_id}`}>
+      <AnimeContainer>
+        <AnimeImage src={info?.cover_image} alt="" />
+        <AnimeName>{info?.titles?.en}</AnimeName>
+      </AnimeContainer>
+    </Link>
   );
 };

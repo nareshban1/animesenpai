@@ -18,7 +18,7 @@ const ListTitleContainer = styled.div`
   margin-bottom: 10px;
 `;
 
-const ViewAllBtn = styled(Link)`
+const ViewAllBtn = styled.a`
   font-size: 1.1rem;
   font-weight: 700;
   color: ${(props) => props.theme.primaryColor};

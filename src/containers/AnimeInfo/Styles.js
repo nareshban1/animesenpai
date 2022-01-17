@@ -135,7 +135,7 @@ export const AnimeGenreDetailsContainer = styled.div`
   flex-direction: column;
 `;
 
-export const AnimeWatchButton = styled(Link)`
+export const AnimeWatchButton = styled.a`
   height: 100px;
   width: 150px;
   padding: 10px;

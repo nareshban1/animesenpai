@@ -39,7 +39,7 @@ export const LetterContainer = styled.div`
   border-radius: 5px;
   box-sizing: border-box;
 `;
-export const Letters = styled(Link)`
+export const Letters = styled.a`
   display: grid;
   place-items: center;
   padding: 5px;

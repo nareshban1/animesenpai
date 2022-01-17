@@ -75,11 +75,11 @@ const Menu = styled(MenuIcon)`
   }
 `;
 
-export const LogoLink = styled(Link)`
+export const LogoLink = styled.a`
   color: ${(props) => props.theme.primaryColor};
 `;
 
-const Links = styled(Link)`
+const Links = styled.a`
   margin-left: 20px;
   font-size: 1.1rem;
   font-weight: 600;
@@ -91,7 +91,7 @@ const Links = styled(Link)`
   }
 `;
 
-export const Genre = styled(Link)`
+export const Genre = styled.a`
   color: ${(props) => props.theme.textColorSecondary};
   padding: 5px;
   border-radius: 5px;
@@ -210,9 +210,11 @@ function NavBar() {
     <NavBarContainer>
       <Container>
         <NavBarContents>
-          <LogoLink href="/">
-            <AppLogo>AnimeSenpai</AppLogo>
-          </LogoLink>
+          <Link passHref href="/">
+            <LogoLink>
+              <AppLogo>AnimeSenpai</AppLogo>
+            </LogoLink>
+          </Link>
           <MobileNavLinks onClick={menuFunc}>
             <Menu></Menu>
           </MobileNavLinks>
@@ -220,54 +222,64 @@ function NavBar() {
             <SearchBar />
           </SearchBarContainer>
           <NavLinks>
-            <Links href="/">Home</Links>
+            <Link href="/" passHref>
+              <Links>Home</Links>
+            </Link>
             <Dropdown>
               Genres
               <DropdownMenu>
                 {genres.map((genre, index) => (
-                  <Genre
-                    key={index}
-                    onClick={genreClick}
+                  <Link
                     href={`animelist/${genre.label}/${genre.value}`}
+                    passHref
                   >
-                    <Small>{genre.label}</Small>
-                  </Genre>
+                    <Genre key={index} onClick={genreClick}>
+                      <Small>{genre.label}</Small>
+                    </Genre>
+                  </Link>
                 ))}
               </DropdownMenu>
             </Dropdown>
-            <Links href="/a-zlist">All Anime</Links>
-            <Links onClick={changeRandom} href="/randomlist">
-              Random
-            </Links>
+            <Link href="/a-zlist" passHref>
+              <Links>All Anime</Links>
+            </Link>
+            <Link href="/randomlist" passHref>
+              <Links onClick={changeRandom}>Random</Links>
+            </Link>
           </NavLinks>
         </NavBarContents>
       </Container>
 
       <MenuBar show={showMenu}>
         <SearchBar onClick={hidemenuFunc} />
-        <Links href="/" onClick={hidemenuFunc}>
+        <Link href="/" passHref>
+        <Links onClick={hidemenuFunc}>
           Home
         </Links>
+        </Link>
         <Dropdown>
           Genres
           <DropdownMenu>
             {genres.map((genre, index) => (
-              <Genre
-                key={index}
-                onClick={() => {
-                  genreClick();
-                  hidemenuFunc();
-                }}
-                href={`animelist/${genre.label}/${genre.value}`}
-              >
-                <Small>{genre.label}</Small>
-              </Genre>
+              <Link passHref href={`animelist/${genre.label}/${genre.value}`}>
+                <Genre
+                  key={index}
+                  onClick={() => {
+                    genreClick();
+                    hidemenuFunc();
+                  }}
+                >
+                  <Small>{genre.label}</Small>
+                </Genre>
+              </Link>
             ))}
           </DropdownMenu>
         </Dropdown>
-        <Links href="/a-zlist" onClick={hidemenuFunc}>
+        <Link href="/a-zlist" passHref>
+        <Links onClick={hidemenuFunc}>
           All Anime
         </Links>
+        </Link>
         <Links onClick={changeRandom} href="/randomlist" onClick={hidemenuFunc}>
           Random
         </Links>
