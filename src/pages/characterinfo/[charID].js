@@ -1,6 +1,6 @@
-import { CharacterInfo } from "../../components/CharactersStaff/CharacterStyles";
+import CharacterInfo  from "../../containers/CharacterInfo/CharacterInfo";
 
-function characterInfo() {
+function characterInfos() {
   return (
     <div>
       <CharacterInfo />
@@ -8,4 +8,4 @@ function characterInfo() {
   );
 }
 
-export default characterInfo;
+export default characterInfos;
