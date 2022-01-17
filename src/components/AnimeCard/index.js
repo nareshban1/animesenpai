@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import styled from "styled-components";
 
 const AnimeContainer = styled(Link)`
@@ -25,10 +25,8 @@ const AnimeName = styled.div`
 `;
 
 export const AnimeCard = ({ info }) => {
-
-
   return (
-    <AnimeContainer to={`/animeinfo/${info?.mal_id}`}>
+    <AnimeContainer href={`/animeinfo/${info?.mal_id}`}>
       <AnimeImage src={info?.cover_image} alt="" />
       <AnimeName>{info?.titles?.en}</AnimeName>
     </AnimeContainer>

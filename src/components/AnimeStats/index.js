@@ -6,7 +6,13 @@ import {
   Small,
 } from "../Styled/Commons";
 import { SpinnerCircular } from "spinners-react";
-import { StatCardContainer, StatCard, ScoreContainer, StatsData, StatsBar } from "./AnimeStatsStyles.js";
+import {
+  StatCardContainer,
+  StatCard,
+  ScoreContainer,
+  StatsData,
+  StatsBar,
+} from "./AnimeStatsStyles.js";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -15,8 +21,7 @@ import {
   Title,
   Tooltip,
   Legend,
-} from 'chart.js';
-
+} from "chart.js";
 
 ChartJS.register(
   CategoryScale,
@@ -27,9 +32,6 @@ ChartJS.register(
   Legend
 );
 
-
-
-
 function AnimeStats() {
   const jikanStats = useSelector((state) => state.jikanstats);
 
@@ -38,11 +40,11 @@ function AnimeStats() {
     plugins: {
       legend: {
         display: false,
-        position: 'top',
+        position: "top",
       },
       title: {
         display: false,
-        text: 'Anime Scores',
+        text: "Anime Scores",
       },
     },
     scales: {
@@ -50,53 +52,49 @@ function AnimeStats() {
         display: true,
         title: {
           display: true,
-          text: 'Votes per Score',
-          color: '#5EAA7A',
+          text: "Votes per Score",
+          color: "#5EAA7A",
           font: {
-            family: 'Poppins',
+            family: "Poppins",
             size: 16,
           },
-
-        }
+        },
       },
       y: {
         display: true,
         title: {
           display: true,
-          text: 'Votes',
-          color: '#5EAA7A',
+          text: "Votes",
+          color: "#5EAA7A",
           font: {
-            family: 'Poppins',
+            family: "Poppins",
             size: 16,
           },
-
-        }
+        },
       },
-    }
-
+    },
   };
 
   const labels = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-
   const scores = [];
   {
     jikanStats?.data?.scores &&
-      Object.values(jikanStats?.data?.scores).forEach(val => scores.push(val.votes))
+      Object.values(jikanStats?.data?.scores).forEach((val) =>
+        scores.push(val.votes)
+      );
   }
 
   const data = {
     labels,
     datasets: [
       {
-        label: 'Percentage',
+        label: "Percentage",
         data: scores,
-        backgroundColor: '#5EAA7A',
+        backgroundColor: "#5EAA7A",
       },
     ],
   };
-
-
 
   return (
     <AnimeListContainer>
@@ -121,9 +119,7 @@ function AnimeStats() {
               </StatCard>
               <StatCard>
                 <Small color={"#5EAA7A"}>ON HOLD</Small>
-                <Subtitle color={"white"}>
-                  {jikanStats?.data?.on_hold}
-                </Subtitle>
+                <Subtitle color={"white"}>{jikanStats?.data?.on_hold}</Subtitle>
               </StatCard>
               <StatCard>
                 <Small color={"#5EAA7A"}>DROPPED</Small>

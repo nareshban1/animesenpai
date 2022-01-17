@@ -8,17 +8,16 @@ import {
 } from "../../components/Styled/Commons";
 
 import { SidebarTrending } from "../../components/Trending/Sidebar";
-import { Link, useParams } from "react-router-dom";
+import { useRouter } from "next/router";
 import { fetchAnimeEpisodes } from "../../redux/Slices/AnimeEpisodes";
 import { fetchAnimeDetail } from "../../redux/Slices/AnimeDetail";
 import { fetchJikanAnimeDetail } from "../../redux/Slices/JikanAnimeDetail";
 import { fetchJikanAnimeCharacters } from "../../redux/Slices/JikanCharacters";
 import { fetchJikanAnimeRecommendations } from "../../redux/Slices/JikanRecommentation";
-import { SpinnerCircular } from 'spinners-react';
+import { SpinnerCircular } from "spinners-react";
 import PageTransitions from "../../components/PageTransitions/PageTransitions";
 import RelatedAnime from "../../components/RelatedAnime/RelatedAnime";
 import { fetchJikanAnimeStats } from "../../redux/Slices/JikanStats";
-
 
 const AnimeDetails = React.lazy(() =>
   import("../../components/AnimeDetails/AnimeDetails")
@@ -34,21 +33,13 @@ const AnimePlayerEpisodes = React.lazy(() =>
   import("../../components/AnimePlayerEpisodes/AnimePlayerEpisodes")
 );
 
-const AnimeStats = React.lazy(() =>
-  import("../../components/AnimeStats")
-);
-
-
-
+const AnimeStats = React.lazy(() => import("../../components/AnimeStats"));
 
 export const AnimeInfo = () => {
-  const animeInfo = useSelector(
-    (state) => state.animeDetail.data
-  );
+  const animeInfo = useSelector((state) => state.animeDetail.data);
   const dispatch = useDispatch();
-  let params = useParams();
-  const animeID = params.id;
-
+  const router = useRouter();
+  const { animeID } = router.query;
 
   useEffect(() => {
     dispatch(fetchJikanAnimeDetail(animeID));
@@ -58,10 +49,10 @@ export const AnimeInfo = () => {
     dispatch(fetchJikanAnimeStats(animeID));
   }, [animeID, dispatch]);
 
-
   useEffect(() => {
     let mounted = true;
     if (mounted) {
+      // eslint-disable-next-line no-lone-blocks
       {
         animeInfo?.data?.documents?.[0] &&
           dispatch(fetchAnimeEpisodes(animeInfo?.data?.documents?.[0]?.id, 1));
@@ -70,8 +61,7 @@ export const AnimeInfo = () => {
 
     return () => {
       mounted = false;
-    }
-
+    };
   }, [animeInfo, dispatch]);
 
   return (
@@ -79,11 +69,13 @@ export const AnimeInfo = () => {
       <Container>
         <FlexContainer>
           <LeftContainer>
-            {animeInfo?.data?.documents?.[0] &&
+            {animeInfo?.data?.documents?.[0] && (
               <Suspense fallback={<SpinnerCircular />}>
-                <AnimePlayerEpisodes animeID={animeInfo?.data?.documents?.[0]?.id} />
+                <AnimePlayerEpisodes
+                  animeID={animeInfo?.data?.documents?.[0]?.id}
+                />
               </Suspense>
-            }
+            )}
             <Suspense fallback={<SpinnerCircular />}>
               <AnimeDetails />
             </Suspense>
@@ -102,8 +94,7 @@ export const AnimeInfo = () => {
             <SidebarTrending />
           </RightContainer>
         </FlexContainer>
-      </Container >
+      </Container>
     </PageTransitions>
   );
 };
-

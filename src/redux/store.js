@@ -20,27 +20,26 @@ import ByLetter from "./Slices/ByLetter";
 import filterAnime from "./Slices/FilterAnime";
 
 export const store = configureStore({
-    reducer: {
-        trending: trendingReducer,
-        topAired: topAired,
-        topUpcoming: topUpcoming,
-        animeDetail: AnimeDetail,
-        animeEpisodes: AnimeEpisodes,
-        pageNumber: pagination,
-        jikanAnimeDetails: JikanAnimeDetail,
-        jikanAnimeCharacters: JikanCharacters,
-        jikanAnimeEpisodes: JikanEpisodes,
-        jikanrecommendations: JikanRecommentation,
-        jikanstats: JikanStats,
-        animeSeason: AnimeSeason,
-        schedule: JikanSchedule,
-        jikanGenre: JikanGenre,
-        randomanime: randomAnime,
-        characterinfo: JikanCharacter,
-        byletteranime: ByLetter,
-        filteranime: filterAnime,
-
-
-    },
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(apiMiddleware),
-})
+  reducer: {
+    trending: trendingReducer,
+    topAired: topAired,
+    topUpcoming: topUpcoming,
+    animeDetail: AnimeDetail,
+    animeEpisodes: AnimeEpisodes,
+    pageNumber: pagination,
+    jikanAnimeDetails: JikanAnimeDetail,
+    jikanAnimeCharacters: JikanCharacters,
+    jikanAnimeEpisodes: JikanEpisodes,
+    jikanrecommendations: JikanRecommentation,
+    jikanstats: JikanStats,
+    animeSeason: AnimeSeason,
+    schedule: JikanSchedule,
+    jikanGenre: JikanGenre,
+    randomanime: randomAnime,
+    characterinfo: JikanCharacter,
+    byletteranime: ByLetter,
+    filteranime: filterAnime,
+  },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(apiMiddleware),
+});

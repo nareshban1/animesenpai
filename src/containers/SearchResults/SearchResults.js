@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useRouter } from "next/router";
 import AnimeResults from "../../components/AnimeResults/AnimeResults";
 import FilterForm from "../../components/FilterForm/FilterForm";
 import PageTransitions from "../../components/PageTransitions/PageTransitions";
@@ -12,7 +12,8 @@ import * as Yup from "yup";
 function SearchResults() {
   const searchResults = useSelector((state) => state.filteranime);
   const dispatch = useDispatch();
-  let params = useParams();
+  const router = useRouter();
+  const { params } = router.query;
   const page = useSelector((state) => state.pageNumber.pageNo);
 
   const formik = useFormik({
@@ -72,7 +73,6 @@ function SearchResults() {
 
   return (
     <PageTransitions>
-
       <AnimeResults
         loading={searchResults?.loading}
         error={searchResults?.error}

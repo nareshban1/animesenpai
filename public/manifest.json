@@ -1,9 +1,7 @@
 {
   "short_name": "Anime Senpai",
   "name": "Just a simple anime details app",
-  "icons": [
-      
-  ],
+  "icons": [],
   "start_url": ".",
   "display": "standalone"
 }

@@ -1,8 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import styled from "styled-components";
 
-const AnimeContainer = styled(Link)`
+const AnimeContainer = styled.a`
   overflow: hidden;
   transition: 0.3s all;
   display: flex;
@@ -14,8 +14,8 @@ const AnimeContainer = styled(Link)`
     height: 100px;
   }
 
-  &:hover{
-    background-color:  ${(props) => props.theme.mainBackground};
+  &:hover {
+    background-color: ${(props) => props.theme.mainBackground};
   }
 `;
 const AnimeImage = styled.img`
@@ -38,18 +38,21 @@ const AnimeImageContainer = styled.div`
   @media (max-width: 1280px) {
     width: 75px;
   }
-
-  
 `;
 
 const SmallCard = ({ info, noImage }) => {
   return (
-    <AnimeContainer to={`/animeinfo/${info?.mal_id}`}>
+      <Link passHref href={`/animeinfo/${info?.mal_id}`}>
+    <AnimeContainer >
       <AnimeImageContainer>
-        <AnimeImage src={info?.cover_image || info?.image_url || noImage} alt="" />
+        <AnimeImage
+          src={info?.cover_image || info?.image_url || noImage}
+          alt=""
+        />
       </AnimeImageContainer>
       <AnimeName>{info?.titles?.en || info?.title || info?.name}</AnimeName>
     </AnimeContainer>
+    </Link>
   );
 };
 

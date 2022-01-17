@@ -7,10 +7,13 @@ function AnimeRecommendations() {
   );
 
   return (
-
-    <HomeAnimeList onError={jikanRecommendation?.error} loading={jikanRecommendation?.loading} animeData={jikanRecommendation?.data?.recommendations?.slice(0, 15)} title={"Suggestions"} />
-
-  )
+    <HomeAnimeList
+      onError={jikanRecommendation?.error}
+      loading={jikanRecommendation?.loading}
+      animeData={jikanRecommendation?.data?.recommendations?.slice(0, 15)}
+      title={"Suggestions"}
+    />
+  );
 }
 
-export default AnimeRecommendations
+export default AnimeRecommendations;

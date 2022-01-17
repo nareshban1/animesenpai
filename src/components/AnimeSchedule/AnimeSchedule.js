@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { ListContainer, Small, Subtitle } from "../Styled/Commons";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { AnimeListContainer } from "../Styled/Commons";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchJikanAnimeSchedule } from "../../redux/Slices/JikanSchedule";
@@ -12,7 +12,10 @@ const Days = styled.p`
   padding: 10px;
   background-color: ${(props) =>
     props.selected ? props.theme.primaryColor : props.theme.mainBackground};
-  color: ${(props) => props.selected ? props.theme.textColorPrimary : props.theme.textColorSecondary};
+  color: ${(props) =>
+    props.selected
+      ? props.theme.textColorPrimary
+      : props.theme.textColorSecondary};
   border-radius: 5px;
   text-align: center;
   cursor: pointer;
@@ -20,7 +23,7 @@ const Days = styled.p`
 
   &:hover {
     background-color: ${(props) => props.theme.primaryColor};
-    color:white;
+    color: white;
   }
 `;
 
@@ -51,7 +54,7 @@ const ScheduledGrid = styled.div`
   }
 `;
 
-const ScheduledAnimeCards = styled(Link)`
+const ScheduledAnimeCards = styled.a`
   padding: 10px;
   background-color: ${(props) =>
     props.selected ? props.theme.primaryColor : props.theme.mainBackground};
@@ -75,7 +78,7 @@ const ScheduledAnimeCards = styled(Link)`
 
   &:hover {
     background-color: ${(props) => props.theme.primaryColor};
-    color:${(props) => props.theme.textColorPrimary};
+    color: ${(props) => props.theme.textColorPrimary};
   }
 `;
 
@@ -115,12 +118,13 @@ const AnimeSchedule = () => {
             {animeSchedule[selected] && (
               <ScheduledGrid>
                 {animeSchedule[selected].map((data, index) => (
+                    <Link passHref href={`/animeinfo/${data?.mal_id}`} >
                   <ScheduledAnimeCards
-                    to={`/animeinfo/${data?.mal_id}`}
                     key={index}
                   >
                     <Small>{data.title}</Small>
                   </ScheduledAnimeCards>
+                  </Link>
                 ))}
               </ScheduledGrid>
             )}

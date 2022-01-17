@@ -1,26 +1,25 @@
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { nextPage, prevPage, toPage } from "../../redux/Slices/pagination";
-import { PaginationContainer, PageButton, PageNumber } from "./PaginationStyles";
-
-
+import {
+  PaginationContainer,
+  PageButton,
+  PageNumber,
+} from "./PaginationStyles";
 
 function Pagination() {
   const page = useSelector((state) => state.pageNumber.pageNo);
   const animeEpisodes = useSelector((state) => state.animeEpisodes.data);
   const dispatch = useDispatch();
 
-
   const EpisodesNextPage = () => {
     if (page <= animeEpisodes?.data?.last_page) {
-
       dispatch(nextPage());
     }
   };
 
   const EpisodesPrevPage = () => {
     if (page > 1) {
-
       dispatch(prevPage());
     }
   };
@@ -35,7 +34,7 @@ function Pagination() {
 
   return (
     <>
-      {animeEpisodes?.data &&
+      {animeEpisodes?.data && (
         <>
           {animeEpisodes?.data?.last_page !== 1 && (
             <PaginationContainer>
@@ -55,7 +54,7 @@ function Pagination() {
             </PaginationContainer>
           )}
         </>
-      }
+      )}
     </>
   );
 }

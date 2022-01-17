@@ -3,8 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchTopAired } from "../../redux/Slices/topAired";
 import RightList from "../RightList";
 
-
-
 export const TopAired = () => {
   const topAiredAnime = useSelector((state) => state.topAired.data);
   const dispatch = useDispatch();
@@ -16,7 +14,10 @@ export const TopAired = () => {
   return (
     <>
       {topAiredAnime && (
-        <RightList header="Top Aired" dataset={topAiredAnime?.data?.documents?.slice(0, 9)} />
+        <RightList
+          header="Top Aired"
+          dataset={topAiredAnime?.data?.documents?.slice(0, 9)}
+        />
       )}
     </>
   );

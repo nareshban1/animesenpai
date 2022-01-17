@@ -2,10 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchTopSeason } from "../../redux/Slices/AnimeSeason";
 import RightList from "../RightList";
-import {
-  InfoContainer,
-} from "../Styled/Commons";
-
+import { InfoContainer } from "../Styled/Commons";
 
 const AnimeSeason = () => {
   const topseason = useSelector((state) => state.animeSeason.data);
@@ -15,12 +12,14 @@ const AnimeSeason = () => {
     dispatch(fetchTopSeason());
   }, [dispatch]);
 
-
   return (
     <InfoContainer>
       <>
         {topseason && (
-          <RightList header="Top Season" dataset={topseason?.anime?.slice(0, 10)} />
+          <RightList
+            header="Top Season"
+            dataset={topseason?.anime?.slice(0, 10)}
+          />
         )}
       </>
     </InfoContainer>

@@ -7,13 +7,16 @@ export const Upcoming = () => {
   const topUpcomingAnime = useSelector((state) => state.topUpcoming);
   const dispatch = useDispatch();
 
-
-  console.log(topUpcomingAnime)
   useEffect(() => {
-    dispatch(fetchTopUpcoming(1));
-  }, []);
-
+    dispatch(fetchTopUpcoming());
+  }, [dispatch]);
   return (
-    <HomeAnimeList loading={topUpcomingAnime?.loading} onError={topUpcomingAnime?.error} animeData={topUpcomingAnime?.data?.top?.slice(0, 15)} title={"Upcoming"} btnView={false} />
+    <HomeAnimeList
+      loading={topUpcomingAnime?.loading}
+      onError={topUpcomingAnime?.error}
+      animeData={topUpcomingAnime?.data?.top?.slice(0, 15)}
+      title={"Upcoming"}
+      btnView={false}
+    />
   );
 };

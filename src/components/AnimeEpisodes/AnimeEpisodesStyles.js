@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-
 export const EpisodeCard = styled.div`
   height: 30px;
   display: flex;

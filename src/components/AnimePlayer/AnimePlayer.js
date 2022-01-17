@@ -1,4 +1,8 @@
-import { VideoPlayer, VideoContainer, PlayerContainer } from "./AnimePlayerStyles";
+import {
+  VideoPlayer,
+  VideoContainer,
+  PlayerContainer,
+} from "./AnimePlayerStyles";
 
 function AnimePlayer({ currentEpisode }) {
   return (
@@ -12,17 +16,15 @@ function AnimePlayer({ currentEpisode }) {
               forceHLS: false,
             },
           }}
-          width='100%'
-          height='100%'
+          width="100%"
+          height="100%"
           pip
           playing={true}
           playsinline={true}
         />
-      </VideoContainer >
+      </VideoContainer>
     </PlayerContainer>
-
-
-  )
+  );
 }
 
-export default AnimePlayer
+export default AnimePlayer;
