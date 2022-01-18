@@ -1,28 +1,11 @@
 import {
-  VideoPlayer,
-  VideoContainer,
   PlayerContainer,
 } from "./AnimePlayerStyles";
-
+import Hlss from "./Hls";
 function AnimePlayer({ currentEpisode }) {
   return (
     <PlayerContainer>
-      <VideoContainer>
-        <VideoPlayer
-          controls={true}
-          url={currentEpisode?.video}
-          config={{
-            file: {
-              forceHLS: false,
-            },
-          }}
-          width="100%"
-          height="100%"
-          pip
-          playing={true}
-          playsinline={true}
-        />
-      </VideoContainer>
+          <Hlss loadSources={currentEpisode?.video} />
     </PlayerContainer>
   );
 }

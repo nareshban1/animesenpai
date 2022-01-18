@@ -8,6 +8,7 @@ import { Provider } from "react-redux";
 import { store } from "../redux/store";
 import ScrollToTop from "../helpers/ScrollToTop";
 import "../styles/globals.css";
+import "plyr-react/dist/plyr.css";
 const AppContainer = styled.div`
   background-color: ${(props) => props.theme.mainBackground};
   min-height: 100vh;
