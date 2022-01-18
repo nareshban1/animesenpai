@@ -240,7 +240,7 @@ function NavBar() {
                 ))}
               </DropdownMenu>
             </Dropdown>
-            <Link href="/a-zlist" passHref>
+            <Link href="/allanime" passHref>
               <Links>All Anime</Links>
             </Link>
             <Link href="/randomlist" passHref>
@@ -275,7 +275,7 @@ function NavBar() {
             ))}
           </DropdownMenu>
         </Dropdown>
-        <Link href="/a-zlist" passHref>
+        <Link href="/allanime" passHref>
         <Links onClick={hidemenuFunc}>
           All Anime
         </Links>
