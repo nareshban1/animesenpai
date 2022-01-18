@@ -11,14 +11,15 @@ import * as Yup from "yup";
 
 function SearchResults() {
   const searchResults = useSelector((state) => state.filteranime);
-  const dispatch = useDispatch();
-  const router = useRouter();
-  const { params } = router.query;
   const page = useSelector((state) => state.pageNumber.pageNo);
-
+  const dispatch = useDispatch();
+  const {
+    query: { searchKeys },
+  } = useRouter();
+  console.log(searchKeys)
   const formik = useFormik({
     initialValues: {
-      query: params.query || "",
+      query: searchKeys || "",
       genre: [],
       rating: "g",
       type: "",
@@ -54,7 +55,7 @@ function SearchResults() {
 
   useEffect(() => {
     dispatch(toPage(1));
-  }, [dispatch, params.query]);
+  }, [dispatch, searchKeys]);
 
   useEffect(() => {
     dispatch(
@@ -69,7 +70,17 @@ function SearchResults() {
         page
       )
     );
-  }, [dispatch, page]);
+  }, [
+    dispatch,
+    formik.values.genre,
+    formik.values.orderBy.value,
+    formik.values.query,
+    formik.values.rating.value,
+    formik.values.sort.value,
+    formik.values.status,
+    formik.values.type,
+    page,
+  ]);
 
   return (
     <PageTransitions>

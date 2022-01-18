@@ -11,14 +11,12 @@ function AnimeList() {
   const page = useSelector((state) => state.pageNumber.pageNo);
   const dispatch = useDispatch();
   const router = useRouter();
-  const { params } = router.query;
-
+  const { params, name } = router.query;
+console.log(params)
   useEffect(() => {}, [params]);
-
   useEffect(() => {
     dispatch(fetchJikanAnimeGenre(params, page));
   }, [dispatch, params, page]);
-
   return (
     <PageTransitions>
       <ScrollToTopOnPageChange page={page} />
@@ -26,7 +24,7 @@ function AnimeList() {
         loading={results?.loading}
         error={results?.error}
         animeData={results?.data?.anime}
-        // title={params.name + " Anime"}
+        title={name + " Anime"}
         pagination={true}
       />
     </PageTransitions>

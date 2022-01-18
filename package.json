@@ -30,6 +30,7 @@
     "react-player": "^2.9.0",
     "react-redux": "^7.2.5",
     "react-responsive-carousel": "^3.2.21",
+    "react-router": "^6.2.1",
     "react-scripts": "4.0.3",
     "react-select": "^5.2.1",
     "react-translate": "^7.0.1",

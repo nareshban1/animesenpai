@@ -31,13 +31,12 @@ const AnimeName = styled.div`
   height: 15%;
   color: ${(props) => props.theme.textColorSecondary};
 `;
-
-export const JikanAnimeCard = ({ info }) => {
+export const JikanAnimeCard = ({ info }) => {  
   return (
     <Link passHref href={`/animeinfo/${info?.mal_id}`}>
       <AnimeContainer>
         <AnimeImageContainer>
-          <AnimeImage src={info?.image_url || info?.cover_image} alt="" />
+          <AnimeImage src={info?.image_url || info?.cover_image} alt={info?.title || info?.titles?.en || info?.name} />
         </AnimeImageContainer>
         <AnimeName>{info?.title || info?.titles?.en || info?.name}</AnimeName>
       </AnimeContainer>

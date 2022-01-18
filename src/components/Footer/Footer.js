@@ -32,7 +32,7 @@ const Footer = () => {
           </LetterContainer> */}
           <Link href="/" passHref>
           <LogoLink>
-            <AppLogo>AnimeSenpai</AppLogo>
+            <AppLogo>Animesenpai</AppLogo>
           </LogoLink>
           </Link>
           <Body>

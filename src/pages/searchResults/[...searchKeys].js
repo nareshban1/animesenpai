@@ -1,5 +1,5 @@
 import SearchResults from "../../containers/SearchResults/SearchResults";
-function Query() {
+function searchResults() {
   return (
     <div>
       <SearchResults />
@@ -7,4 +7,4 @@ function Query() {
   );
 }
 
-export default Query;
+export default searchResults;
