@@ -10,9 +10,7 @@ const MyComponent = ({loadSources}) => {
       var hls = new Hls();
       hls.loadSource(loadSources);
       hls.attachMedia(video);
-      // @ts-ignore
       ref.current.plyr.media = video;
-
       hls.on(Hls.Events.MANIFEST_PARSED, function () {
         (ref.current.plyr).play();
       });

@@ -12,7 +12,6 @@ function AnimeList() {
   const dispatch = useDispatch();
   const router = useRouter();
   const { params, name } = router.query;
-console.log(params)
   useEffect(() => {}, [params]);
   useEffect(() => {
     dispatch(fetchJikanAnimeGenre(params, page));

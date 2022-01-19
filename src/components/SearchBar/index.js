@@ -1,11 +1,9 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router";
 import styled from "styled-components";
 import { FaSearch } from "react-icons/fa";
-import { toPage } from "../../redux/Slices/pagination";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { filterAnime } from "../../redux/Slices/FilterAnime";
-import { Router, useRouter } from "next/router";
+import { useRouter } from "next/router";
 
 const SearchBarContainer = styled.div`
   font-family: "Poppins", sans-serif;
@@ -64,14 +62,14 @@ function SearchBar({ onClick }) {
   const handleSearch = (e) => {
     e.preventDefault();
     dispatch(filterAnime(searchQuery, "", "", "", "", "", "", 1));
-    router.push(`/searchResults/${searchQuery}`, { shallow: true });
+    console.log(router.push(`/searchResults/${searchQuery}`))
     setSearchQuery("");
   };
   return (
     <SearchForm onSubmit={handleSearch}>
       <SearchInput
         type="text"
-        placeholder="Enter anime name"
+        placeholder="Search Anime"
         value={searchQuery}
         onChange={(e) => {
           setSearchQuery(e.target.value);

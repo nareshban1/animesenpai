@@ -41,8 +41,6 @@ const customStyles = {
 
 const MySelect = (props) => {
   const handleChange = (value) => {
-    console.log(value);
-
     props.onChange(`${props.name}`, value);
   };
 

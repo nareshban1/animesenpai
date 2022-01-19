@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   FooterContainer,
   FooterContentContainer,
-  FooterDescription,
   LetterContainer,
   Letters,
 } from "./FooterStyles";
@@ -46,7 +45,7 @@ const Footer = () => {
           </LetterContainer>
           <Link href="/" passHref>
             <LogoLink>
-              <AppLogo>Animesenpai</AppLogo>
+              <AppLogo>AnimeSenpai</AppLogo>
             </LogoLink>
           </Link>
           <Body>

@@ -253,9 +253,7 @@ function NavBar() {
       <MenuBar show={showMenu}>
         <SearchBar onClick={hidemenuFunc} />
         <Link href="/" passHref>
-        <Links onClick={hidemenuFunc}>
-          Home
-        </Links>
+          <Links onClick={hidemenuFunc}>Home</Links>
         </Link>
         <Dropdown>
           Genres
@@ -276,11 +274,15 @@ function NavBar() {
           </DropdownMenu>
         </Dropdown>
         <Link href="/allanime" passHref>
-        <Links onClick={hidemenuFunc}>
-          All Anime
-        </Links>
+          <Links onClick={hidemenuFunc}>All Anime</Links>
         </Link>
-        <Links onClick={changeRandom} href="/randomlist" onClick={hidemenuFunc}>
+        <Links
+          onClick={() => {
+            changeRandom();
+            hidemenuFunc();
+          }}
+          href="/randomlist"
+        >
           Random
         </Links>
       </MenuBar>

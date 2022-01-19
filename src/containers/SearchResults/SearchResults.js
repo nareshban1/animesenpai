@@ -16,7 +16,6 @@ function SearchResults() {
   const {
     query: { searchKeys },
   } = useRouter();
-  console.log(searchKeys)
   const formik = useFormik({
     initialValues: {
       query: searchKeys || "",
