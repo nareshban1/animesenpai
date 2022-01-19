@@ -259,7 +259,7 @@ function NavBar() {
           Genres
           <DropdownMenu>
             {genres.map((genre, index) => (
-              <Link passHref href={`genre/${genre.label}/${genre.value}`}>
+              <Link passHref href={`animelist/${genre.label}/${genre.value}`}>
                 <Genre
                   key={index}
                   onClick={() => {
