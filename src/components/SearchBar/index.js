@@ -62,7 +62,7 @@ function SearchBar({ onClick }) {
   const handleSearch = (e) => {
     e.preventDefault();
     dispatch(filterAnime(searchQuery, "", "", "", "", "", "", 1));
-    console.log(router.push(`/searchResults/${searchQuery}`))
+    router.push(`/searchResults/${searchQuery}`)
     setSearchQuery("");
   };
   return (
