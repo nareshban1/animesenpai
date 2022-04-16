@@ -10,7 +10,9 @@ function AnimePlayer({ currentEpisode }) {
       <VideoContainer>
         <VideoPlayer
           controls={true}
-          url={currentEpisode?.video}
+          url={
+            "https://api.aniapi.com/v1/proxy/https://vjbnb.vizcloud2.online/simple/EqPFI_8QBAro1HhYl67rC5su+VwW5ryyQgR7rqk+wYMnU94US2El/br/list.m3u8"
+          }
           config={{
             file: {
               forceHLS: true,
