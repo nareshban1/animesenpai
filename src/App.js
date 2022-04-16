@@ -5,7 +5,6 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import { Home } from "./containers/Home/Home";
 import { AnimeInfo } from "./containers/AnimeInfo/AnimeInfo";
 import NavBar from "./components/Navbar";
-import Footer from "./components/Footer/Footer";
 import SearchResults from "./containers/SearchResults/SearchResults";
 import AnimeList from "./containers/AnimeList/AnimeList";
 import Random from "./containers/Random/Random";
@@ -13,6 +12,7 @@ import { AnimatePresence } from 'framer-motion/dist/es/index';
 import CharacterList from "./containers/CharacterList/CharacterList";
 import CharacterInfo from "./containers/CharacterInfo/CharacterInfo";
 import AZList from "./containers/AZList/AZList";
+import Footer from "./components/Footer/Footer";
 
 const AppContainer = styled.div`
   background-color: ${(props) => props.theme.mainBackground};
