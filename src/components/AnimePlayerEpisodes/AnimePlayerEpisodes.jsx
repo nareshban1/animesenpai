@@ -12,11 +12,9 @@ const AnimePlayerEpisodes = () => {
   const [currentEpisode, setCurrentEpisode] = useState();
   let params = useParams();
   const animeID = params.id;
-  console.log(params.id);
   const animeInfo = useGetAnimeDetailByMalIdQuery(animeID);
   const page = useSelector((state) => state.pageNumber.pageNo);
 
-  console.log(animeInfo?.data);
   const animeEpisodes = useGetAnimeAniEpisodesQuery(
     { id: animeInfo.data?.data?.documents?.[0]?.id, dub: false, page: page },
     {

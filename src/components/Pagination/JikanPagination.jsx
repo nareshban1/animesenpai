@@ -27,7 +27,6 @@ const JikanPagination = ({ paginationData }) => {
     dispatch(toPage(paginationData?.last_visible_page));
   };
 
-  console.log(paginationData);
   return (
     <>
       <PaginationContainer>

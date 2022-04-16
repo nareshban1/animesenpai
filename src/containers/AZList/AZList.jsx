@@ -16,8 +16,6 @@ const AZList = () => {
     page: page,
   });
 
-  console.log(data?.pagination);
-
   useEffect(() => {
     dispatch(toPage(1));
   }, [dispatch, letterData]);
