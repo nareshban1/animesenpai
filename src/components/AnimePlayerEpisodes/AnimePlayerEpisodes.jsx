@@ -27,7 +27,7 @@ const AnimePlayerEpisodes = () => {
       <AnimeEpisodes
         animeEpisodes={animeEpisodes?.data}
         animeChange={animeInfo?.isFetching}
-        loading={animeEpisodes?.isLoading}
+        loading={animeEpisodes?.isFetching || animeEpisodes?.isFetching}
         error={animeEpisodes?.error}
         currentEpisode={currentEpisode}
         setCurrentEpisode={setCurrentEpisode}
