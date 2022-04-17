@@ -91,7 +91,7 @@ const AnimeSchedule = () => {
     return () => clearTimeout(timer);
   }, []);
   const [selected, setSelected] = useState(date);
-  const { data, error, isLoading } = useGetSchedulesQuery(
+  const { data, error, isLoading, isFetching } = useGetSchedulesQuery(
     selected.toLowerCase(),
     {
       skip,
@@ -131,17 +131,20 @@ const AnimeSchedule = () => {
                     );
                   })}
                 </DaysContainer>
-
-                <ScheduledGrid>
-                  {data.data?.map((anime, index) => (
-                    <ScheduledAnimeCards
-                      to={`/animeinfo/${anime?.mal_id}`}
-                      key={index}
-                    >
-                      <Small>{anime.title}</Small>
-                    </ScheduledAnimeCards>
-                  ))}
-                </ScheduledGrid>
+                {isFetching ? (
+                  <LoadingSpinner />
+                ) : (
+                  <ScheduledGrid>
+                    {data.data?.map((anime, index) => (
+                      <ScheduledAnimeCards
+                        to={`/animeinfo/${anime?.mal_id}`}
+                        key={index}
+                      >
+                        <Small>{anime.title}</Small>
+                      </ScheduledAnimeCards>
+                    ))}
+                  </ScheduledGrid>
+                )}
               </>
             )}
           </>
