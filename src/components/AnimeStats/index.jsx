@@ -117,9 +117,7 @@ function AnimeStats() {
                 <StatCardContainer>
                   <StatCard>
                     <Small color={"#5EAA7A"}>WATCHING</Small>
-                    <Subtitle color={"white"}>
-                      {DataTransferItem?.data?.watching}
-                    </Subtitle>
+                    <Subtitle color={"white"}>{data?.data?.watching}</Subtitle>
                   </StatCard>
                   <StatCard>
                     <Small color={"#5EAA7A"}>COMPLETED</Small>

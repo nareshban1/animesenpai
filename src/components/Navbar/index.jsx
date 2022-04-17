@@ -103,13 +103,21 @@ export const Genre = styled(Link)`
 export const DropdownMenu = styled.div`
   display: none;
   position: absolute;
-  width: 500px;
+  max-width: 500px;
   background-color: ${(props) => props.theme.secondaryBackground};
   padding: 15px;
   right: 0;
   border-radius: 5px;
   border: 1px solid ${(props) => props.theme.textColorSecondary};
   grid-template-columns: repeat(auto-fill, minmax(125px, 1fr));
+  overflow: scroll;
+
+  @media (max-width: 450px) {
+    grid-template-columns: repeat(auto-fill, minmax(125px, 1fr));
+    width: 300px;
+    overflow: scroll;
+    height: 400px;
+  }
 `;
 
 export const Dropdown = styled.div`
@@ -229,7 +237,7 @@ function NavBar() {
                 ))}
               </DropdownMenu>
             </Dropdown>
-            <Links to="/a-zlist">All Anime</Links>
+            <Links to="/a-zlist">AllAnime</Links>
             <Links onClick={hidemenuFunc} to="/randomlist">
               Random
             </Links>
