@@ -3,13 +3,15 @@ import { Body, ListContainer } from "../Styled/Commons";
 import { EpisodesContainer, EpisodeCard } from "./AnimeEpisodesStyles";
 import { useSelector } from "react-redux";
 import Pagination from "../Pagination/Pagination";
-import { SpinnerCircular } from "spinners-react";
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
+
 const AnimeEpisodes = ({
   animeEpisodes,
   loading,
   error,
   setCurrentEpisode,
   currentEpisode,
+  animeChange,
 }) => {
   const page = useSelector((state) => state.pageNumber.pageNo);
   const changeEpisode = (episode) => {
@@ -17,13 +19,15 @@ const AnimeEpisodes = ({
   };
 
   useEffect(() => {
-    setCurrentEpisode(animeEpisodes?.data?.documents[0]);
-  }, [animeEpisodes?.data?.documents]);
+    if (animeEpisodes?.data?.length !== 0) {
+      setCurrentEpisode(animeEpisodes?.data?.documents[0]);
+    }
+  }, [animeEpisodes]);
 
   return (
     <ListContainer>
-      {loading ? (
-        <SpinnerCircular />
+      {animeChange || loading ? (
+        <LoadingSpinner />
       ) : (
         <>
           {animeEpisodes?.data?.length !== 0 ? (

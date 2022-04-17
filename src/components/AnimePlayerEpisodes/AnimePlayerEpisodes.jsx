@@ -14,7 +14,7 @@ const AnimePlayerEpisodes = () => {
   const animeID = params.id;
   const animeInfo = useGetAnimeDetailByMalIdQuery(animeID);
   const page = useSelector((state) => state.pageNumber.pageNo);
-
+  console.log(animeInfo.data?.data?.documents);
   const animeEpisodes = useGetAnimeAniEpisodesQuery(
     { id: animeInfo.data?.data?.documents?.[0]?.id, dub: false, page: page },
     {
@@ -27,6 +27,7 @@ const AnimePlayerEpisodes = () => {
       {currentEpisode && <AnimePlayer currentEpisode={currentEpisode} />}
       <AnimeEpisodes
         animeEpisodes={animeEpisodes?.data}
+        animeChange={animeInfo?.isFetching}
         loading={animeEpisodes?.isLoading}
         error={animeEpisodes?.error}
         currentEpisode={currentEpisode}

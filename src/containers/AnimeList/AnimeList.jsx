@@ -9,7 +9,7 @@ function AnimeList() {
   const page = useSelector((state) => state.pageNumber.pageNo);
   let params = useParams();
 
-  const { data, error, isLoading } = useGetGenreAnimeQuery({
+  const { data, error, isFetching } = useGetGenreAnimeQuery({
     genre: params.id,
     page,
   });
@@ -18,7 +18,7 @@ function AnimeList() {
     <PageTransitions>
       <ScrollToTopOnPageChange page={page} />
       <AnimeResults
-        loading={isLoading}
+        loading={isFetching}
         error={error}
         animeData={data?.data}
         title={params.name + " Anime"}

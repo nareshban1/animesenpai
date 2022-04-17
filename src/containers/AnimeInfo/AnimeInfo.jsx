@@ -7,9 +7,10 @@ import {
 } from "../../components/Styled/Commons";
 
 import { SidebarTrending } from "../../components/Trending/Sidebar";
-import { SpinnerCircular } from "spinners-react";
+
 import PageTransitions from "../../components/PageTransitions/PageTransitions";
 import RelatedAnime from "../../components/RelatedAnime/RelatedAnime";
+import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 
 const AnimeDetails = React.lazy(() =>
   import("../../components/AnimeDetails/AnimeDetails")
@@ -33,19 +34,19 @@ export const AnimeInfo = () => {
       <Container>
         <FlexContainer>
           <LeftContainer>
-            <Suspense fallback={<SpinnerCircular />}>
+            <Suspense fallback={<LoadingSpinner />}>
               <AnimePlayerEpisodes />
             </Suspense>
-            <Suspense fallback={<SpinnerCircular />}>
+            <Suspense fallback={<LoadingSpinner />}>
               <AnimeDetails />
             </Suspense>
-            <Suspense fallback={<SpinnerCircular />}>
+            <Suspense fallback={<LoadingSpinner />}>
               <Character maincharacters={true} btnview={true} />
             </Suspense>
-            <Suspense fallback={<SpinnerCircular />}>
+            <Suspense fallback={<LoadingSpinner />}>
               <AnimeStats />
             </Suspense>
-            <Suspense fallback={<SpinnerCircular />}>
+            <Suspense fallback={<LoadingSpinner />}>
               <AnimeRecommendations />
             </Suspense>
           </LeftContainer>

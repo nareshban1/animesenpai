@@ -12,12 +12,12 @@ import {
   RankContainer,
   TitleRanksContainer,
 } from "./Styles";
-import { SpinnerCircular } from "spinners-react";
 import { useParams } from "react-router-dom";
 import {
   useGetAnimeDetailByMalIdQuery,
   useGetAnimeDetailsQuery,
 } from "../../redux/Query/apiEndpoints";
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 const AnimeDetails = () => {
   let params = useParams();
   const animeID = params.id;
@@ -27,7 +27,7 @@ const AnimeDetails = () => {
     <AnimeDetail>
       {jikan?.loading ? (
         <>
-          <SpinnerCircular />
+          <LoadingSpinner />
         </>
       ) : (
         <>

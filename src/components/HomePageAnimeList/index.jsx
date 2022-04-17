@@ -8,7 +8,7 @@ import {
 import { JikanAnimeCard } from "../AnimeCard/JikanAnimeCard";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { SpinnerCircular } from "spinners-react";
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 
 const ListTitleContainer = styled.div`
   display: flex;
@@ -38,7 +38,7 @@ const HomeAnimeList = ({ animeData, title, onError, loading }) => {
         </ListTitleContainer>
         {loading ? (
           <>
-            <SpinnerCircular />
+            <LoadingSpinner />
           </>
         ) : (
           <>

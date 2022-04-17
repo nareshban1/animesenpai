@@ -1,4 +1,3 @@
-import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import {
   useGetAnimeCharactersQuery,
@@ -9,8 +8,6 @@ import {
   ListContainer,
   HeaderFlex,
   ViewAllBtn,
-  Body,
-  Small,
 } from "../Styled/Commons";
 import CharacterCard from "./CharacterCard";
 import { CharacterStaffGrid } from "./CharacterStyles";
@@ -42,7 +39,7 @@ function CharacterStaff({ maincharacters, btnview }) {
           characterData={
             maincharacters
               ? jikananimeCharacters?.data?.data?.filter(getMainCharacter)
-              : jikananimeCharacters?.data
+              : jikananimeCharacters?.data?.data
           }
         />
       </CharacterStaffGrid>

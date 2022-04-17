@@ -4,7 +4,7 @@ import {
   Subtitle,
   Small,
 } from "../Styled/Commons";
-import { SpinnerCircular } from "spinners-react";
+
 import {
   StatCardContainer,
   StatCard,
@@ -24,6 +24,7 @@ import {
 import { useGetAnimeStatsQuery } from "../../redux/Query/apiEndpoints";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 
 ChartJS.register(
   CategoryScale,
@@ -107,42 +108,48 @@ function AnimeStats() {
     <AnimeListContainer>
       <ListContainer>
         <Subtitle color="white">Anime Stats</Subtitle>
-        {isLoading ? (
-          <SpinnerCircular />
+        {isLoading || skip ? (
+          <LoadingSpinner />
         ) : (
           <StatsData>
-            <StatCardContainer>
-              <StatCard>
-                <Small color={"#5EAA7A"}>WATCHING</Small>
-                <Subtitle color={"white"}>
-                  {DataTransferItem?.data?.watching}
-                </Subtitle>
-              </StatCard>
-              <StatCard>
-                <Small color={"#5EAA7A"}>COMPLETED</Small>
-                <Subtitle color={"white"}>{data?.data?.completed}</Subtitle>
-              </StatCard>
-              <StatCard>
-                <Small color={"#5EAA7A"}>ON HOLD</Small>
-                <Subtitle color={"white"}>{data?.data?.on_hold}</Subtitle>
-              </StatCard>
-              <StatCard>
-                <Small color={"#5EAA7A"}>DROPPED</Small>
-                <Subtitle color={"white"}>{data?.data?.dropped}</Subtitle>
-              </StatCard>
-              <StatCard>
-                <Small color={"#5EAA7A"}>PLAN TO WATCH</Small>
-                <Subtitle color={"white"}>{data?.data?.plan_to_watch}</Subtitle>
-              </StatCard>
-              <StatCard>
-                <Small color={"#5EAA7A"}>TOTAL</Small>
-                <Subtitle color={"white"}>{data?.data?.total}</Subtitle>
-              </StatCard>
-            </StatCardContainer>
-            <ScoreContainer>
-              <Small color={"#5EAA7A"}>SCORE DISTRIBUTION</Small>
-              <StatsBar options={options} data={statdata} />;
-            </ScoreContainer>
+            {data && (
+              <>
+                <StatCardContainer>
+                  <StatCard>
+                    <Small color={"#5EAA7A"}>WATCHING</Small>
+                    <Subtitle color={"white"}>
+                      {DataTransferItem?.data?.watching}
+                    </Subtitle>
+                  </StatCard>
+                  <StatCard>
+                    <Small color={"#5EAA7A"}>COMPLETED</Small>
+                    <Subtitle color={"white"}>{data?.data?.completed}</Subtitle>
+                  </StatCard>
+                  <StatCard>
+                    <Small color={"#5EAA7A"}>ON HOLD</Small>
+                    <Subtitle color={"white"}>{data?.data?.on_hold}</Subtitle>
+                  </StatCard>
+                  <StatCard>
+                    <Small color={"#5EAA7A"}>DROPPED</Small>
+                    <Subtitle color={"white"}>{data?.data?.dropped}</Subtitle>
+                  </StatCard>
+                  <StatCard>
+                    <Small color={"#5EAA7A"}>PLAN TO WATCH</Small>
+                    <Subtitle color={"white"}>
+                      {data?.data?.plan_to_watch}
+                    </Subtitle>
+                  </StatCard>
+                  <StatCard>
+                    <Small color={"#5EAA7A"}>TOTAL</Small>
+                    <Subtitle color={"white"}>{data?.data?.total}</Subtitle>
+                  </StatCard>
+                </StatCardContainer>
+                <ScoreContainer>
+                  <Small color={"#5EAA7A"}>SCORE DISTRIBUTION</Small>
+                  <StatsBar options={options} data={statdata} />;
+                </ScoreContainer>
+              </>
+            )}
           </StatsData>
         )}
       </ListContainer>

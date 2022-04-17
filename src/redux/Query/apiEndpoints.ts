@@ -96,7 +96,7 @@ export const aniApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: "https://api.aniapi.com/v1/" }),
   endpoints: (builder) => ({
     getAnimeDetailByMalId: builder.query({
-      query: (id) => `/anime?mal_id=${id}&nsfw=true&with_episodes=true`,
+      query: (id) => `/anime?mal_id=${id}&nsfw=true`,
     }),
     getAnimeAniEpisodes: builder.query({
       query: ({ id, page, dub }: { id: number; page: string; dub: boolean }) =>
@@ -146,6 +146,7 @@ export const {
   useGetUpcomingSeasonQuery,
   useGetGenreAnimeQuery,
   useGetGenresQuery,
+  useLazyGetAnimeCharactersQuery,
 } = jikanApi;
 export const {
   useGetAnimeDetailByMalIdQuery,
@@ -153,5 +154,6 @@ export const {
   useGetAnimeAniEpisodesQuery,
   useGetRandomAniAnimeQuery,
   useGetTopAniAnimeQuery,
+  useLazyGetRandomAniAnimeQuery,
   useGetTrendingAnimeQuery,
 } = aniApi;

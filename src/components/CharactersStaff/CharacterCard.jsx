@@ -23,7 +23,7 @@ const CharacterCard = ({ characterData }) => {
           </CharacterImageContainer>
           <CharacterInfo>
             <Body>{data.character.name}</Body>
-            <Small>{data.character.role}</Small>
+            <Small>{data.role}</Small>
           </CharacterInfo>
         </CharacterCardContainer>
       ))}

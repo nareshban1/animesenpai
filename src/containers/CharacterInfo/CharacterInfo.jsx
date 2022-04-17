@@ -6,10 +6,8 @@ import {
   RightContainer,
 } from "../../components/Styled/Commons";
 import { SidebarTrending } from "../../components/Trending/Sidebar";
-import { useParams } from "react-router-dom";
-import { SpinnerCircular } from "spinners-react";
 import PageTransitions from "../../components/PageTransitions/PageTransitions";
-import { useGetCharacterbyIdQuery } from "../../redux/Query/apiEndpoints";
+import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 
 const CharacterDetails = React.lazy(() =>
   import("../../components/CharacterDetails/CharacterDetails")
@@ -21,7 +19,7 @@ const CharacterInfo = () => {
       <Container>
         <FlexContainer>
           <LeftContainer>
-            <Suspense fallback={<SpinnerCircular />}>
+            <Suspense fallback={<LoadingSpinner />}>
               <CharacterDetails />
             </Suspense>
           </LeftContainer>

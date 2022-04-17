@@ -20,7 +20,7 @@ function AnimeRecommendations() {
   return (
     <HomeAnimeList
       onError={error}
-      loading={isLoading}
+      loading={isLoading || skip}
       animeData={data?.data?.slice(0, 15)}
       title={"Suggestions"}
     />

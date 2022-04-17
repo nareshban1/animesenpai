@@ -10,7 +10,7 @@ import {
   RankContainer,
   TitleRanksContainer,
 } from "../AnimeDetails/Styles";
-import { SpinnerCircular } from "spinners-react";
+
 import { Small, TitleH3 } from "../Styled/Commons";
 import Markdown from "markdown-to-jsx";
 import HomeAnimeList from "../HomePageAnimeList";
@@ -21,6 +21,7 @@ import {
 } from "../../redux/Query/apiEndpoints";
 import { DateSchema } from "yup";
 import { RiDatabase2Fill } from "react-icons/ri";
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 
 const CharacterDetails = () => {
   let params = useParams();
@@ -32,7 +33,7 @@ const CharacterDetails = () => {
       <AnimeDetail>
         {isLoading ? (
           <>
-            <SpinnerCircular />
+            <LoadingSpinner />
           </>
         ) : (
           <>

@@ -33,7 +33,7 @@ function SearchResults() {
     setSearchData({ ...searchData, page: page });
   }, [page]);
 
-  const { data, error, isLoading } = useGetFilterdAnimeQuery({
+  const { data, error, isFetching } = useGetFilterdAnimeQuery({
     ...searchData,
   });
 
@@ -76,7 +76,7 @@ function SearchResults() {
     <PageTransitions>
       <ScrollToTopOnPageChange page={page} />
       <AnimeResults
-        loading={isLoading}
+        loading={isFetching}
         error={error}
         animeData={data?.data}
         title={"Search Results for " + formik.values.query}

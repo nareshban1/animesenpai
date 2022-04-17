@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ListContainer, Small, Subtitle } from "../Styled/Commons";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { AnimeListContainer } from "../Styled/Commons";
 import { format } from "date-fns";
 import { useGetSchedulesQuery } from "../../redux/Query/apiEndpoints";
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 
 const Days = styled.p`
   text-transform: uppercase;
@@ -83,9 +84,18 @@ const ScheduledAnimeCards = styled(Link)`
 
 const AnimeSchedule = () => {
   const date = format(new Date(), "EEEE");
+  const [skip, setSkip] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setSkip(false), 3000);
+    return () => clearTimeout(timer);
+  }, []);
   const [selected, setSelected] = useState(date);
   const { data, error, isLoading } = useGetSchedulesQuery(
-    selected.toLowerCase()
+    selected.toLowerCase(),
+    {
+      skip,
+    }
   );
 
   const days = [
@@ -102,35 +112,40 @@ const AnimeSchedule = () => {
     <AnimeListContainer>
       <ListContainer>
         <Subtitle color="white">Schedule</Subtitle>
+        {isLoading || skip ? (
+          <LoadingSpinner />
+        ) : (
+          <>
+            {data && (
+              <>
+                <DaysContainer>
+                  {days.map((day, index) => {
+                    return (
+                      <Days
+                        selected={selected.toLowerCase() === day.value}
+                        onClick={() => setSelected(day.value)}
+                        key={index}
+                      >
+                        {day.label}
+                      </Days>
+                    );
+                  })}
+                </DaysContainer>
 
-        <>
-          <DaysContainer>
-            {days.map((day, index) => {
-              return (
-                <Days
-                  selected={selected.toLowerCase() === day.value}
-                  onClick={() => setSelected(day.value)}
-                  key={index}
-                >
-                  {day.label}
-                </Days>
-              );
-            })}
-          </DaysContainer>
-
-          {data && (
-            <ScheduledGrid>
-              {data.data?.map((anime, index) => (
-                <ScheduledAnimeCards
-                  to={`/animeinfo/${anime?.mal_id}`}
-                  key={index}
-                >
-                  <Small>{anime.title}</Small>
-                </ScheduledAnimeCards>
-              ))}
-            </ScheduledGrid>
-          )}
-        </>
+                <ScheduledGrid>
+                  {data.data?.map((anime, index) => (
+                    <ScheduledAnimeCards
+                      to={`/animeinfo/${anime?.mal_id}`}
+                      key={index}
+                    >
+                      <Small>{anime.title}</Small>
+                    </ScheduledAnimeCards>
+                  ))}
+                </ScheduledGrid>
+              </>
+            )}
+          </>
+        )}
       </ListContainer>
     </AnimeListContainer>
   );

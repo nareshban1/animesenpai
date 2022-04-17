@@ -11,7 +11,7 @@ const AZList = () => {
   const page = useSelector((state) => state.pageNumber.pageNo);
   const [letterData, setLetterData] = useState({ letter: "", name: "All" });
   const dispatch = useDispatch();
-  const { data, error, isLoading } = useGetAnimeByLetterQuery({
+  const { data, error, isLoading, isFetching } = useGetAnimeByLetterQuery({
     letter: letterData.letter,
     page: page,
   });
@@ -25,7 +25,7 @@ const AZList = () => {
       <ScrollToTopOnPageChange page={page} />
 
       <AnimeResults
-        loading={isLoading}
+        loading={isFetching}
         error={error}
         animeData={data?.data}
         title={letterData.name + " Anime"}
