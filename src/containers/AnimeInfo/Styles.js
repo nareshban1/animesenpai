@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 export const AnimeInfoContainer = styled.div`
   margin-top: 0px;
 `;
@@ -11,7 +11,7 @@ export const AnimeInfoBackground = styled.div`
   background-image: url(${({ image }) => image});
   background-repeat: no-repeat;
   background-size: cover;
-  background-blend-mode: soft-light ;
+  background-blend-mode: soft-light;
 `;
 
 export const AnimeDetails = styled.div`
@@ -135,7 +135,7 @@ export const AnimeGenreDetailsContainer = styled.div`
   flex-direction: column;
 `;
 
-export const AnimeWatchButton = styled(Link)`
+export const AnimeWatchButton = styled.a`
   height: 100px;
   width: 150px;
   padding: 10px;

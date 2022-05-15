@@ -1,0 +1,43 @@
+
+@import url("https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Condensed:wght@100;200;300;400;500;600;700;800;900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;1,100;1,200;1,300;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Encode+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
+  font-family: "Poppins", "open-sans";
+}
+
+:root {
+  --primary-font: "Poppins", "open-sans";
+  --primary-color: #5eaa7a;
+  --dark-background: #1c1c1c;
+}
+
+/* width */
+body::-webkit-scrollbar {
+  width: 10px;
+  transition: 0.5 all ease;
+}
+
+/* Track */
+body::-webkit-scrollbar-track {
+  background: var(--dark-background);
+}
+
+/* Handle */
+body::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 20px;
+  transition: 1s all ease-in-out;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-color);
+  border-radius: 0px;
+}
+
+.selectinput {
+  background-color: #0e0e0e;
+}
