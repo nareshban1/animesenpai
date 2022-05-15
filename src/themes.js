@@ -5,11 +5,14 @@ const primaryColor = "#5EAA7A";
 const primaryColorDim = "#5EAA7A";
 const textWhite = "#aaaaaa";
 
+
+
 export const MainTheme = {
-  mainBackground: darkBackground,
-  secondaryBackground: darkColor,
-  dimBackground: primaryColorDim,
-  primaryColor: primaryColor,
-  textColorPrimary: white,
-  textColorSecondary: textWhite,
-};
+    mainBackground: darkBackground,
+    secondaryBackground: darkColor,
+    dimBackground: primaryColorDim,
+    primaryColor: primaryColor,
+    textColorPrimary: white,
+    textColorSecondary: textWhite,
+}
+
